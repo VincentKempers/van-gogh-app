@@ -1,13 +1,19 @@
 <template>
 	<header>
-		<h3 @click="goBack">header</h3>
-		<p @click="checkRoute">CHECK</p>
+		<router-link to="/" >
+			<icon-back></icon-back>
+		</router-link>
 	</header>
 </template>
 
 <script>
+	import IconBack from './icons/IconBack.vue';
+
 	export default {
 		props: [],
+		components: {
+			IconBack
+		},
 		data() {
 			return {}
 		},
@@ -15,7 +21,6 @@
 			goBack() {
 				if (this.$route.path !== '/') {
 					console.log('Going back');
-					
 					this.$router.go(-1);
 				}
 			},

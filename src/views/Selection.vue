@@ -3,9 +3,7 @@
 		<h2>Header and back</h2>
 		<section>List of first half</section>
 		<section>List of last half</section>
-		<footer>
 			<section>selection</section>
-			<button @click="$router.go(-1)">confirm</button>
 		</footer>
 	</div>
 </template>
