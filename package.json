@@ -5,11 +5,11 @@
 	"main": "server.js",
 	"scripts": {
 		"dev": "run-p dev:client dev:server dev:start",
-		"dev:start": "node -e \"setTimeout(()=>{}, 3000)\" && nodemon src/server.js --inspect --ignore",
+		"dev:start": "node -e \"setTimeout(()=>{}, 3000)\" && nodemon src/index.js --inspect --ignore",
 		"dev:client": "webpack-dev-server -d --hot --config config/webpack.client.config.js",
 		"dev:client-s": "webpack-serve --config config/webpack.client.config.js",
 		"dev:server": "webpack --watch --config config/webpack.server.config.js",
-		"start": "cross-env NODE_ENV=production node src/server.js",
+		"start": "cross-env NODE_ENV=production node src/index.js",
 		"build": "rimraf dist && npm run build:client && npm run build:server",
 		"build:client": "cross-env NODE_ENV=production webpack --config config/webpack.client.config.js --progress --hide-modules",
 		"build:server": "cross-env NODE_ENV=production webpack --config config/webpack.server.config.js --progress --hide-modules"
@@ -35,6 +35,7 @@
 	"dependencies": {
 		"cross-env": "^5.0.5",
 		"dotenv": "^6.0.0",
+		"mongoose": "^5.1.4",
 		"vue": "^2.4.4",
 		"vue-router": "^2.7.0",
 		"vue-server-renderer": "^2.5.2"

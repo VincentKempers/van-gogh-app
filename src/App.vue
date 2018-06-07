@@ -9,19 +9,19 @@
 </template>
 
 <script>
-	import Header from './components/Header.vue';
+import Header from './components/Header.vue';
 
-	export default {
-		name: 'app',
-		components: {
-			Header
-		},
-		data() {
-			return {
-				title: 'hello'
-			}
-		}
-	};
+export default {
+	name: 'app',
+	components: {
+		Header,
+	},
+	data() {
+		return {
+			title: 'hello',
+		};
+	},
+};
 </script>
 
 

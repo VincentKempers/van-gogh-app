@@ -62,10 +62,4 @@ server.get('*', (req, res) => {
 	}
 });
 
-const port = process.env.PORT;
-
-server.listen(port, () => {
-	console.log(`server started at localhost: ${port}`);
-});
-
 module.exports = server;
