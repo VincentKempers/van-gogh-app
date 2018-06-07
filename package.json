@@ -5,7 +5,7 @@
 	"main": "server.js",
 	"scripts": {
 		"dev": "run-p dev:client dev:server dev:start",
-		"dev:start": "node -e \"setTimeout(()=>{}, 3000)\" && nodemon src/index.js --inspect --ignore",
+		"dev:start": "node -e \"setTimeout(()=>{}, 2000)\" && nodemon src/index.js --inspect --ignore",
 		"dev:client": "webpack-dev-server -d --hot --config config/webpack.client.config.js",
 		"dev:client-s": "webpack-serve --config config/webpack.client.config.js",
 		"dev:server": "webpack --watch --config config/webpack.server.config.js",
