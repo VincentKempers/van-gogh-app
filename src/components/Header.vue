@@ -32,4 +32,7 @@
 </script>
 
 <style lang="scss" scoped>
+	header {
+		padding: .4rem .8rem;
+	}
 </style>
