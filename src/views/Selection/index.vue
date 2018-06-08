@@ -7,6 +7,7 @@
 				<li
 					v-for="(theme, i) in themes"
 					v-if="i < (themes.length / 2)"
+					:key="i"
 					@click="addTheme(theme, $event)"
 				>
 					<select-item :title="theme" />
@@ -22,6 +23,7 @@
 				<li
 					v-for="(theme, i) in themes"
 					v-if="i > (themes.length / 2)"
+					:key="i"
 					@click="addTheme(theme, $event)"
 				>
 					<select-item :title="theme" />
@@ -33,6 +35,7 @@
 			<ul>
 				<li
 					v-for="(theme, i) in selectedThemes"
+					:key="i"
 					@click="removeTheme(theme, i, $event)"
 				>
 					<select-item :title="theme" />
@@ -72,30 +75,30 @@
 				selectedThemes: [
 					'driven and goal oriented'
 				]
-			}
+			};
 		},
 		methods: {
 			test() {
 				console.log('Got clicked');
 			},
-			addTheme(theme, evt) {
+			addTheme(theme) {
 				// console.log('Add', evt.target, theme);
 				this.selectedThemes.push(theme);
 				console.log(this.selectedThemes);
 			},
-			removeTheme(theme, i, evt) {
+			removeTheme(theme, i) {
 				this.selectedThemes.splice(i, 1);
 				console.log('Remove selected');
 			}
 		},
 		created() {
-
+			console.log('created');
 		},
 		watch: {
 			// Wathc the $route propertie and run method change
 			// 'selectedThemes': 'fetchItems'
 		},
-	}
+	};
 </script>
 
 <style lang="scss" scoped>

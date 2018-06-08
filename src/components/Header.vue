@@ -15,7 +15,7 @@
 			IconBack
 		},
 		data() {
-			return {}
+			return {};
 		},
 		methods: {
 			goBack() {
@@ -28,7 +28,7 @@
 				console.log(this.$route);
 			}
 		}
-	}
+	};
 </script>
 
 <style lang="scss" scoped>

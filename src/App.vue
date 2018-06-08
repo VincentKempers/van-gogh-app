@@ -25,7 +25,6 @@ export default {
 </script>
 
 
-
 <style lang="scss">
 	html, body {
 		position: relative;
