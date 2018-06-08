@@ -28,9 +28,23 @@ export default {
 
 <style lang="scss">
 	html, body {
-		margin: 0;
-		background :#9C0E1C;
-		color: #f3f3f3;
+		position: relative;
 		font-family: "varela round", "arial rounded", "arial", sans-serif;
+		margin: 0;
+		// background :#9C0E1C;
+		// color: #f3f3f3;
+	}
+
+	body {
+		&::before {
+			content: "";
+			height: 40%;
+			max-height: 16rem;
+			width: 100%;
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			background: #9C0E1C;
+		}
 	}
 </style>
