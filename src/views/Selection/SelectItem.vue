@@ -9,9 +9,9 @@
 	export default {
 		props: ['title'],
 		data() {
-			return {} 
+			return {};
 		}
-	}
+	};
 </script>
 
 <style lang="scss" scoped>

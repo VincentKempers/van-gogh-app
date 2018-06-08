@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 import Home from './views/Home.vue';
 import About from './views/About.vue';
-import Selection from './views/Selection.vue';
+import Selection from './views/Selection/index.vue';
 
 Vue.use(Router);
 

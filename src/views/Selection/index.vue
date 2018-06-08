@@ -7,10 +7,9 @@
 				<li
 					v-for="(theme, i) in themes"
 					v-if="i < (themes.length / 2)"
+					@click="addTheme(theme, $event)"
 				>
-					<select-item
-						:title="theme"
-					/>
+					<select-item :title="theme" />
 				</li>
 			</ul>
 
@@ -23,28 +22,34 @@
 				<li
 					v-for="(theme, i) in themes"
 					v-if="i > (themes.length / 2)"
+					@click="addTheme(theme, $event)"
 				>
-					<select-item
-						:title="theme"
-					/>
+					<select-item :title="theme" />
 				</li>
 			</ul>
 		</section>
 
 		<footer>
-			Footer
+			<ul>
+				<li
+					v-for="(theme, i) in selectedThemes"
+					@click="removeTheme(theme, i, $event)"
+				>
+					<select-item :title="theme" />
+				</li>
+			</ul>
 		</footer>
 	</div>
 </template>
 
 <script>
-	import SelectItem from './Selection/SelectItem.vue';
+	import SelectItem from './SelectItem.vue';
 
 	export default {
 		components: {
 			SelectItem
 		},
-		props: ['backTo'],
+		props: [],
 		data() {
 			return {
 				themes: [
@@ -63,30 +68,53 @@
 					'work as a medicine',
 					'color effects',
 					'driven and goal oriented'
+				],
+				selectedThemes: [
+					'driven and goal oriented'
 				]
-
 			}
 		},
 		methods: {
 			test() {
 				console.log('Got clicked');
+			},
+			addTheme(theme, evt) {
+				// console.log('Add', evt.target, theme);
+				this.selectedThemes.push(theme);
+				console.log(this.selectedThemes);
+			},
+			removeTheme(theme, i, evt) {
+				this.selectedThemes.splice(i, 1);
+				console.log('Remove selected');
 			}
 		},
-		created() {}
+		created() {
+
+		},
+		watch: {
+			// Wathc the $route propertie and run method change
+			// 'selectedThemes': 'fetchItems'
+		},
 	}
 </script>
 
 <style lang="scss" scoped>
-	section {
-		ul {
-			display: flex;
-			flex-direction: row;
-		}
+	footer {
+		display: flex;
+		flex-direction: row;
+		position: fixed;
+		bottom: 0;
+   	background: gray;
+		height: 7rem;
+		width: 100%;
 	}
 
 	ul {
+		display: flex;
+		flex-direction: row;
 		list-style:  none;
 		padding: 0;
 		overflow: scroll;
 	}
+
 </style>

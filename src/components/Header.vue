@@ -34,5 +34,6 @@
 <style lang="scss" scoped>
 	header {
 		padding: .4rem .8rem;
+		color: #f3f3f3;
 	}
 </style>
