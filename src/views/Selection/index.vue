@@ -103,12 +103,9 @@
 
 <style lang="scss" scoped>
 	footer {
-		display: flex;
-		flex-direction: row;
 		position: fixed;
 		bottom: 0;
    	background: gray;
-		height: 7rem;
 		width: 100%;
 	}
 
@@ -116,8 +113,23 @@
 		display: flex;
 		flex-direction: row;
 		list-style:  none;
-		padding: 0;
 		overflow: scroll;
+		padding: 0;
+		height: 7rem;
+	}
+
+	li {
+		border-radius: .3rem;
+		overflow: hidden;
+		height: 100%;
+		min-width: 9rem;
+		max-width: 9rem;
+
+		margin-right: 1rem;
+
+		&:first-of-type {
+			margin-left: 1rem;
+		}
 	}
 
 </style>

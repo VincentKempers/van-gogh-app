@@ -17,16 +17,8 @@
 <style lang="scss" scoped>
 	div {
 		position: relative;
-		height: 70%;
-		width: 9rem;
-		margin-right: 1rem;
-		border-radius: .3rem;
-
-		overflow: hidden;
-
-		&:first-of-type {
-			margin-left: 1rem;
-		}
+		// height: 70%;
+		// width: 9rem;
 	}
 
 	img {
