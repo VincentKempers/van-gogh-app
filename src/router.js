@@ -21,12 +21,6 @@ function createRouter() {
 				meta: { title: '' },
 			},
 			{
-				path: '/about',
-				name: 'about',
-				component: About,
-				meta: { title: '' },
-			},
-			{
 				path: '/tourmap',
 				name: 'Tourmap',
 				component: Tourmap,

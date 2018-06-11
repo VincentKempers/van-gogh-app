@@ -1,10 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const bodyParser = require('body-parser');
 const { createBundleRenderer } = require('vue-server-renderer');
 const template = fs.readFileSync(path.resolve('./src/index.template.html'), 'utf-8');
 
 require('dotenv').config({ path: './vars.env' });
+
+const api = require('./api');
 
 const server = express();
 const isProduction = process.env.NODE_ENV === 'production';
@@ -50,8 +53,13 @@ function response(app, req, res) {
 	});
 }
 
+server.use(bodyParser.urlencoded({ extended: false }));
+server.use(bodyParser.json());
+
 server.use('/', express.static(path.resolve('../dist/')));
 server.use('/assets', express.static(path.resolve('./src/assets/')));
+
+server.use('/api', api);
 
 server.get('*', (req, res) => {
 	if (isProduction) {

@@ -62,6 +62,8 @@
 	import SelectItem from './SelectItem.vue';
 	import SelectedItem from './SelectedItem.vue';
 
+	import HttpService from '../../../services/http-service';
+
 	export default {
 		components: {
 			SelectItem,
@@ -144,7 +146,8 @@
 				this.selectedThemes.splice(i, 1);
 			},
 			confirmTour() {
-				this.$router.push('/tourmap')
+				HttpService.tourSelect({ "data": this.selectedThemes });
+				this.$router.push('/tourmap');
 			},
 			checkLength() {
 				if (this.selectedThemes.length > 0) {
