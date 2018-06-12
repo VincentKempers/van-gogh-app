@@ -147,8 +147,13 @@
 			},
 			confirmTour() {
 				const selected = this.selectedThemes.map(theme => theme.title);
-				HttpService.tourSelect(selected);
-				this.$router.push('/tourmap');
+
+				HttpService.tourSelect(selected).then(res => {
+					// res is the generated tour
+					// Call the 'setTour' action
+					this.$store.dispatch('addTour', res);
+					this.$router.push('/tourmap');
+				});
 			},
 			checkLength() {
 				if (this.selectedThemes.length > 0) {

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import sync from 'vuex-router-sync';
+import { sync } from 'vuex-router-sync';
 
 import { createRouter } from './router';
 import { createStore } from './store';
@@ -20,7 +20,7 @@ function createApp() {
 		render: h => h(App),
 	});
 
-	return { app, router, store };
+	return { app, router };
 }
 
 export { createApp };

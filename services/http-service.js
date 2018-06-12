@@ -1,6 +1,6 @@
 const HttpService = {
 	tourSelect(data) {
-		fetch('/api/tour-select', {
+		return fetch('/api/tour-select', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
