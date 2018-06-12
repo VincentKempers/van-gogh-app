@@ -146,7 +146,8 @@
 				this.selectedThemes.splice(i, 1);
 			},
 			confirmTour() {
-				HttpService.tourSelect({ "data": this.selectedThemes });
+				const selected = this.selectedThemes.map(theme => theme.title);
+				HttpService.tourSelect(selected);
 				this.$router.push('/tourmap');
 			},
 			checkLength() {

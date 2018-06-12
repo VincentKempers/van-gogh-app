@@ -39,10 +39,10 @@ const Tour = new Schema({
 			origins: String,
 			description: String,
 			visited: {
-				type: Boolean.,
-				default: false
+				type: Boolean,
+				default: false,
 			},
-			theme: String
+			theme: String,
 		},
 	],
 });

@@ -8,7 +8,7 @@ const HttpService = {
 			body: JSON.stringify(data),
 		}).
 			then(res => res.json()).
-			then(json => console.log(json));
+			then(json => json);
 	},
 
 	getPosition() {
