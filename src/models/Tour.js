@@ -2,16 +2,27 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
+const helpers = require('../../services/helpers');
+
 const Tour = new Schema({
-	deviceId: {
+	device_id: {
 		type: String,
 		isRequired: 'device needs an id',
 	},
-	startTime: String,
-	endTime: String,
+	current_way_point: Number,
+	start_tour_time: Date,
+	end_tour_time: Date,
 	date: {
 		type: Date,
-		default: Date.now(),
+		default: helpers.getCurrentDate(),
+	},
+	cancelled: {
+		type: Boolean,
+		default: false,
+	},
+	completed: {
+		type: Boolean,
+		default: false,
 	},
 	tour: [
 		{
@@ -19,19 +30,21 @@ const Tour = new Schema({
 				type: Number,
 				isRequired: 'device needs an id',
 			},
-			startTime: String,
-			endTime: String,
-			kind: String,
+			start_time: Date,
+			end_time: Date,
+			type_tour: String,
 			painting: String,
 			painting_no: String,
-			location: Number,
+			floor: Number,
 			origins: String,
 			description: String,
-			visited: Boolean,
+			visited: {
+				type: Boolean,
+				default: false,
+			},
+			theme: String,
 		},
 	],
-	went: [],
-	buffer: [],
 });
 
 module.exports = mongoose.model('Tour', Tour);

@@ -32,6 +32,7 @@
 	},
 	"homepage": "https://github.com/VincentKempers/van-gogh-app#readme",
 	"dependencies": {
+		"body-parser": "^1.18.3",
 		"cross-env": "^5.0.5",
 		"dotenv": "^6.0.0",
 		"mongoose": "^5.1.4",
