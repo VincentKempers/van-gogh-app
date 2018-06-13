@@ -163,9 +163,6 @@
 				}
 			}
 		},
-		created() {
-			console.log('created');
-		},
 		watch: {
 			// Watch the $route propertie and run method change
 			'selectedThemes': 'checkLength'
