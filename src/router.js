@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Tourmap from './views/Tourmap.vue';
 import Selection from './views/Selection/index.vue';
+import AudioScreen from './views/AudioScreen/index.vue';
 // import SelectionOverview from './views/SelectionOverview/index.vue';
 
 Vue.use(Router);
@@ -31,6 +32,12 @@ function createRouter() {
 				name: 'selection',
 				component: Selection,
 				meta: { title: 'Create your Tour' },
+			},
+			{
+				path: '/audio-screen/:id',
+				name: 'audio screen',
+				component: AudioScreen,
+				meta: { title: 'More about the painting' },
 			},
 			// {
 			// 	path: '/selection-overview',
