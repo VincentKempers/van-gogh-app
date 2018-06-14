@@ -13,7 +13,7 @@
 </template>
 
 <script>
-	import HttpService from '../../../services/http-service.js';
+	import HttpService from '../../../../services/http-service.js';
 
 	export default {
 		props: ['audio', 'tourId'],
