@@ -5,6 +5,9 @@
 			<input id="search" type="text" name="search">
 		</nav>
 		<h1> verdieping 1</h1>
+		<section>
+			<render-chart></render-chart>
+		</section>
 		<svg width="463px" height="465px" viewBox="0 0 475 536" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<title>Floor1</title>
 			<defs>
@@ -128,14 +131,18 @@
 				</g>
 			</g>
 		</svg>
-		<section>
-			
-		</section>
 	</main>
 </template>
 
+
+
 <script>
+import renderChart from './Renderchart.vue';
+
 export default {
+	components: {
+		renderChart,
+	},
 	data() {
 		return {
 			title: 'Verdieping 1',
