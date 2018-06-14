@@ -12,15 +12,14 @@ const HttpService = {
 	},
 
 	sendPosition(tourId, paintingId) {
+		const data = `tourId=${tourId}&paintingId=${paintingId}`;
+
 		return fetch('/api/get-position', {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			body: JSON.stringify({
-				tourId,
-				paintingId,
-			}),
+			body: data,
 		}).then(res => {
 			console.log('Succesful register position');
 		});

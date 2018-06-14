@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Tour = require('../models/Tour');
 
+const { getCurrentDate } = require('../../services/helpers');
+
 const exampleTourComplete = [
 	{
 		id: 217382,
@@ -172,15 +174,36 @@ router.post('/tour-select', async (req, res) => {
 		tour: exampleTourComplete,
 	});
 
-	await tour.save(tour);
+	await tour.save();
 
 	res.json(tour);
 });
 
-router.put('/get-position', (req, res) => {
-	console.log('Got position', req.body);
+router.put('/get-position', async (req, res) => {
+	const { tourId, paintingId } = req.body;
 
-	res.send(req.body);
+	Tour.findOne({ _id: tourId }, async function(err, tour) {
+		await (tour['current_way_point'] = paintingId);
+		await Tour.update(
+			{ 'tour.painting_no': paintingId },
+			{
+				$set: {
+					'items.$.start_time': getCurrentDate(),
+				},
+			}
+		);
+
+		// console.log(tour);
+
+		tour.save().then(res => {
+			res.send('dang');
+		});
+	});
+
+	// await Promise.all([tour.save(), updated]);
+
+	// const tour = await Tour.find({ _id: tourId });
+	// tour.save();
 });
 
 module.exports = router;

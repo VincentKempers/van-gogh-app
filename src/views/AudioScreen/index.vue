@@ -1,12 +1,13 @@
 <template>
 	<main>
-		<p>audio screen</p>
+		<h1>audio screen</h1>
+		<!-- <p>{{ tour[0]}}</p> -->
 		<ul v-if="tour">
 			<li
 				v-for="(audio, index) in tour[0].audio"
 				:key="index"
 			>
-				<audio-item :audio="audio" :tourId="tour[0]._id" />
+				<audio-item :audio="audio" :tourId="tourId" />
 			</li>
 		</ul>
 	</main>
@@ -21,11 +22,13 @@
 		},
 		data() {
 			return {
-				tour: Object
+				tour: Object,
+				tourId: Number
 			};
 		},
 		beforeMount() {
-			this.tour = this.$store.state.tour.tour.filter((item => item.painting_no === this.$route.params.id));
+			this.tourId = this.$store.state.tour._id;
+			this.tour = this.$store.state.tour.tour.filter(item => item.painting_no === this.$route.params.id);
 		}
 	};
 </script>
