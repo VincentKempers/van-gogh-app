@@ -182,28 +182,15 @@ router.post('/tour-select', async (req, res) => {
 router.put('/get-position', async (req, res) => {
 	const { tourId, paintingId } = req.body;
 
-	Tour.findOne({ _id: tourId }, async function(err, tour) {
-		await (tour['current_way_point'] = paintingId);
-		await Tour.update(
-			{ 'tour.painting_no': paintingId },
-			{
-				$set: {
-					'items.$.start_time': getCurrentDate(),
-				},
-			}
-		);
-
-		// console.log(tour);
-
-		tour.save().then(res => {
-			res.send('dang');
-		});
+	Tour.update(
+		{ _id: tourId, 'tour.painting_no': paintingId },
+		{
+			current_way_point: paintingId,
+			$set: { 'tour.$.start_time': getCurrentDate() },
+		}
+	).then(tour => {
+		res.send(tour);
 	});
-
-	// await Promise.all([tour.save(), updated]);
-
-	// const tour = await Tour.find({ _id: tourId });
-	// tour.save();
 });
 
 module.exports = router;

@@ -45,4 +45,8 @@ export default {
 			background: #9C0E1C;
 		}
 	}
+
+	h1 {
+		color: #fff;
+	}
 </style>
