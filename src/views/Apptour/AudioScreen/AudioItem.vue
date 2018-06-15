@@ -1,31 +1,60 @@
 <template>
 	<article>
-		<!-- <p>{{ audio }}</p> -->
+		<p>{{ isPlaying }}</p>
+		<button @click="isPlaying ? pauseAudio() : playAudio(audio.audio_url)">
 
-		<!-- <audio controls>
-			<source :src="audio.audio_link" type="audio/wav">
-			Your browser does not support the playing audio.
-		</audio> -->
+			<icon-play v-if="!isPlaying"/>
+			<icon-pause v-if="isPlaying" />
 
-		<icon-play :click="playAudio"></icon-play>
-		<!-- audiotag here -->
+		</button>
 	</article>
 </template>
 
 <script>
-	import iconPlay from '../../../components/icons/iconPlay.vue'
+	import iconPlay from '../../../components/icons/iconPlay.vue';
+	import iconPause from '../../../components/icons/iconPause.vue';
 	import { sendPosition } from '../../../../services/http-service.js';
 
 	export default {
-		props: ['audio', 'tourId'],
+		props: [
+			'audio',
+			'tourId',
+			'togglePlayState'
+		],
 		components: {
 			iconPlay,
+			iconPause,
 		},
 		data() {
-			return {};
+			return {
+				audioFile: Object,
+				isPlaying: false,
+			};
 		},
 		methods: {
-			playAudio() {
+			playAudio(sound) {
+				if (sound) {
+					const audioUrl = `/assets/audio/${sound}`
+					this.audioFile = new Audio(audioUrl);
+					this.audioFile.play();
+
+					this.isPlaying = true;
+					// Send to parent
+					this.togglePlayState(true);
+				}
+			},
+			pauseAudio() {
+				console.log(this.audioFile);
+				
+				if (this.audioFile && this.isPlaying === true) {
+					this.audioFile.pause();
+
+					this.isPlaying = false;
+					// Send to parent
+					this.togglePlayState(false);
+				}
+			},
+			getPosition() {
 				const paintingId = this.$route.params.id;
 				this.$store.state.tour.current_way_point = paintingId;
 				sendPosition(this.tourId, paintingId);
