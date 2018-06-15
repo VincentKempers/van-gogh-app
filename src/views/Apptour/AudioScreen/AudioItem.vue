@@ -57,6 +57,11 @@
 				this.$store.state.tour.current_way_point = paintingId;
 				sendPosition(this.tourId, paintingId);
 			}
+		},
+		beforeDestroy() {
+			// Stop the audio when leaving the audioscreen
+			// Does not stop automatically
+			this.pauseAudio();
 		}
 	};
 </script>

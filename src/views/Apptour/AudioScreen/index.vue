@@ -1,6 +1,5 @@
 <template>
 	<main>
-		<p>{{isAudioPlaying}}</p>
 		<ul v-if="tour">
 			<li
 				v-for="(audio, index) in tour[0].audio"
@@ -43,6 +42,8 @@
 		},
 		beforeDestroy() {
 			// This method is called before the component exits
+
+
 			exitAudio(this.tourId, this.paintingNum);
 		}
 	};
