@@ -7,16 +7,20 @@
 			Your browser does not support the playing audio.
 		</audio> -->
 
-		<button @click="playAudio">PLAY</button>
+		<icon-play :click="playAudio"></icon-play>
 		<!-- audiotag here -->
 	</article>
 </template>
 
 <script>
+	import iconPlay from '../../../components/icons/iconPlay.vue'
 	import { sendPosition } from '../../../../services/http-service.js';
 
 	export default {
 		props: ['audio', 'tourId'],
+		components: {
+			iconPlay,
+		},
 		data() {
 			return {};
 		},
@@ -32,8 +36,14 @@
 
 <style lang="scss" scoped>
 	article {
-		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #3a3a3a;
+		width: calc(100% - 1.6rem);
 		height: 8rem;
-		background: silver;
+		margin: 0 auto;
+		margin-bottom: 1rem;
+		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	}
 </style>
