@@ -11,9 +11,20 @@ const HttpService = {
 			then(json => json);
 	},
 
-	getPosition() {
-		console.log('Get Position');
+	sendPosition(tourId, paintingId) {
+		const data = `tourId=${tourId}&paintingId=${paintingId}`;
+
+		return fetch('/api/get-position', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: data,
+		}).then(res => {
+			console.log('Succesful register position');
+		});
 	},
+	// then(json => json);
 };
 
 module.exports = HttpService;

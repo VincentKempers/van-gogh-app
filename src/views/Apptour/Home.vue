@@ -3,7 +3,7 @@
     	<h1>{{ title }}</h1>
 		<section class="vanGoghMain">
 			<div class='text-image'>
-				<router-link to="/selection"><img src="https://www.arlestourisme.com/assets/components/phpthumbof/cache/van_gogh_cafe.b349b397fbeeb31f34f671c94d95eb3f16.jpg" alt="people sitting in a restaurant painting">
+				<router-link to="/selection"><img src="/assets/images/zeegezichtSaintLeMer-min.png" alt="sea sight painting of Saint Le Mer">
 				<div class="text-block">
 					<h2>Personalised tour</h2>
 				</div>
@@ -12,15 +12,15 @@
 			<div class="pictures-in-twos">
 				<div class='text-image'>
 
-				<img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Vincent_Willem_van_Gogh_128.jpg" alt="sunflower painting van gogh">
+				<img src="/assets/images/zonnebloemen-min.png" alt="sunflower painting van gogh">
 
 				<div class="text-block">
 					<h4>Open tour</h4>
 				</div>
 			</div>
 				<div class='text-image'>
+				<img src="/assets/images/portretTheo-min.png" alt="Self portrait of van Gogh">
 
-				<img src="https://www.vangoghgallery.com/catalog/image/0320/Self-Portrait.jpg" alt="Self portrait of van Gogh">
 
 				<div class="text-block">
 					<h4>Highlight tour</h4>
@@ -31,7 +31,9 @@
 		<section>
 			<h2>Van Gogh Japan collection</h2>
 			<div class='text-image'>
-				<router-link to="/selection"><img src="https://img.whichmuseum.com/van-gogh-museum/large/van-gogh-japan.png" alt="people sitting in a restaurant painting">
+				<router-link to="/selection">
+				<div class="gxj-button"></div>
+				<!-- <img src="/assets/images/courtisane-min.png" alt='van gogh painting courtisane'> -->
 				<div class="text-block">
 					<h2>van Gogh x Japan</h2>
 				</div>
@@ -64,6 +66,14 @@ section {
 	.text-image {
 		position: relative;
 		width: 100%;
+		.gxj-button {
+			height: 20em;
+			width: 100%;
+			background-image: url(/assets/images/courtisane-min.png);
+			background-repeat: no-repeat;
+			background-position-x: -13rem;
+			background-position-y: -11rem;
+		}
 		img {
 			width: 100%;
 		}

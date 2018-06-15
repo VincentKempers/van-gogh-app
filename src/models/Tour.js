@@ -43,6 +43,12 @@ const Tour = new Schema({
 				default: false,
 			},
 			theme: String,
+			audio: [
+				{
+					title: String,
+					audio_url: String,
+				},
+			],
 		},
 	],
 });

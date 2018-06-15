@@ -3,9 +3,10 @@ import Router from 'vue-router';
 
 import Home from './views/Apptour/Home.vue';
 import Tourmap from './views/Apptour/Tourmap.vue';
+import Selection from './views/Apptour/Selection/index.vue';
+import AudioScreen from './views/Apptour/AudioScreen/index.vue';
 import Dashboard from './views/Dashboard/Dashboard.vue';
 import Floor1 from './views/Dashboard/Floor1.vue';
-import Selection from './views/Apptour/Selection/index.vue';
 // import SelectionOverview from './views/SelectionOverview/index.vue';
 
 Vue.use(Router);
@@ -33,6 +34,12 @@ function createRouter() {
 				name: 'selection',
 				component: Selection,
 				meta: { title: 'Create your Tour' },
+			},
+			{
+				path: '/audio-screen/:id',
+				name: 'audio screen',
+				component: AudioScreen,
+				meta: { title: 'More about the painting' },
 			},
 			{
 				path: '/dashboard',
