@@ -1,7 +1,6 @@
 <template>
 	<article>
-		<p>{{ isPlaying }}</p>
-		<button @click="isPlaying ? pauseAudio() : playAudio(audio.audio_url)">
+		<button @click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))">
 
 			<icon-play v-if="!isPlaying"/>
 			<icon-pause v-if="isPlaying" />
@@ -19,7 +18,8 @@
 		props: [
 			'audio',
 			'tourId',
-			'togglePlayState'
+			'togglePlayState',
+			'isAudioPlaying',
 		],
 		components: {
 			iconPlay,
@@ -44,8 +44,6 @@
 				}
 			},
 			pauseAudio() {
-				console.log(this.audioFile);
-				
 				if (this.audioFile && this.isPlaying === true) {
 					this.audioFile.pause();
 

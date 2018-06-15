@@ -1,5 +1,6 @@
 <template>
 	<main>
+		<p>{{isAudioPlaying}}</p>
 		<ul v-if="tour">
 			<li
 				v-for="(audio, index) in tour[0].audio"
@@ -34,7 +35,7 @@
 		},
 		methods: {
 			togglePlayState(playState) {
-				this.isPlaying = playState;
+				this.isAudioPlaying = playState;
 			}
 		},
 		beforeMount() {
