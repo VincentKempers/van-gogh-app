@@ -23,12 +23,13 @@ export default {
 					datasets: [
 						{
 							label: 'Data One',
-							backgroundColor: 'rgba(224, 90, 50, 1.000)',
+							backgroundColor: 'rgba(225, 225, 225, 1)',
+							Color: 'rgba(225, 225, 225, 1)',
 							data: this.data,
 						},
 					],
 				},
-				{ responsive: true, maintainAspectRatio: false }
+				{ responsive: false, maintainAspectRatio: false }
 			);
 			this.manipulation();
 		},

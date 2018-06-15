@@ -30,8 +30,6 @@
 						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 				</table>
-			</section>
-			<section>
 				<h2 id="verd1">Verdieping 1
 					<router-link to="/dashboard/floor-1"><button class="button-floor">Show floor</button></router-link>
 				</h2>
@@ -67,8 +65,6 @@
 						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 				</table>
-			</section>
-			<section>
 				<h2 id="verd2">Verdieping 2
 					<router-link to="/dashboard/floor-1"><button class="button-floor">Show floor</button></router-link>
 				</h2>
@@ -104,8 +100,6 @@
 						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 				</table>
-			</section>
-			<section>
 				<h2 id="verd3">Verdieping 3
 					<router-link to="/dashboard/floor-1"><button class="button-floor">Show floor</button></router-link>
 				</h2>
@@ -144,10 +138,45 @@
 			</section>
 			<div class="navigation">
 			<ul>
-				<li><a href="#verd3">Verdieping 3</a></li>
-				<li><a href="#verd2">Verdieping 2</a></li>
-				<li><a href="#verd1">Verdieping 1</a></li>
-				<li><a href="#verd0">Verdieping 0</a></li>
+				<li>
+					<a class="verd0">
+						<div>
+							<h3>floor0</h3>
+							<render-chart   :width="400" :height="200">
+
+							</render-chart>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a class="verd1">
+						<div>
+							<h3>floor1</h3>
+							<render-chart   :width="400" :height="200">
+
+							</render-chart>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a class="verd2">
+						<div>
+							<h3>floor2</h3>
+							<render-chart   :width="400" :height="200">
+
+							</render-chart>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a class="verd3">
+						<div>
+							<h3>floor3</h3>
+							<render-chart   :width="400" :height="200">
+							</render-chart>
+						</div>
+					</a>
+				</li>
 			</ul>
 		</div>
 		</main>
@@ -155,7 +184,12 @@
 </template>
 
 <script>
+import renderChart from './Renderchart.vue';
+
 export default {
+	components: {
+		renderChart,
+	},
 	data() {
 		return {
 			title: 'Dashboard',
@@ -188,6 +222,7 @@ header {
 		align-items: center;
 		padding: 0 2rem;
 		background-color: rgba(224, 90, 50, 1);
+
 		#search {
 			height: 2rem;
 			border-radius: 0.8rem;
@@ -233,31 +268,55 @@ header {
 						.calm {
 							color: green;
 						}
-
-						a {
-							text-decoration: none;
-							color: black;
-							padding: 1rem 0rem;
-						}
 					}
 				}
 			}
 		}
 		.navigation {
-			position: fixed;
+			position: absolute;
 			right: 0;
-			transform: translateY(-29vh) rotate(-90deg);
-			transform-origin: 90% 0%;
 			ul {
 				display: flex;
-				flex-direction: row;
+				flex-direction: column;
 				padding: 0 1rem;
 				list-style: none;
 				li {
 					padding: 0 1em;
-					a {
+					.verd0 {
 						text-decoration: none;
-						color: rgba(224, 90, 50, 1);
+						color: black;
+						padding: 1rem 0rem;
+						div {
+							padding: 0.5em;
+							background-color: lightgreen;
+						}
+					}
+					.verd1 {
+						text-decoration: none;
+						color: black;
+						padding: 1rem 0rem;
+						div {
+							padding: 0.5em;
+							background-color: red;
+						}
+					}
+					.verd2 {
+						text-decoration: none;
+						color: black;
+						padding: 1rem 0rem;
+						div {
+							padding: 0.5em;
+							background-color: orange;
+						}
+					}
+					.verd3 {
+						text-decoration: none;
+						color: black;
+						padding: 1rem 0rem;
+						div {
+							padding: 0.5em;
+							background-color: black;
+						}
 					}
 				}
 			}
