@@ -74,11 +74,11 @@
 				themes: [
 					{
 						'title': 'Painter friends',
-						'imageUrl': 'stoelVGauguin-min.png'
+						'imageUrl': 'stoelVGauguin-min.jpg'
 					},
 					{
 						'title': 'Japanse influences',
-						'imageUrl': 'courtisane-min.png'
+						'imageUrl': 'courtisane-min.jpg'
 					},
 					{
 						'title': 'Legacy of Van Gogh',
@@ -86,51 +86,51 @@
 					},
 					{
 						'title': 'Family Van Gogh',
-						'imageUrl': 'portretTheo-min.png'
+						'imageUrl': 'portretTheo-min.jpg'
 					},
 					{
 						'title': 'Learning by doing',
-						'imageUrl': 'rodeKolenUi-min.png'
+						'imageUrl': 'rodeKolenUi-min.jpg'
 					},
 					{
 						'title': 'The modern portret',
-						'imageUrl': 'grijzeVilthoed-min.png'
+						'imageUrl': 'grijzeVilthoed-min.jpg'
 					},
 					{
 						'title': 'Changing techniques',
-						'imageUrl': 'aardappeleters-min.png'
+						'imageUrl': 'aardappeleters-min.jpg'
 					},
 					{
 						'title': 'Simplicity',
-						'imageUrl': 'zonnebloemen-min.png'
+						'imageUrl': 'zonnebloemen-min.jpg'
 					},
 					{
 						'title': 'The wealth of nature',
-						'imageUrl': 'korenveld-min.png'
+						'imageUrl': 'korenveld-min.jpg'
 					},
 					{
 						'title': 'Driven and goal oriented',
-						'imageUrl': 'portretAlsSchilder-min.png'
+						'imageUrl': 'portretAlsSchilder-min.jpg'
 					},
 					{
 						'title': 'Color effects',
-						'imageUrl': 'zeegezichtSaintLeMer-min.png'
+						'imageUrl': 'zeegezichtSaintLeMer-min.jpg'
 					},
 					{
 						'title': 'Work as a medicine',
-						'imageUrl': 'tuinVanZiekenhuis-min.png'
+						'imageUrl': 'tuinVanZiekenhuis-min.jpg'
 					},
 					{
 						'title': 'In search of perfect light',
-						'imageUrl': 'amandelbloesem-min.png'
+						'imageUrl': 'amandelbloesem-min.jpg'
 					},
 					{
 						'title': 'Conserving Van Gogh',
-						'imageUrl': 'zaaier-min.png'
+						'imageUrl': 'zaaier-min.jpg'
 					},
 					{
 						'title': 'A different Mind',
-						'imageUrl': 'skeletSigaret-min.png'
+						'imageUrl': 'skeletSigaret-min.jpg'
 					}
 				],
 				selectedThemes: [],

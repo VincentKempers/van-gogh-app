@@ -2,7 +2,7 @@
 	<main>
 		<section class="vanGoghMain">
 			<div class='text-image'>
-				<router-link to="/selection"><img src="/assets/images/zeegezichtSaintLeMer-min.png" alt="sea sight painting of Saint Le Mer">
+				<router-link to="/selection"><img src="/assets/images/zeegezichtSaintLeMer-min.jpg" alt="sea sight painting of Saint Le Mer">
 				<div class="text-block">
 					<h2>Personalised tour</h2>
 				</div>
@@ -11,14 +11,14 @@
 			<div class="pictures-in-twos">
 				<div class='text-image'>
 
-				<img src="/assets/images/zonnebloemen-min.png" alt="sunflower painting van gogh">
+				<img src="/assets/images/zonnebloemen-min.jpg" alt="sunflower painting van gogh">
 
 				<div class="text-block">
 					<h4>Open tour</h4>
 				</div>
 			</div>
 				<div class='text-image'>
-				<img src="/assets/images/portretTheo-min.png" alt="Self portrait of van Gogh">
+				<img src="/assets/images/portretTheo-min.jpg" alt="Self portrait of van Gogh">
 
 
 				<div class="text-block">
@@ -32,7 +32,6 @@
 			<div class='text-image'>
 				<router-link to="/selection">
 				<div class="gxj-button"></div>
-				<!-- <img src="/assets/images/courtisane-min.png" alt='van gogh painting courtisane'> -->
 				<div class="text-block">
 					<h2>van Gogh x Japan</h2>
 				</div>
@@ -66,10 +65,9 @@ section {
 		.gxj-button {
 			height: 20em;
 			width: 100%;
-			background-image: url(/assets/images/courtisane-min.png);
+			background-image: url(/assets/images/courtisane-min.jpg);
 			background-repeat: no-repeat;
-			background-position-x: -13rem;
-			background-position-y: -11rem;
+			background-size: cover;
 		}
 		img {
 			width: 100%;
@@ -100,7 +98,7 @@ section {
 		}
 	}
 	div:first-of-type {
-		margin-right: 0.2em;
+		margin-right: 0.3em;
 	}
 }
 </style>
