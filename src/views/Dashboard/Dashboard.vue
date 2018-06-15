@@ -246,8 +246,7 @@ header {
 			margin-bottom: 4rem;
 			table {
 				border-collapse: collapse;
-				margin-left: 2em;
-				width: 70%;
+				width: 50%;
 				tr:not(:first-child) {
 					border-bottom: 0.1rem solid black;
 				}
@@ -272,55 +271,6 @@ header {
 				}
 			}
 		}
-		.navigation {
-			position: absolute;
-			right: 0;
-			ul {
-				display: flex;
-				flex-direction: column;
-				padding: 0 1rem;
-				list-style: none;
-				li {
-					padding: 0 1em;
-					.verd0 {
-						text-decoration: none;
-						color: black;
-						padding: 1rem 0rem;
-						div {
-							padding: 0.5em;
-							background-color: lightgreen;
-						}
-					}
-					.verd1 {
-						text-decoration: none;
-						color: black;
-						padding: 1rem 0rem;
-						div {
-							padding: 0.5em;
-							background-color: red;
-						}
-					}
-					.verd2 {
-						text-decoration: none;
-						color: black;
-						padding: 1rem 0rem;
-						div {
-							padding: 0.5em;
-							background-color: orange;
-						}
-					}
-					.verd3 {
-						text-decoration: none;
-						color: black;
-						padding: 1rem 0rem;
-						div {
-							padding: 0.5em;
-							background-color: black;
-						}
-					}
-				}
-			}
-		}
 		.button-floor {
 			background-color: black;
 			color: white;
@@ -328,6 +278,28 @@ header {
 			padding: 0.5rem 1rem;
 			border: none;
 			margin-left: 2rem;
+		}
+	}
+	.navigation {
+		position: absolute;
+		right: 0;
+		ul {
+			display: flex;
+			flex-direction: column;
+			padding: 0 1rem;
+			list-style: none;
+			li {
+				padding: 0 1em;
+				a {
+					text-decoration: none;
+					color: black;
+					padding: 1rem 0rem;
+					div {
+						padding: 0.5em;
+						background-color: black;
+					}
+				}
+			}
 		}
 	}
 }
