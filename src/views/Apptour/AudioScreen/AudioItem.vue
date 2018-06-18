@@ -1,37 +1,96 @@
 <template>
-	<article>
-		<!-- <p>{{ audio }}</p> -->
+	<article
+		:style="{
+			backgroundImage: 'url(' + '/assets/images/' + imageUrl + ')',
+			backgroundPosition: '0 ' + index * -8 + 'rem'
+		}"
+	>
+		<button @click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))">
 
-		<!-- <audio controls>
-			<source :src="audio.audio_link" type="audio/wav">
-			Your browser does not support the playing audio.
-		</audio> -->
+			<icon-play v-if="!isPlaying"/>
+			<icon-pause v-if="isPlaying" />
 
-		<button @click="playAudio">PLAY</button>
-		<!-- audiotag here -->
+		</button>
 	</article>
 </template>
 
 <script>
-	import HttpService from '../../../../services/http-service.js';
+	import iconPlay from '../../../components/icons/iconPlay.vue';
+	import iconPause from '../../../components/icons/iconPause.vue';
+	import { sendPosition } from '../../../../services/http-service.js';
 
 	export default {
-		props: ['audio', 'tourId'],
+		props: [
+			'audio',
+			'tourId',
+			'togglePlayState',
+			'isAudioPlaying',
+			'imageUrl',
+			'index'
+		],
+		components: {
+			iconPlay,
+			iconPause,
+		},
 		data() {
-			return {};
+			return {
+				audioFile: Object,
+				isPlaying: false,
+			};
 		},
 		methods: {
-			playAudio() {
-				HttpService.sendPosition(this.tourId, this.$route.params.id);
+			playAudio(sound) {
+				if (sound) {
+					const audioUrl = `/assets/audio/${sound}`;
+					this.audioFile = new Audio(audioUrl);
+					this.audioFile.play();
+
+					this.isPlaying = true;
+					// Send to parent
+					this.togglePlayState(true);
+				}
+			},
+			pauseAudio() {
+				if (this.audioFile && this.isPlaying === true) {
+					this.audioFile.pause();
+
+					this.isPlaying = false;
+					// Send to parent
+					this.togglePlayState(false);
+				}
+			},
+			getPosition() {
+				const paintingId = this.$route.params.id;
+				this.$store.state.tour.current_way_point = paintingId;
+				sendPosition(this.tourId, paintingId);
 			}
+		},
+		beforeDestroy() {
+			// Stop the audio when leaving the audioscreen
+			// Does not stop automatically
+			this.pauseAudio();
 		}
 	};
 </script>
 
 <style lang="scss" scoped>
 	article {
-		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #3a3a3a;
+		width: calc(100% - 1.6rem);
 		height: 8rem;
-		background: silver;
+		margin: 0 auto;
+		margin-bottom: 1rem;
+		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	button {
+		border: none;
+    	background: none;
 	}
 </style>

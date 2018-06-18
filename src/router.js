@@ -21,37 +21,61 @@ function createRouter() {
 				path: '/',
 				name: 'home',
 				component: Home,
-				meta: { title: '' },
+				meta: {
+					title: 'Van Gogh Tour',
+					returnPath: '',
+					returnLabel: '',
+				},
 			},
 			{
 				path: '/tourmap',
 				name: 'Tourmap',
 				component: Tourmap,
-				meta: { title: '' },
+				meta: {
+					title: 'My Tour',
+					returnPath: '/',
+					returnLabel: '',
+				},
 			},
 			{
 				path: '/selection',
 				name: 'selection',
 				component: Selection,
-				meta: { title: 'Create your Tour' },
+				meta: {
+					title: 'Create your Tour',
+					returnPath: '/',
+					returnLabel: '',
+				},
 			},
 			{
 				path: '/audio-screen/:id',
 				name: 'audio screen',
 				component: AudioScreen,
-				meta: { title: 'More about the painting' },
+				meta: {
+					title: 'More about the painting',
+					returnPath: '/tourmap',
+					returnLabel: '',
+				},
 			},
 			{
 				path: '/dashboard',
 				name: 'dashboard',
 				component: Dashboard,
-				meta: { title: 'MMT Dashboard' },
+				meta: {
+					title: 'MMT Dashboard',
+					returnPath: '',
+					returnLabel: '',
+				},
 			},
 			{
 				path: '/dashboard/floor-1',
 				name: 'floor-1',
 				component: Floor1,
-				meta: { title: 'MMT Dashboard' },
+				meta: {
+					title: 'MMT Dashboard',
+					returnPath: '',
+					returnLabel: '',
+				},
 			},
 			// {
 			// 	path: '/selection-overview',

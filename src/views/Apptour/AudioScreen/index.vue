@@ -1,13 +1,18 @@
 <template>
 	<main>
-		<h1>audio screen</h1>
-		<!-- <p>{{ tour[0]}}</p> -->
-		<ul v-if="tour">
+		<ul v-if="wayPoint">
 			<li
-				v-for="(audio, index) in tour[0].audio"
+				v-for="(audio, index) in wayPoint[0].audio"
 				:key="index"
 			>
-				<audio-item :audio="audio" :tourId="tourId" />
+				<audio-item
+					:audio="audio"
+					:tourId="tourId"
+					:isAudioPlaying="isAudioPlaying"
+					:togglePlayState="togglePlayState"
+					:imageUrl="wayPoint[0].imageUrl"
+					:index="index"
+				/>
 			</li>
 		</ul>
 	</main>
@@ -15,6 +20,7 @@
 
 <script>
 	import AudioItem from './AudioItem.vue';
+	import { exitAudio } from '../../../../services/http-service';
 
 	export default {
 		components: {
@@ -22,13 +28,27 @@
 		},
 		data() {
 			return {
-				tour: Object,
-				tourId: Number
+				wayPoint: Object,
+				tourId: this.$store.state.tour._id,
+				paintingNum: this.$route.params.id,
+				isAudioPlaying: false,
 			};
 		},
+		methods: {
+			togglePlayState(playState) {
+				this.isAudioPlaying = playState;
+			}
+		},
 		beforeMount() {
-			this.tourId = this.$store.state.tour._id;
-			this.tour = this.$store.state.tour.tour.filter(item => item.painting_no === this.$route.params.id);
+			this.wayPoint = this.$store.state.tour.tour.filter(item => item.painting_no === this.paintingNum);
+			console.log(this.wayPoint);
+			
+		},
+		beforeDestroy() {
+			// This method is called before the component exits
+
+
+			exitAudio(this.tourId, this.paintingNum);
 		}
 	};
 </script>

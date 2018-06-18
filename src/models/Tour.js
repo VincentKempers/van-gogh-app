@@ -9,7 +9,10 @@ const Tour = new Schema({
 		type: String,
 		isRequired: 'device needs an id',
 	},
-	current_way_point: Number,
+	current_way_point: {
+		type: Number,
+		default: 0, // 0 means pausing or walking / not at a tour item
+	},
 	start_tour_time: Date,
 	end_tour_time: Date,
 	date: {
@@ -28,13 +31,14 @@ const Tour = new Schema({
 		{
 			id: {
 				type: Number,
-				isRequired: 'device needs an id',
+				isRequired: 'Device needs an id',
 			},
 			start_time: Date,
 			end_time: Date,
 			type_tour: String,
 			painting: String,
 			painting_no: String,
+			imageUrl: String,
 			floor: Number,
 			origins: String,
 			description: String,
@@ -42,7 +46,10 @@ const Tour = new Schema({
 				type: Boolean,
 				default: false,
 			},
-			theme: String,
+			theme: {
+				type: String,
+				isRequired: 'A tour has to be assigned',
+			},
 			audio: [
 				{
 					title: String,

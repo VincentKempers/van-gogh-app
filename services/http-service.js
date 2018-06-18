@@ -11,6 +11,7 @@ const HttpService = {
 			then(json => json);
 	},
 
+	// Handles the position on audio playing
 	sendPosition(tourId, paintingId) {
 		const data = `tourId=${tourId}&paintingId=${paintingId}`;
 
@@ -20,11 +21,45 @@ const HttpService = {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
 			body: data,
-		}).then(res => {
-			console.log('Succesful register position');
 		});
 	},
-	// then(json => json);
+
+	// On exiting the audio screen
+	exitAudio(tourId, paintingId) {
+		const data = `tourId=${tourId}&paintingId=${paintingId}`;
+
+		return fetch('/api/exit-audio', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: data,
+		});
+	},
+
+	cancelTour(tourId) {
+		const data = `tourId=${tourId}`;
+
+		return fetch('/api/stop-tour', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: data,
+		});
+	},
+
+	completeTour(tourId) {
+		const data = `tourId=${tourId}`;
+
+		return fetch('/api/complete-tour', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: data,
+		});
+	},
 };
 
 module.exports = HttpService;
