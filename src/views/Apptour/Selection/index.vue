@@ -151,7 +151,7 @@
 					// res is the generated tour
 					// Call the 'setTour' action
 					this.$store.dispatch('addTour', res);
-					this.$store.dispatch('connectSocket');
+					this.$store.dispatch('connectSocket', io());
 					this.$router.push('/tourmap');
 				});
 			},
