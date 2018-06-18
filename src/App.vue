@@ -13,7 +13,9 @@ export default {
 	components: {
 		Header,
 	},
-	data() {},
+	data() {
+		return {};
+	},
 	methods: {},
 	mounted() {},
 	watch: {}
