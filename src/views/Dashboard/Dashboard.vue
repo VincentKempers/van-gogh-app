@@ -159,11 +159,10 @@
 					</a>
 				</li>
 				<li>
-					<a class="verd2">
+					<a class="verd2" href="/dashboard/verdieping2">
 						<div>
 							<h3>floor2</h3>
 							<render-chart   :width="400" :height="200">
-
 							</render-chart>
 						</div>
 					</a>
@@ -221,7 +220,7 @@ header {
 		justify-content: space-between;
 		align-items: center;
 		padding: 0 2rem;
-		background-color: rgba(224, 90, 50, 1);
+		background-color: rgba(0, 0, 0, 1);
 
 		#search {
 			height: 2rem;
@@ -235,15 +234,15 @@ header {
 	main {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		margin-top: 3em;
+		// justify-content: center;
+		// align-items: center;
 		h2 {
 			margin-bottom: 3rem;
 		}
 		section {
 			width: 90%;
 			margin-bottom: 4rem;
+			margin-top: 3rem;
 			table {
 				border-collapse: collapse;
 				width: 50%;
@@ -286,10 +285,11 @@ header {
 		ul {
 			display: flex;
 			flex-direction: column;
-			padding: 0 1rem;
+			// padding: 0 1rem;
+			margin: 0;
 			list-style: none;
 			li {
-				padding: 0 1em;
+				// padding: 0 1em;
 				a {
 					text-decoration: none;
 					color: black;
@@ -297,6 +297,9 @@ header {
 					div {
 						padding: 0.5em;
 						background-color: black;
+						h3 {
+							color: white;
+						}
 					}
 				}
 			}
