@@ -152,8 +152,7 @@
 					// Call the 'setTour' action
 					this.$store.dispatch('addTour', res);
 					this.$store.dispatch('connectSocket', io());
-					this.$router.push('/tourmap');
-				});
+				}).then(() => this.$router.push('/tourmap'));
 			},
 			checkLength() {
 				if (this.selectedThemes.length > 0) {

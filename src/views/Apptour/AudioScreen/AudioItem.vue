@@ -17,7 +17,6 @@
 <script>
 	import iconPlay from '../../../components/icons/iconPlay.vue';
 	import iconPause from '../../../components/icons/iconPause.vue';
-	import { sendPosition } from '../../../../services/http-service.js';
 
 	export default {
 		props: [
@@ -36,6 +35,7 @@
 			return {
 				audioFile: Object,
 				isPlaying: false,
+				socket: this.$store.state.socket,
 			};
 		},
 		methods: {
@@ -63,7 +63,8 @@
 			getPosition() {
 				const paintingId = this.$route.params.id;
 				this.$store.state.tour.current_way_point = paintingId;
-				sendPosition(this.tourId, paintingId);
+
+				this.socket.emit('sendPosition', this.tourId, paintingId);
 			}
 		},
 		beforeDestroy() {
