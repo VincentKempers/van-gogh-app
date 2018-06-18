@@ -25,7 +25,8 @@
 			'togglePlayState',
 			'isAudioPlaying',
 			'imageUrl',
-			'index'
+			'index',
+			'locatedFloor',
 		],
 		components: {
 			iconPlay,
@@ -63,8 +64,9 @@
 			getPosition() {
 				const paintingId = this.$route.params.id;
 				this.$store.state.tour.current_way_point = paintingId;
+				this.$store.state.tour.current_floor = paintingId;
 
-				this.socket.emit('sendPosition', this.tourId, paintingId);
+				this.socket.emit('sendPosition', this.tourId, paintingId, this.locatedFloor);
 			}
 		},
 		beforeDestroy() {

@@ -13,6 +13,7 @@ const Tour = new Schema({
 		type: Number,
 		default: 0, // 0 means pausing or walking / not at a tour item
 	},
+	current_floor: Number,
 	start_tour_time: Date,
 	end_tour_time: Date,
 	date: {

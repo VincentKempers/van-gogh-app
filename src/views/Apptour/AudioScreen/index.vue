@@ -8,6 +8,7 @@
 				<audio-item
 					:audio="audio"
 					:tourId="tourId"
+					:locatedFloor="wayPoint[0].floor"
 					:isAudioPlaying="isAudioPlaying"
 					:togglePlayState="togglePlayState"
 					:imageUrl="wayPoint[0].imageUrl"
@@ -41,8 +42,6 @@
 		},
 		beforeMount() {
 			this.wayPoint = this.$store.state.tour.tour.filter(item => item.painting_no === this.paintingNum);
-			console.log(this.wayPoint);
-			
 		},
 		beforeDestroy() {
 			// This method is called before the component exits

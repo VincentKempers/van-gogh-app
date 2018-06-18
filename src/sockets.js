@@ -20,7 +20,7 @@ function sockets(io) {
 			socket.emit('startTour', tourData);
 		}
 
-		function sendPosition(tourId, paintingId) {
+		function sendPosition(tourId, paintingId, locatedFloor) {
 			Tour.findOneAndUpdate(
 				{
 					_id: tourId,
@@ -28,6 +28,7 @@ function sockets(io) {
 				},
 				{
 					current_way_point: paintingId,
+					current_floor: locatedFloor,
 					$set: {
 						'tour.$.start_time': getCurrentDate(),
 						'tour.$visited': true,
