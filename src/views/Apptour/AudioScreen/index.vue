@@ -1,8 +1,8 @@
 <template>
 	<main>
-		<ul v-if="tour">
+		<ul v-if="wayPoint">
 			<li
-				v-for="(audio, index) in tour[0].audio"
+				v-for="(audio, index) in wayPoint[0].audio"
 				:key="index"
 			>
 				<audio-item
@@ -10,6 +10,8 @@
 					:tourId="tourId"
 					:isAudioPlaying="isAudioPlaying"
 					:togglePlayState="togglePlayState"
+					:imageUrl="wayPoint[0].imageUrl"
+					:index="index"
 				/>
 			</li>
 		</ul>
@@ -26,7 +28,7 @@
 		},
 		data() {
 			return {
-				tour: Object,
+				wayPoint: Object,
 				tourId: this.$store.state.tour._id,
 				paintingNum: this.$route.params.id,
 				isAudioPlaying: false,
@@ -38,7 +40,9 @@
 			}
 		},
 		beforeMount() {
-			this.tour = this.$store.state.tour.tour.filter(item => item.painting_no === this.paintingNum);
+			this.wayPoint = this.$store.state.tour.tour.filter(item => item.painting_no === this.paintingNum);
+			console.log(this.wayPoint);
+			
 		},
 		beforeDestroy() {
 			// This method is called before the component exits

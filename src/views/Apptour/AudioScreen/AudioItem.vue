@@ -1,5 +1,10 @@
 <template>
-	<article>
+	<article
+		:style="{
+			backgroundImage: 'url(' + '/assets/images/' + imageUrl + ')',
+			backgroundPosition: '0 ' + index * -8 + 'rem'
+		}"
+	>
 		<button @click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))">
 
 			<icon-play v-if="!isPlaying"/>
@@ -20,6 +25,8 @@
 			'tourId',
 			'togglePlayState',
 			'isAudioPlaying',
+			'imageUrl',
+			'index'
 		],
 		components: {
 			iconPlay,
@@ -34,7 +41,7 @@
 		methods: {
 			playAudio(sound) {
 				if (sound) {
-					const audioUrl = `/assets/audio/${sound}`
+					const audioUrl = `/assets/audio/${sound}`;
 					this.audioFile = new Audio(audioUrl);
 					this.audioFile.play();
 
@@ -77,5 +84,13 @@
 		margin: 0 auto;
 		margin-bottom: 1rem;
 		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	button {
+		border: none;
+    	background: none;
 	}
 </style>
