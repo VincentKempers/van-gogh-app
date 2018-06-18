@@ -48,6 +48,7 @@
 					this.isPlaying = true;
 					// Send to parent
 					this.togglePlayState(true);
+					this.getPosition();
 				}
 			},
 			pauseAudio() {
