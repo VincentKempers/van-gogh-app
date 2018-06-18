@@ -20,7 +20,6 @@
 
 <script>
 	import AudioItem from './AudioItem.vue';
-	import { exitAudio } from '../../../../services/http-service';
 
 	export default {
 		components: {
@@ -32,6 +31,7 @@
 				tourId: this.$store.state.tour._id,
 				paintingNum: this.$route.params.id,
 				isAudioPlaying: false,
+				socket: this.$store.state.socket
 			};
 		},
 		methods: {
@@ -46,9 +46,7 @@
 		},
 		beforeDestroy() {
 			// This method is called before the component exits
-
-
-			exitAudio(this.tourId, this.paintingNum);
+			this.socket.emit('exitAudio', this.tourId, this.paintingNum);
 		}
 	};
 </script>
