@@ -39,5 +39,10 @@ export default {
 
 	h1 {
 		color: #4A4A4A;
+		width: 30%;
+		font-size: 2.4rem;
+		margin-top: 0;
+		margin-left: auto;
+		margin-right: 5.5rem;
 	}
 </style>
