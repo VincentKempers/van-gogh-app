@@ -13,12 +13,6 @@ export default {
 	components: {
 		Header,
 	},
-	data() {
-		return {};
-	},
-	methods: {},
-	mounted() {},
-	watch: {}
 };
 </script>
 
