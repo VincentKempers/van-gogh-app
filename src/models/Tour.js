@@ -38,6 +38,7 @@ const Tour = new Schema({
 			type_tour: String,
 			painting: String,
 			painting_no: String,
+			imageUrl: String,
 			floor: Number,
 			origins: String,
 			description: String,
