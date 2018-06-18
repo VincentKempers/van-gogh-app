@@ -8,6 +8,7 @@
 				<audio-item
 					:audio="audio"
 					:tourId="tourId"
+					:locatedFloor="wayPoint[0].floor"
 					:isAudioPlaying="isAudioPlaying"
 					:togglePlayState="togglePlayState"
 					:imageUrl="wayPoint[0].imageUrl"
@@ -20,7 +21,6 @@
 
 <script>
 	import AudioItem from './AudioItem.vue';
-	import { exitAudio } from '../../../../services/http-service';
 
 	export default {
 		components: {
@@ -32,6 +32,7 @@
 				tourId: this.$store.state.tour._id,
 				paintingNum: this.$route.params.id,
 				isAudioPlaying: false,
+				socket: this.$store.state.socket
 			};
 		},
 		methods: {
@@ -41,14 +42,10 @@
 		},
 		beforeMount() {
 			this.wayPoint = this.$store.state.tour.tour.filter(item => item.painting_no === this.paintingNum);
-			console.log(this.wayPoint);
-			
 		},
 		beforeDestroy() {
 			// This method is called before the component exits
-
-
-			exitAudio(this.tourId, this.paintingNum);
+			this.socket.emit('exitAudio', this.tourId, this.paintingNum);
 		}
 	};
 </script>

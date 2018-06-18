@@ -10,6 +10,15 @@ require('dotenv').config({ path: './vars.env' });
 const api = require('./api');
 
 const server = express();
+const httpServer = require('http').createServer(server);
+
+const sockets = require('./sockets');
+
+const io = require('socket.io')(httpServer);
+
+// Connect the sockets
+sockets(io);
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 function createAppRenderer(serverBundle, options) {
@@ -71,4 +80,4 @@ server.get('*', (req, res) => {
 	}
 });
 
-module.exports = server;
+module.exports = httpServer;

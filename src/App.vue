@@ -13,20 +13,27 @@ export default {
 	components: {
 		Header,
 	},
-	data() {
-		return {};
-	},
 };
 </script>
 
 
 <style lang="scss">
+<<<<<<< HEAD
 html,
 body {
 	position: relative;
 	font-family: 'varela round', 'arial rounded', 'arial', sans-serif;
 	margin: 0;
 }
+=======
+	html, body {
+		position: relative;
+		font-family: "monteserrat", "arial", sans-serif;
+		margin: 0;
+		// background :#9C0E1C;
+		// color: #f3f3f3;
+	}
+>>>>>>> 7c0310100e8a5547c8a8b248ab8b29a72e1c8441
 
 body {
 	&::before {
@@ -42,7 +49,13 @@ body {
 	}
 }
 
+<<<<<<< HEAD
 h1 {
 	color: #fff;
 }
+=======
+	h1 {
+		color: #f3f3f3;
+	}
+>>>>>>> 7c0310100e8a5547c8a8b248ab8b29a72e1c8441
 </style>

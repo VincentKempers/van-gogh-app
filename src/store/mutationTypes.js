@@ -1,1 +1,3 @@
 export const ADD_TOUR = 'ADD_TOUR';
+export const CONNECT_SOCKET = 'CONNECT_SOCKET';
+export const DISCONNECT_SOCKET = 'DISCONNECT_SOCKET';
