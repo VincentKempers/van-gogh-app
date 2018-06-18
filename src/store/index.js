@@ -9,6 +9,7 @@ Vue.use(Vuex);
 const state = {
 	tour: {},
 	socketConnected: false,
+	socket: false,
 };
 
 function createStore() {
