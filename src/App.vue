@@ -20,7 +20,6 @@ export default {
 <style lang="scss">
 	html, body {
 		position: relative;
-		// font-family: "varela round", "arial rounded", "arial", sans-serif;
 		font-family: "monteserrat", "arial", sans-serif;
 		margin: 0;
 		// background :#9C0E1C;
@@ -42,6 +41,6 @@ export default {
 	}
 
 	h1 {
-		color: #fff;
+		color: #f3f3f3;
 	}
 </style>
