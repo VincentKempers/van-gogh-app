@@ -240,7 +240,7 @@ header {
 			margin-bottom: 3rem;
 		}
 		section {
-			width: 90%;
+			width: 100%;
 			margin-bottom: 4rem;
 			margin-top: 3rem;
 			table {
