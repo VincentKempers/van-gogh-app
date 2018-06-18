@@ -7,7 +7,7 @@
 		<main>
 			<section>
 				<h2 id="verd0">Verdieping 0
-					<router-link to="/dashboard/floor-1"><button class="button-floor">Show floor</button></router-link>
+					<router-link to="/dashboard/verdieping-1"><button class="button-floor">Show floor</button></router-link>
 				</h2>
 				
 				<table>
@@ -18,20 +18,20 @@
 						<th scope="col">druk</th> 
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 				</table>
 				<h2 id="verd1">Verdieping 1
-					<router-link to="/dashboard/floor-1"><button class="button-floor">Show floor</button></router-link>
+					<router-link to="/dashboard/verdieping-1"><button class="button-floor">Show floor</button></router-link>
 				</h2>
 				<table>
 					<tr>
@@ -41,32 +41,32 @@
 						<th scope="col">druk</th> 
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 				</table>
 				<h2 id="verd2">Verdieping 2
-					<router-link to="/dashboard/floor-1"><button class="button-floor">Show floor</button></router-link>
+					<router-link to="/dashboard/verdieping-1"><button class="button-floor">Show floor</button></router-link>
 				</h2>
 				<table>
 					<tr>
@@ -76,32 +76,32 @@
 						<th scope="col">druk</th> 
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 				</table>
 				<h2 id="verd3">Verdieping 3
-					<router-link to="/dashboard/floor-1"><button class="button-floor">Show floor</button></router-link>
+					<router-link to="/dashboard/verdieping-1"><button class="button-floor">Show floor</button></router-link>
 				</h2>
 				<table>
 					<tr>
@@ -111,37 +111,37 @@
 						<th scope="col">druk</th> 
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
-						<td id="painting-name"><router-link to="/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
+						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td> 
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/floor-1">--</router-link></td> 
+						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td> 
 						<td id="painting-name"><router-link to="/dashboard/dashboard/floor-1">schilderij</router-link></td> 
-						<td id="painting-visitors"><router-link to="/dashboard/floor-1">99</router-link></td>
-						<td><router-link to="/dashboard/floor-1" id="painting-busyness">rustig</router-link></td>
+						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
+						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
 					</tr>
 				</table>
 			</section>
 			<div class="navigation">
 			<ul>
 				<li>
-					<a class="verd0">
+					<a class="verd0" href="/dashboard/verdieping-0">
 						<div>
-							<h3>floor0</h3>
+							<h3>Floor 0</h3>
 							<render-chart   :width="400" :height="200">
 
 							</render-chart>
@@ -149,9 +149,9 @@
 					</a>
 				</li>
 				<li>
-					<a class="verd1">
+					<a class="verd1" href="/dashboard/verdieping-1">
 						<div>
-							<h3>floor1</h3>
+							<h3>Floor 1</h3>
 							<render-chart   :width="400" :height="200">
 
 							</render-chart>
@@ -159,20 +159,19 @@
 					</a>
 				</li>
 				<li>
-					<a class="verd2" href="/dashboard/verdieping2">
+					<a class="verd2" href="/dashboard/verdieping-2">
 						<div>
-							<h3>floor2</h3>
+							<h3>Floor 2</h3>
 							<render-chart   :width="400" :height="200">
 							</render-chart>
 						</div>
 					</a>
 				</li>
 				<li>
-					<a class="verd3">
+					<a class="verd3" href="/dashboard/verdieping-3">
 						<div>
-							<h3>floor3</h3>
-							<render-chart   :width="400" :height="200">
-							</render-chart>
+							<h3>Floor 3</h3>
+							<render-chart   :width="400" :height="200"></render-chart>
 						</div>
 					</a>
 				</li>

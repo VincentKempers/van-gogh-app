@@ -7,6 +7,7 @@ import Selection from './views/Apptour/Selection/index.vue';
 import AudioScreen from './views/Apptour/AudioScreen/index.vue';
 import Dashboard from './views/Dashboard/Dashboard.vue';
 import Floor1 from './views/Dashboard/Floor1.vue';
+import Floor0 from './views/Dashboard/Floor0.vue';
 // import SelectionOverview from './views/SelectionOverview/index.vue';
 
 Vue.use(Router);
@@ -68,8 +69,18 @@ function createRouter() {
 				},
 			},
 			{
-				path: '/dashboard/floor-1',
-				name: 'floor-1',
+				path: '/dashboard/verdieping-0',
+				name: 'verdieping-0',
+				component: Floor0,
+				meta: {
+					title: 'MMT Dashboard',
+					returnPath: '',
+					returnLabel: '',
+				},
+			},
+			{
+				path: '/dashboard/verdieping-1',
+				name: 'verdieping-1',
 				component: Floor1,
 				meta: {
 					title: 'MMT Dashboard',
