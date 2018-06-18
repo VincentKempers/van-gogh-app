@@ -22,25 +22,22 @@ export default {
 		position: relative;
 		font-family: "monteserrat", "arial", sans-serif;
 		margin: 0;
-		// background :#9C0E1C;
-		// color: #f3f3f3;
 	}
 
 	body {
 		&::before {
 			content: "";
-			height: 40%;
-			min-height: 14rem;
-			max-height: 16rem;
-			width: 100%;
-			position: absolute;
+			height: 55%;
+			width: 48%;
+			position: fixed;
 			z-index: -1;
 			top: 0;
-			background: #9C0E1C;
+			right: 0;
+			background: #F8E71C;
 		}
 	}
 
 	h1 {
-		color: #f3f3f3;
+		color: #4A4A4A;
 	}
 </style>
