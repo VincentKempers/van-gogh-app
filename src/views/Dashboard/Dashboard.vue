@@ -241,8 +241,7 @@ header {
 		}
 		section {
 			width: 100%;
-			margin-bottom: 4rem;
-			margin-top: 3rem;
+			margin: 3rem 0 4rem 2rem;
 			table {
 				border-collapse: collapse;
 				width: 50%;
