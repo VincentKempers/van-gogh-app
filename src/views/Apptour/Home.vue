@@ -8,27 +8,26 @@
 				</div>
 				</router-link>
 			</div>
+
 			<div class="pictures-in-twos">
 				<div class='text-image'>
-
-				<img src="/assets/images/zonnebloemen-min.jpg" alt="sunflower painting van gogh">
-
-				<div class="text-block">
-					<h4>Open tour</h4>
+					<img src="/assets/images/zonnebloemen-min.jpg" alt="sunflower painting van gogh">
+					<div class="text-block">
+						<h4>Open tour</h4>
+					</div>
 				</div>
-			</div>
+
 				<div class='text-image'>
-				<img src="/assets/images/portretTheo-min.jpg" alt="Self portrait of van Gogh">
-
-
-				<div class="text-block">
-					<h4>Highlight tour</h4>
+					<img src="/assets/images/portretTheo-min.jpg" alt="Self portrait of van Gogh">
+					<div class="text-block">
+						<h4>Highlight tour</h4>
+					</div>
 				</div>
-			</div>
 			</div>
 		</section>
+
 		<section>
-			<h2>Van Gogh Japan collection</h2>
+			<h2 class="section--title">Van Gogh Japan collection</h2>
 			<div class='text-image'>
 				<router-link to="/selection">
 				<div class="gxj-button"></div>
@@ -42,28 +41,40 @@
 </template>
 
 <script>
-export default {
-	data() {
-		return {};
-	},
-};
+	export default {
+		data() {
+			return {};
+		},
+	};
 </script>
 
 <style lang="scss" scoped>
 main {
 	h1 {
 		margin: 0 0.5em;
-		color: white;
+		color: #f4f4f4;
+	}
+
+	h2, h4 {
+		color: #f4f4f4;
 	}
 }
+
+.sections--title {
+	color: #4a4a4a;
+	width: 60%;
+	font-size: 2rem;
+}
+
 section {
-	margin: 1rem 0.8rem;
+	margin: .4rem 5%;
 
 	.text-image {
 		position: relative;
 		width: 100%;
+		margin-bottom: 5%;
 		.gxj-button {
-			height: 20em;
+			height: 20rem;
 			width: 100%;
 			background-image: url(/assets/images/courtisane-min.jpg);
 			background-repeat: no-repeat;
@@ -74,12 +85,16 @@ section {
 		}
 		.text-block {
 			position: absolute;
-			bottom: 1.2rem;
-			right: 1.2rem;
-			background-color: black;
-			color: white;
+			bottom: 2%;
+			right: 0;
+			width: 60%;
+			font-size: 1.2rem;
+			background-color: #0a0a0a;
+			background-color: rgba(74, 74, 74, .6);
+			color: #f4f4f4;
 			padding-left: 1.2rem;
 			padding-right: 1.2rem;
+			
 		}
 	}
 }
@@ -91,14 +106,17 @@ section {
 	div {
 		width: 100%;
 		.text-block {
-			width: 6em;
+			width: 60%;
 		}
 		img {
-			height: 15em;
+			height: 15rem;
+			width: 100%;
+    		object-fit: cover;
 		}
 	}
-	div:first-of-type {
-		margin-right: 0.3em;
+	& > div:first-of-type {
+		margin-right: 5%;
 	}
 }
+
 </style>

@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1>{{ title }}</h1>
+        <h2>{{ title }}</h2>
         <div class="map">
 				<svg width="463px" height="465px" viewBox="0 0 475 536" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 					<title>Floor1</title>
@@ -225,8 +225,15 @@ export default {
 main {
 	margin: 0 0.8rem;
 
-	h1 {
-		color: #fff;
+	h2 {
+		position: relative;
+		bottom: 1rem;
+		color: #4a4a4a;
+		width: 60%;
+		margin-top: 0;
+		margin-left: auto;
+		margin-right: .5rem;
+		margin-bottom: 0;
 	}
 	.map {
 		width: 100%;
@@ -240,7 +247,7 @@ main {
 		margin: 0 1rem 0rem 0;
 		bottom: 1rem;
 		background-color: black;
-		color: #fff;
+		color: #f4f4f4;
 		padding: 1rem 1.7rem;
 		border: none;
 		border-radius: 0.5rem;

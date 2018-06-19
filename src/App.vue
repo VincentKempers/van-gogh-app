@@ -18,30 +18,43 @@ export default {
 
 
 <style lang="scss">
-html,
-body {
-	position: relative;
-	font-family: 'monteserrat', 'arial', sans-serif;
-	margin: 0;
-	// background :#9C0E1C;
-	// color: #f3f3f3;
-}
 
-body {
-	&::before {
-		content: '';
-		height: 40%;
-		min-height: 14rem;
-		max-height: 16rem;
-		width: 100%;
-		position: absolute;
+	html, body {
+		position: relative;
+		font-family: "monteserrat", "arial", sans-serif;
+		margin: 0;
+		background: #fcfcfc;
 		z-index: -1;
-		top: 0;
-		background: #9c0e1c;
 	}
-}
 
-h1 {
-	color: #f3f3f3;
-}
+	body {
+		&::before {
+			content: "";
+			height: 55%;
+			width: 48%;
+			position: fixed;
+			z-index: -1;
+			top: 0;
+			right: 0;
+			background: #F8E71C;
+		}
+	}
+
+
+	main {
+		z-index: +1;
+	}
+
+	h1, h2, h4 {
+		color: #4a4a4a;
+	}
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	h4 {
+		margin: 1rem 0;
+	}
+
 </style>

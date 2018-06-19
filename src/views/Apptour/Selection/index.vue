@@ -1,58 +1,42 @@
 <template>
 	<main>
-		<section>
-			<h2>List of first half</h2>
-
-			<ul>
-				<li
-					v-for='(theme, i) in themes'
-					v-if='i < (themes.length / 2)'
-					:key='i'
-					@click='addTheme(theme, $event)'
-				>
-					<select-item :theme='theme' />
-				</li>
-			</ul>
-
-		</section>
-
-		<section>
-			<h2>List of last half</h2>
-
-			<ul>
-				<li
-					v-for='(theme, i) in themes'
-					v-if='i > (themes.length / 2)'
-					:key='i'
-					@click='addTheme(theme, $event)'
-				>
-					<select-item :theme='theme' />
-				</li>
-			</ul>
-		</section>
+		<transition-group
+			tag="section"
+			name="selected-item"
+			appear
+		>
+			<select-item
+				v-for='(theme, i) in themes'
+				v-if="!selectedThemes.includes(theme)"
+				:key="theme + i"
+				:theme="theme"
+				:itemStyle="{
+					backgroundImage: 'url(/assets/images/' + theme.imageUrl + ')'
+				}"
+				:onSelect="addTheme"
+			/>
+		</transition-group>
 
 		<footer>
 			<transition-group
-				tag='ul'
-				name='selected-item'
+				tag="ul"
+				name="selected-item"
 				appear
 			>
 				<li
-					v-for='(theme, i) in selectedThemes'
-					:key='i'
-					@click='removeTheme(theme, i, $event)'
+					v-for="(theme, i) in selectedThemes"
+					:key="i"
+					@click="removeTheme(theme, i, $event)"
 				>
-					<selected-item :theme='theme' />
+					<selected-item :theme="theme" />
 				</li>
 			</transition-group>
 
-				<button
-					@click='confirmTour'
-					:disabled='isDisabled'
-					:class='{ disabled: isDisabled }'
-				>
-					Complete
-				</button>
+			<vue-button
+				:onClick="confirmTour"
+				:isDisabled="isDisabled"
+				:btnText="'Complete'"
+			/>
 		</footer>
 	</main>
 </template>
@@ -60,6 +44,7 @@
 <script>
 	import SelectItem from './SelectItem.vue';
 	import SelectedItem from './SelectedItem.vue';
+	import VueButton from '../../../components/Button.vue';
 
 	import { tourSelect } from '../../../../services/http-service';
 
@@ -67,6 +52,7 @@
 		components: {
 			SelectItem,
 			SelectedItem,
+			VueButton
 		},
 		props: [],
 		data() {
@@ -139,6 +125,7 @@
 		},
 		methods: {
 			addTheme(theme) {
+				if (this.selectedThemes.includes(theme)) return;
 				this.selectedThemes.push(theme);
 			},
 			removeTheme(theme, i) {
@@ -171,8 +158,13 @@
 </script>
 
 <style lang='scss' scoped>
-	.disabled { 
-		background: gray;
+	section {
+		display: flex;
+		flex-direction: row;
+		list-style:  none;
+		overflow: scroll;
+		padding: 0;
+		height: 45vh;
 	}
 
 	footer {
@@ -184,54 +176,41 @@
 
 		&:before {
 			content: '';
-			min-height: 1.5rem;
-			max-height: 1.5rem;
-			width: 100%;
 			position: absolute;
-			z-index: -1;
-			bottom: 0;
-			background: #9C0E1C;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			min-height: .1rem;
+			max-height: .1rem;
+			width: 35%;
+
+			background: #f4f4f4;
 		}
 
 		ul {
-			height: 3rem;
+			display: flex;
+			overflow: scroll;
+			flex-wrap: nowrap;
+			height: 2.8rem;
+			width: 100%;
+			margin-right: 5%;
+			padding: 0;
+
+			list-style: none;
 		}
 
 		li {
-			min-width: 3rem;
-			max-width: 3rem;
-		}
+			min-width: 2.8rem;
+			max-width: 2.8rem;
+			margin-right: 5%;
 
-		button {
-			background: #3a3a3a;
-			color: #fff;
-			border: none;
-		}
-	}
-
-	ul {
-		display: flex;
-		flex-direction: row;
-		list-style:  none;
-		overflow: scroll;
-		padding: 0;
-		height: 7rem;
-	}
-
-	li {
-		// border-radius: .3rem;
-		overflow: hidden;
-		height: 100%;
-		min-width: 9rem;
-		max-width: 9rem;
-
-		margin-right: 1rem;
-
-		&:first-of-type {
-			margin-left: 1rem;
+			&:first-of-type {
+				margin-left: 8%;
+			}
 		}
 	}
-
 
 	.selected-item-enter-active, .selected-item-leave-active {
 		transition: all .3s;

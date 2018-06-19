@@ -6,6 +6,7 @@
 		>
 			<icon-back></icon-back>
 		</router-link>
+		<div class="spacing" v-if="!returnPath"></div>
 		<h1>{{ this.$route.meta.title }}</h1>
 	</header>
 </template>
@@ -21,7 +22,6 @@
 		data() {
 			return {
 				returnPath: this.$route.meta.returnPath,
-				socket: this.$store.state.socket
 			};
 		},
 		methods: {},
@@ -32,7 +32,7 @@
 
 				if (from.path === '/tourmap' && to.path === '/' && isCompleted === false) {
 					this.$store.dispatch('disconnectSocket');
-					this.socket.emit('cancelTour', this.$store.state.tour_id);
+					this.$store.state.socket.emit('cancelTour', this.$store.state.tour_id);
 				}
 			}
 		},
@@ -41,7 +41,21 @@
 
 <style lang="scss" scoped>
 	header {
-		padding: .4rem .8rem;
-		color: #f3f3f3;
+		padding: .4rem 5%;
+		color: #4A4A4A;
+	}
+
+	h1 {
+		position: relative;
+		bottom: 1rem;
+		width: 60%;
+		margin-top: 0;
+		margin-left: auto;
+		margin-right: .5rem;
+		margin-bottom: 0;
+	}
+
+	.spacing {
+		height: 3rem;
 	}
 </style>
