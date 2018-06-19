@@ -22,7 +22,6 @@
 		data() {
 			return {
 				returnPath: this.$route.meta.returnPath,
-				socket: this.$store.state.socket
 			};
 		},
 		methods: {},
@@ -33,7 +32,7 @@
 
 				if (from.path === '/tourmap' && to.path === '/' && isCompleted === false) {
 					this.$store.dispatch('disconnectSocket');
-					this.socket.emit('cancelTour', this.$store.state.tour_id);
+					this.$store.state.socket.emit('cancelTour', this.$store.state.tour_id);
 				}
 			}
 		},
