@@ -23,6 +23,7 @@ export default {
 		font-family: "monteserrat", "arial", sans-serif;
 		margin: 0;
 		background: #fcfcfc;
+		z-index: -1;
 	}
 
 	body {
@@ -31,10 +32,15 @@ export default {
 			height: 55%;
 			width: 48%;
 			position: fixed;
+			z-index: -1;
 			top: 0;
 			right: 0;
 			background: #F8E71C;
 		}
+	}
+
+	main {
+		z-index: +1;
 	}
 
 	h1 {
