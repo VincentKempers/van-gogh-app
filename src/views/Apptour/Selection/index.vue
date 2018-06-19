@@ -1,6 +1,10 @@
 <template>
 	<main>
-		<section>
+		<transition-group
+			tag="section"
+			name="selected-item"
+			appear
+		>
 			<select-item
 				v-for='(theme, i) in themes'
 				v-if="!selectedThemes.includes(theme)"
@@ -11,7 +15,7 @@
 				}"
 				:onSelect="addTheme"
 			/>
-		</section>
+		</transition-group>
 
 		<footer>
 			<transition-group
@@ -121,8 +125,7 @@
 		},
 		methods: {
 			addTheme(theme) {
-				console.log(theme, 'adding');
-				
+				if (this.selectedThemes.includes(theme)) return;
 				this.selectedThemes.push(theme);
 			},
 			removeTheme(theme, i) {

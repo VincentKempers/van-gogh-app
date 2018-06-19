@@ -1,6 +1,5 @@
 <template>
 	<div
-		:style="itemStyle"
 		@click="onSelect(theme, $event)"
 	>
 		<input
@@ -8,7 +7,10 @@
 			name="theme.title"
 			:id="theme.title"
 		>
-		<label :for="theme.title"></label>
+		<label
+			:for="theme.title"
+			:style="itemStyle"
+		></label>
 		<p>{{ theme.title }}</p>
 	</div>
 </template>
@@ -29,8 +31,6 @@
 <style lang="scss" scoped>
 	div {
 		position: relative;
-		background-repeat: no-repeat;
-		background-size: cover;
 		overflow: hidden;
 
 		height: 100%;
@@ -41,10 +41,14 @@
 			display: inline-block;
 			height: 100%;
 			width: 100%;
+			background-repeat: no-repeat;
+			background-size: cover;
 			 
-			 &:hover {
+			transition: opacity .3s ease-in;
+			
+			&:hover {
 
-			 }
+			}
 		}
 
 		input {
@@ -53,6 +57,9 @@
 
 			&:focus {
 				outline: none;
+				& + label {
+					opacity: .7;
+				}
 			}
 
 			&:checked {
