@@ -43,8 +43,15 @@ export default {
 		z-index: +1;
 	}
 
+	h1, h2, h4 {
+		color: #4a4a4a;
+	}
+
 	h1 {
-		color: #4A4A4A;
 		font-size: 3rem;
+	}
+
+	h4 {
+		margin: 1rem 0;
 	}
 </style>
