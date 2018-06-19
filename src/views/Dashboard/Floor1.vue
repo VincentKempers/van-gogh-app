@@ -55,7 +55,7 @@ nav {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 2rem;
-	background-color: rgba(224, 90, 50, 1);
+	background-color: rgba(0, 0, 0, 1);
 	#search {
 		height: 2rem;
 		border-radius: 0.8rem;
