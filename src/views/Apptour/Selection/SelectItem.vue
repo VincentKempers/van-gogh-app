@@ -1,22 +1,26 @@
 <template>
-	<div
-		@click="onSelect(theme, $event)"
-	>
+	<div @click="onSelect(theme, $event)">
+
 		<input
 			type="checkbox"
 			name="theme.title"
 			:id="theme.title"
 		>
-		<label
-			:for="theme.title"
-			:style="itemStyle"
-		></label>
+		<label :for="theme.title">
+			<!-- :style="itemStyle" -->
+			<LazyImage :src="'/assets/images/' + theme.imageUrl" />
+		</label>
 		<p>{{ theme.title }}</p>
 	</div>
 </template>
 
 <script>
+	import LazyImage from '../../../components/LazyImage.vue';
+
 	export default {
+		components: {
+			LazyImage
+		},
 		props: [
 			'theme',
 			'itemStyle',
@@ -43,9 +47,9 @@
 			width: 100%;
 			background-repeat: no-repeat;
 			background-size: cover;
-			 
+ 
 			transition: opacity .3s ease-in;
-			
+
 			&:hover {
 
 			}
