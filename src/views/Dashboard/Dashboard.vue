@@ -233,8 +233,6 @@ header {
 	main {
 		display: flex;
 		flex-direction: column;
-		// justify-content: center;
-		// align-items: center;
 		h2 {
 			margin-bottom: 3rem;
 		}
@@ -283,11 +281,9 @@ header {
 		ul {
 			display: flex;
 			flex-direction: column;
-			// padding: 0 1rem;
 			margin: 0;
 			list-style: none;
 			li {
-				// padding: 0 1em;
 				a {
 					text-decoration: none;
 					color: black;
