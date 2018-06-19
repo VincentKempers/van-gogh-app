@@ -186,12 +186,25 @@
 		}
 
 		ul {
-			height: 3rem;
+			display: flex;
+			overflow: scroll;
+			flex-wrap: nowrap;
+			height: 2.8rem;
+			width: 100%;
+			margin-right: 5%;
+			padding: 0;
+
+			list-style: none;
 		}
 
 		li {
-			min-width: 3rem;
-			max-width: 3rem;
+			min-width: 2.8rem;
+			max-width: 2.8rem;
+			margin-right: 5%;
+
+			&:first-of-type {
+				margin-left: 8%;
+			}
 		}
 	}
 
