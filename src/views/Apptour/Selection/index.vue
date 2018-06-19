@@ -1,34 +1,15 @@
 <template>
 	<main>
 		<section>
-			<h2>List of first half</h2>
-
-			<ul>
-				<li
-					v-for='(theme, i) in themes'
-					v-if='i < (themes.length / 2)'
-					:key='i'
-					@click='addTheme(theme, $event)'
-				>
-					<select-item :theme='theme' />
-				</li>
-			</ul>
-
-		</section>
-
-		<section>
-			<h2>List of last half</h2>
-
-			<ul>
-				<li
-					v-for='(theme, i) in themes'
-					v-if='i > (themes.length / 2)'
-					:key='i'
-					@click='addTheme(theme, $event)'
-				>
-					<select-item :theme='theme' />
-				</li>
-			</ul>
+			<select-item
+				v-for='(theme, i) in themes'
+				:key="i"
+				:theme="theme"
+				:itemStyle="{
+					backgroundImage: 'url(/assets/images/' + theme.imageUrl + ')'
+				}"
+				@click="addTheme(theme, $event)"
+			/>
 		</section>
 
 		<footer>
@@ -175,6 +156,15 @@
 		background: gray;
 	}
 
+	section {
+		display: flex;
+		flex-direction: row;
+		list-style:  none;
+		overflow: scroll;
+		padding: 0;
+		height: 45vh;
+	}
+
 	footer {
 		display: flex;
 		justify-content: space-between;
@@ -208,30 +198,6 @@
 			border: none;
 		}
 	}
-
-	ul {
-		display: flex;
-		flex-direction: row;
-		list-style:  none;
-		overflow: scroll;
-		padding: 0;
-		height: 7rem;
-	}
-
-	li {
-		// border-radius: .3rem;
-		overflow: hidden;
-		height: 100%;
-		min-width: 9rem;
-		max-width: 9rem;
-
-		margin-right: 1rem;
-
-		&:first-of-type {
-			margin-left: 1rem;
-		}
-	}
-
 
 	.selected-item-enter-active, .selected-item-leave-active {
 		transition: all .3s;
