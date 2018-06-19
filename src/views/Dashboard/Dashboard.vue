@@ -110,6 +110,7 @@
 						<th scope="col">Bezoekers</th>
 						<th scope="col">druk</th>
 					</tr>
+					<!-- components maken. -->
 					<tr class='clickable-row'>
 						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
 						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
@@ -191,6 +192,7 @@ export default {
 	data() {
 		return {
 			title: 'Dashboard',
+
 		};
 	},
 	methods: {
@@ -198,6 +200,12 @@ export default {
 	},
 	mounted() {
 		this.addClass();
+		const socket = io();
+
+		socket.emit('room')
+		socket.on('exitAudio', function(d) {
+			console.log(d);
+		})
 	},
 };
 </script>

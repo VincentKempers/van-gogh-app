@@ -12,8 +12,7 @@ export default {
 	methods: {
 		manipulation() {
 			setTimeout(function() {
-				console.log(this);
-				this.data.pop();
+				// this.data.pop();
 			}, 1000);
 		},
 		renderLineChart() {

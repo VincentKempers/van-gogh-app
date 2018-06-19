@@ -213,6 +213,9 @@ export default {
 	mounted() {
 		this.tourStarted = !!this.$store.state.tour.current_way_point; // default is 0 meaning false
 		// Display all the tour items when the view is mounted
+		this.$store.state.socket.on('test',function(d) {
+			console.log(d)
+		}); // default is 0 meaning false
 		this.displayTour();
 	}
 };
