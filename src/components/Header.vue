@@ -6,6 +6,7 @@
 		>
 			<icon-back></icon-back>
 		</router-link>
+		<div class="spacing" v-if="!returnPath"></div>
 		<h1>{{ this.$route.meta.title }}</h1>
 	</header>
 </template>
@@ -53,5 +54,9 @@
 		margin-left: auto;
 		margin-right: 5.5rem;
 		margin-bottom: 0;
+	}
+
+	.spacing {
+		height: 3rem;
 	}
 </style>
