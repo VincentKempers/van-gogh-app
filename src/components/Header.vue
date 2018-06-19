@@ -48,10 +48,10 @@
 	h1 {
 		position: relative;
 		bottom: 1rem;
-		width: 30%;
+		width: 60%;
 		margin-top: 0;
 		margin-left: auto;
-		margin-right: 5.5rem;
+		margin-right: .5rem;
 		margin-bottom: 0;
 	}
 
