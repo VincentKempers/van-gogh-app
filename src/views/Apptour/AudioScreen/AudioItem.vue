@@ -1,7 +1,7 @@
 <template>
 	<article
 		:style="{
-			backgroundImage: 'url(' + '/assets/images/' + imageUrl + ')',
+			backgroundImage: 'url(/assets/images/' + imageUrl + ')',
 			backgroundPosition: '0 ' + index * -8 + 'rem'
 		}"
 	>
@@ -11,6 +11,9 @@
 			<icon-pause v-if="isPlaying" />
 
 		</button>
+		<!-- <no-script>
+			Add audio tag here
+		</no-script> -->
 	</article>
 </template>
 
