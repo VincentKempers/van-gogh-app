@@ -3,7 +3,8 @@
 		<section>
 			<select-item
 				v-for='(theme, i) in themes'
-				:key="i"
+				v-if="!selectedThemes.includes(theme)"
+				:key="theme + i"
 				:theme="theme"
 				:itemStyle="{
 					backgroundImage: 'url(/assets/images/' + theme.imageUrl + ')'
@@ -27,11 +28,11 @@
 				</li>
 			</transition-group>
 
-				<vue-button
-					:onClick="confirmTour"
-					:isDisabled="isDisabled"
-					:btnText="'Complete'"
-				/>
+			<vue-button
+				:onClick="confirmTour"
+				:isDisabled="isDisabled"
+				:btnText="'Complete'"
+			/>
 		</footer>
 	</main>
 </template>
