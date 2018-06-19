@@ -1,6 +1,7 @@
 <template>
 	<div
 		:style="itemStyle"
+		@click="onSelect(theme, $event)"
 	>
 		<input
 			type="checkbox"
@@ -16,7 +17,8 @@
 	export default {
 		props: [
 			'theme',
-			'itemStyle'
+			'itemStyle',
+			'onSelect'
 		],
 		data() {
 			return {};
@@ -33,7 +35,7 @@
 
 		height: 100%;
 		min-width: 85vw;
-		margin-right: 1rem;
+		margin-right: 5%;
 
 		label {
 			display: inline-block;
@@ -46,6 +48,7 @@
 		}
 
 		input {
+			position: absolute;
 			opacity: 0;
 
 			&:focus {
@@ -58,7 +61,7 @@
 		}
 
 		&:first-of-type {
-			margin-left: 1rem;
+			margin-left: 5%;
 		}
 
 		p {

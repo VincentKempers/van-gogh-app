@@ -8,32 +8,30 @@
 				:itemStyle="{
 					backgroundImage: 'url(/assets/images/' + theme.imageUrl + ')'
 				}"
-				@click="addTheme(theme, $event)"
+				:onSelect="addTheme"
 			/>
 		</section>
 
 		<footer>
 			<transition-group
-				tag='ul'
-				name='selected-item'
+				tag="ul"
+				name="selected-item"
 				appear
 			>
 				<li
-					v-for='(theme, i) in selectedThemes'
-					:key='i'
-					@click='removeTheme(theme, i, $event)'
+					v-for="(theme, i) in selectedThemes"
+					:key="i"
+					@click="removeTheme(theme, i, $event)"
 				>
-					<selected-item :theme='theme' />
+					<selected-item :theme="theme" />
 				</li>
 			</transition-group>
 
-				<button
-					@click='confirmTour'
-					:disabled='isDisabled'
-					:class='{ disabled: isDisabled }'
-				>
-					Complete
-				</button>
+				<vue-button
+					:onClick="confirmTour"
+					:isDisabled="isDisabled"
+					:btnText="'Complete'"
+				/>
 		</footer>
 	</main>
 </template>
@@ -41,6 +39,7 @@
 <script>
 	import SelectItem from './SelectItem.vue';
 	import SelectedItem from './SelectedItem.vue';
+	import VueButton from '../../../components/Button.vue';
 
 	import { tourSelect } from '../../../../services/http-service';
 
@@ -48,6 +47,7 @@
 		components: {
 			SelectItem,
 			SelectedItem,
+			VueButton
 		},
 		props: [],
 		data() {
@@ -120,6 +120,8 @@
 		},
 		methods: {
 			addTheme(theme) {
+				console.log(theme, 'adding');
+				
 				this.selectedThemes.push(theme);
 			},
 			removeTheme(theme, i) {
@@ -152,10 +154,6 @@
 </script>
 
 <style lang='scss' scoped>
-	.disabled { 
-		background: gray;
-	}
-
 	section {
 		display: flex;
 		flex-direction: row;
@@ -174,13 +172,17 @@
 
 		&:before {
 			content: '';
-			min-height: 1.5rem;
-			max-height: 1.5rem;
-			width: 100%;
 			position: absolute;
-			z-index: -1;
-			bottom: 0;
-			background: #9C0E1C;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			min-height: .1rem;
+			max-height: .1rem;
+			width: 35%;
+
+			background: #f4f4f4;
 		}
 
 		ul {
@@ -190,12 +192,6 @@
 		li {
 			min-width: 3rem;
 			max-width: 3rem;
-		}
-
-		button {
-			background: #3a3a3a;
-			color: #fff;
-			border: none;
 		}
 	}
 
