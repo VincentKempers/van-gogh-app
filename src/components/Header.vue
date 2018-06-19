@@ -41,7 +41,17 @@
 
 <style lang="scss" scoped>
 	header {
-		padding: .4rem .8rem;
-		color: #f3f3f3;
+		padding: .4rem 5%;
+		color: #4A4A4A;
+	}
+
+	h1 {
+		position: relative;
+		bottom: 1rem;
+		width: 30%;
+		margin-top: 0;
+		margin-left: auto;
+		margin-right: 5.5rem;
+		margin-bottom: 0;
 	}
 </style>
