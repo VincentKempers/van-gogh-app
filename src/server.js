@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+const compression = require('compression');
 const { createBundleRenderer } = require('vue-server-renderer');
 const template = fs.readFileSync(path.resolve('./src/index.template.html'), 'utf-8');
 
@@ -18,6 +19,8 @@ const io = require('socket.io')(httpServer);
 
 // Connect the sockets
 sockets(io);
+
+server.use(compression());
 
 const isProduction = process.env.NODE_ENV === 'production';
 
