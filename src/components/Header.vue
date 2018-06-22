@@ -3,6 +3,8 @@
 		<router-link
 			:to="returnPath"
 			v-if="returnPath"
+			role="link"
+			aria-label="returnPage"
 		>
 			<icon-back></icon-back>
 		</router-link>
