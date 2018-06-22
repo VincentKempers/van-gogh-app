@@ -2,7 +2,15 @@
     <main>
         <h2>{{ title }}</h2>
         <div class="map">
-				<svg width="463px" height="465px" viewBox="0 0 475 536" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<svg
+					width="463px"
+					height="465px"
+					viewBox="0 0 475 536"
+					version="1.1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					aria-role="application"
+				>
 					<title>Floor1</title>
 					<defs>
 						<rect id="path-1" x="51" y="211" width="101" height="20"></rect>
