@@ -186,13 +186,16 @@ export default {
 	data() {
 		return {
 			title: 'Floor 1',
-			tourStarted: Number
+			tourStarted: Number,
+			tourId: this.$store.state.tour._id,
+			socket: this.$store.state.socket,
 		};
 	},
 	methods: {
 		finishTour() {
 			this.$store.state.tour.completed = true;
-			completeTour(this.$store.state.tour._id);
+			// completeTour(this.$store.state.tour._id);
+			this.socket.emit('completeTour', this.tourId);
 			this.$router.push('/');
 		},
 		paintingClick(evt) {
