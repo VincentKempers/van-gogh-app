@@ -207,7 +207,7 @@
 					this.$store.dispatch('connectSocket', io());
 					this.$store.state.socket.emit('startTour', res);
 				}).then(() => {
-					this.$router.push('/tourmap');
+					this.$router.push('/tour-map');
 				});
 			},
 			checkLength() {

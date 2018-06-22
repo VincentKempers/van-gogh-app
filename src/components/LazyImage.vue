@@ -1,5 +1,4 @@
 <template>
-<div>
 	<img v-if="noJavascript"
 		:src="src"
 		:alt="alt"
@@ -9,7 +8,6 @@
 		:src="srcImage"
 		:alt="alt"
 	/>
-</div>
 </template>
 
 <script>
@@ -26,7 +24,7 @@
 		}),
 		computed: {
 			srcImage() {
-				return this.intersected ? this.src : '';
+				return this.intersected? this.src : '';
 			}
 		},
 		created() {
