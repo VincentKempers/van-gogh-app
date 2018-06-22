@@ -52,6 +52,7 @@ export default {
     components: {LineChart},
     data () {
       return {
+		  labels:["10:00", "11:00"],
 		floorZeroData: [0,1],
 		floorOneData: [1, 12],
 		floorTwoData: [2, 5],
@@ -60,19 +61,36 @@ export default {
 		floorOneChart: null,
 		floorTwoChart: null,
 		floorThreeChart: null,
-
+		socket: null
       }
     },
     created () {
-	  this.fillData()
-    },
+		this.fillData();
+	},
     mounted () {
-    //   this.fillData()
+		this.socket = io();
+		this.socket.emit('room');
+		//   this.socket.on('exitAudio', function(d) {
+		// 	  console.log(d);
+		//   });]
+		const floorOne = this.floorOneData;
+		const theLabels = this.labels;
+		const updateData = this.fillData;
+		
+		
+		this.socket.on('exitAudio', function(d) {
+			if(d._id) {
+				var one = 1;
+				floorOne.push(one);
+				theLabels.push('12:00');
+				updateData();
+			}
+		});
     },
     methods: {
       fillData () {
 		  this.floorZeroChart = {
-			labels:['10:00', '12:00'],
+			labels: ['10:00', '12:00'],
 				datasets: [
 					{
 						label: 'people',
@@ -82,7 +100,7 @@ export default {
 				]
 			},
 		  this.floorOneChart = {
-			labels:['10:00', '12:00'],
+			labels: this.labels,
 				datasets: [
 					{
 						label: 'people',

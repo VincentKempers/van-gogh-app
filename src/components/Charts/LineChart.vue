@@ -42,5 +42,12 @@ export default {
 		// this.chartData is created in the mixin
 		this.renderChart(this.chartData, this.options);
 	},
+	watch: {
+		chartData() {
+			console.log('changed');
+			this.renderChart(this.chartData, this.options);
+			
+		}
+	}
 };
 </script>

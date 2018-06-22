@@ -22,6 +22,8 @@ function sockets(io) {
 		}
 
 		function test(newTest) {
+			console.log('Join Dashboard');
+			
 			socket.join('Dashboard');
 		}
 
