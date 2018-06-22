@@ -2,7 +2,7 @@
 	<main>
 		<section class="vanGoghMain">
 			<div class='text-image'>
-				<router-link to="/selection"><img src="/assets/images/zeegezichtSaintLeMer-min.jpg" alt="sea sight painting of Saint Le Mer">
+				<router-link to="/tour-select"><img src="/assets/images/zeegezichtSaintLeMer-min.jpg" alt="sea sight painting of Saint Le Mer">
 				<div class="text-block">
 					<h2>Personalised tour</h2>
 				</div>

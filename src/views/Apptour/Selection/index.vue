@@ -1,5 +1,8 @@
 <template>
-	<main>
+	<form
+		method="POST"
+		action='/api/tour-select'
+	>
 		<transition-group
 			tag="section"
 			name="selected-item"
@@ -36,9 +39,10 @@
 				:onClick="confirmTour"
 				:isDisabled="isDisabled"
 				:btnText="'Complete'"
+				:btnType="'submit'"
 			/>
 		</footer>
-	</main>
+	</form>
 </template>
 
 <script>
@@ -146,7 +150,8 @@
 			removeTheme(theme, i) {
 				this.selectedThemes.splice(i, 1);
 			},
-			confirmTour() {
+			confirmTour(evt) {
+				evt.preventDefault();
 				const selected = this.selectedThemes.map(theme => theme.title);
 
 				tourSelect(selected).then(res => {
@@ -155,10 +160,12 @@
 					this.$store.dispatch('addTour', res);
 					this.$store.dispatch('connectSocket', io());
 					this.$store.state.socket.emit('startTour', res);
-				}).then(() => this.$router.push('/tourmap'));
+				}).then(() => {
+					this.$router.push('/tourmap')
+				});
 			},
 			checkLength() {
-				if (this.selectedThemes.length > 0) {
+				if (this.selectedThemes.length > 1) {
 					this.isDisabled = false;
 				} else {
 					this.isDisabled = true;

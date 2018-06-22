@@ -39,8 +39,8 @@ function createRouter() {
 				},
 			},
 			{
-				path: '/selection',
-				name: 'selection',
+				path: '/tour-select',
+				name: 'Tour select',
 				component: Selection,
 				meta: {
 					title: 'Create your Tour',

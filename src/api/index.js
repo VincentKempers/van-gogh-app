@@ -176,7 +176,13 @@ router.post('/tour-select', async (req, res) => {
 
 	await tour.save();
 
-	res.json(tour);
+	// If there is javascript return the tour to pass to vuex client side
+	if (req.body.length > 1) {
+		res.json(tour);
+	} else {
+		// Needs more logic to pass the data
+		res.redirect('/tourmap');
+	}
 });
 
 router.put('/get-position', async (req, res) => {
