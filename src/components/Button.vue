@@ -3,6 +3,7 @@
 		@click="onClick"
 		:disabled="isDisabled"
 		:class="{ disabled: isDisabled }"
+		:type="btnType ? btnType : 'button'"
 	>
 		{{ btnText.toUpperCase() }}
 	</button>
@@ -13,7 +14,8 @@
 		props: [
 			'onClick',
 			'isDisabled',
-			'btnText'
+			'btnText',
+			'btnType',
 		]
 	}
 </script>

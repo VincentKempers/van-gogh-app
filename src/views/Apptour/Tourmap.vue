@@ -2,7 +2,15 @@
     <main>
         <h2>{{ title }}</h2>
         <div class="map">
-				<svg width="463px" height="465px" viewBox="0 0 475 536" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<svg
+					width="463px"
+					height="465px"
+					viewBox="0 0 475 536"
+					version="1.1"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					aria-role="application"
+				>
 					<title>Floor1</title>
 					<defs>
 						<rect id="path-1" x="51" y="211" width="101" height="20"></rect>
@@ -27,7 +35,7 @@
 									<polygon id="Path-3" stroke="#000000" stroke-width="3" fill="#D4D4D4" points="51.7354199 39.1753961 51.7354199 164.480408 152.448473 164.480408 152.448473 39.1753961 109.327289 39.1753961 109.327289 81.8658065 63.5669045 81.8658065 63.5669045 39.1753961"></polygon>
 								</g>
 								<g class="painting-point painting-point--50" transform="translate(347.000000, 149.000000)">
-									<router-link to="/audio-screen/50">
+									<router-link tabindex="-1" to="/audio-screen/50">
 										<circle @click="paintingClick($event)" 	id="painting--50" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">50</tspan>
@@ -35,7 +43,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--28" transform="translate(397.000000, 59.000000)">
-									<router-link to="/audio-screen/28">
+									<router-link tabindex="-1" to="/audio-screen/28">
 										<circle @click="paintingClick($event)" 	id="painting--28" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">28</tspan>
@@ -43,7 +51,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--16" transform="translate(397.000000, 109.000000)">
-									<router-link to="/audio-screen/16">
+									<router-link tabindex="-1" to="/audio-screen/16">
 										<circle @click="paintingClick($event)" 	id="painting--16" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">16</tspan>
@@ -51,7 +59,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--13" transform="translate(397.000000, 159.000000)">
-									<router-link to="/audio-screen/13">
+									<router-link tabindex="-1" to="/audio-screen/13">
 										<circle @click="paintingClick($event)" 	id="painting--13" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">13</tspan>
@@ -59,7 +67,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--41" transform="translate(231.000000, 291.000000)">
-									<router-link to="/audio-screen/41">
+									<router-link tabindex="-1" to="/audio-screen/41">
 										<circle @click="paintingClick($event)" 	id="painting--41" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">41</tspan>
@@ -67,7 +75,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--55" transform="translate(191.000000, 291.000000)">
-									<router-link to="/audio-screen/55">
+									<router-link tabindex="-1" to="/audio-screen/55">
 										<circle @click="paintingClick($event)" 	id="painting--55" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">55</tspan>
@@ -75,7 +83,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--38" transform="translate(211.000000, 375.000000)">
-									<router-link to="/audio-screen/38">
+									<router-link tabindex="-1" to="/audio-screen/38">
 										<circle @click="paintingClick($event)" 	id="painting--38" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">38</tspan>
@@ -83,7 +91,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--18" transform="translate(246.000000, 375.000000)">
-									<router-link to="/audio-screen/18">
+									<router-link tabindex="-1" to="/audio-screen/18">
 										<circle @click="paintingClick($event)" 	id="painting--18" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">18</tspan>
@@ -91,7 +99,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--14" transform="translate(306.000000, 435.000000)">
-									<router-link to="/audio-screen/14">
+									<router-link tabindex="-1" to="/audio-screen/14">
 										<circle @click="paintingClick($event)" 	id="painting--14" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">14</tspan>
@@ -99,7 +107,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--30" transform="translate(206.000000, 435.000000)">
-									<router-link to="/audio-screen/30">
+									<router-link tabindex="-1" to="/audio-screen/30">
 										<circle @click="paintingClick($event)" 	id="painting--30" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">30</tspan>
@@ -107,7 +115,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--2" transform="translate(56.000000, 435.000000)">
-									<router-link to="/audio-screen/2">
+									<router-link tabindex="-1" to="/audio-screen/2">
 										<circle @click="paintingClick($event)" 	id="painting--2" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="10" y="21">2</tspan>
@@ -115,7 +123,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--29" transform="translate(0.000000, 330.000000)">
-									<router-link to="/audio-screen/29">
+									<router-link tabindex="-1" to="/audio-screen/29">
 										<circle @click="paintingClick($event)" 	id="painting--29" fill="#000000" cx="15" cy="15" 	r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial 	Rounded MT Bold" font-size="17" 	font-weight="normal" letter-spacing="0.29411763" 	fill="#FFFFFF">
 											<tspan x="5" y="21">29</tspan>
@@ -123,7 +131,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--21" transform="translate(0.000000, 280.000000)">
-									<router-link to="/audio-screen/53">
+									<router-link tabindex="-1" to="/audio-screen/53">
 										<circle @click="paintingClick($event)" id="painting--53" fill="#000000" cx="15" cy="15" r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial Rounded MT Bold" font-size="17" font-weight="normal" letter-spacing="0.29411763" fill="#FFFFFF">
 											<tspan x="5" y="21">53</tspan>
@@ -131,7 +139,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--37" transform="translate(174.000000, 0.000000)">
-									<router-link to="/audio-screen/37">
+									<router-link tabindex="-1" to="/audio-screen/37">
 										<circle @click="paintingClick($event)" id="painting--37" fill="#000000" cx="15" cy="15" r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial Rounded MT Bold" font-size="17" font-weight="normal" letter-spacing="0.29411763" fill="#FFFFFF">
 											<tspan x="5" y="21">37</tspan>
@@ -139,7 +147,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--4" transform="translate(83.000000, 375.000000)">
-									<router-link to="/audio-screen/4">
+									<router-link tabindex="-1" to="/audio-screen/4">
 										<circle @click="paintingClick($event)" id="painting--4" fill="#000000" cx="15" cy="15" r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial Rounded MT Bold" font-size="17" font-weight="normal" letter-spacing="0.29411763" fill="#FFFFFF">
 											<tspan x="10" y="21">4</tspan>
@@ -147,7 +155,7 @@
 									</router-link>
 								</g>
 								<g class="painting-point painting-point--76" transform="translate(117.000000, 375.000000)">
-									<router-link to="/audio-screen/76">
+									<router-link tabindex="-1" to="/audio-screen/76">
 										<circle @click="paintingClick($event)" id="painting--76" fill="#000000" cx="15" cy="15" r="15"></circle>
 										<text font-family="ArialRoundedMTBold, Arial Rounded MT Bold" font-size="17" font-weight="normal" letter-spacing="0.29411763" fill="#FFFFFF">
 											<tspan x="5" y="21">76</tspan>
@@ -206,6 +214,7 @@ export default {
 				// If the painting number is in the tour show it
 				if (inTour.includes(paintingNumb)) {
 					point.setAttribute('class', `${point.getAttribute('class')} active`);
+					point.setAttribute('tabindex', '0');
 				}
 			});
 		},

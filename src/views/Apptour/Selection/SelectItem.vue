@@ -3,12 +3,15 @@
 
 		<input
 			type="checkbox"
-			name="theme.title"
+			:name="theme.title"
 			:id="theme.title"
 		>
 		<label :for="theme.title">
 			<!-- :style="itemStyle" -->
-			<LazyImage :src="'/assets/images/' + theme.imageUrl" />
+			<LazyImage
+				:src="'/assets/images/' + theme.imageUrl"
+				:alt="theme.description"
+			/>
 		</label>
 		<p>{{ theme.title }}</p>
 	</div>
@@ -40,6 +43,7 @@
 		height: 100%;
 		min-width: 85vw;
 		margin-right: 5%;
+		background: #a4a4a4;
 
 		label {
 			display: inline-block;
@@ -67,7 +71,9 @@
 			}
 
 			&:checked {
-
+				& + label {
+					opacity: .7;
+				}
 			}
 		}
 

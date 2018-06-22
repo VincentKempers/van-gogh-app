@@ -1,11 +1,12 @@
 <template>
 	<svg
+		id="back"
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 48 48"
 		width="48"
 		height="48"
 		aria-labelledby="back"
-		role="presentation"
+		role="application"
 	>
 		<title>Back button</title>
 		<g class="nc-icon-wrapper" fill="#4A4A4A">

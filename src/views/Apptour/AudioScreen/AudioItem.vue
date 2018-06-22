@@ -5,7 +5,10 @@
 			backgroundPosition: '0 ' + index * -8 + 'rem'
 		}"
 	>
-		<button @click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))">
+		<button
+			@click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))"
+			aria-label="playPause"
+		>
 
 			<icon-play v-if="!isPlaying"/>
 			<icon-pause v-if="isPlaying" />
