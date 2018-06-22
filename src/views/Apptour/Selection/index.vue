@@ -93,7 +93,6 @@
 <script>
 	import SelectItem from './SelectItem.vue';
 	import SelectedItem from './SelectedItem.vue';
-	import Wrap from './Wrap.vue';
 	import VueButton from '../../../components/Button.vue';
 
 	import { tourSelect } from '../../../../services/http-service';
@@ -103,7 +102,6 @@
 			SelectItem,
 			SelectedItem,
 			VueButton,
-			Wrap,
 		},
 		props: [],
 		data() {
