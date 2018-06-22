@@ -6,7 +6,7 @@
 		</nav>
 		<h1> verdieping 1</h1>
 		<section>
-			<render-chart></render-chart>
+			<line-chart></line-chart>
 		</section>
 		<svg width="463px" height="465px" viewBox="0 0 475 536" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<title>Floor1</title>
@@ -137,15 +137,13 @@
 
 
 <script>
-import renderChart from './Renderchart.vue';
+import LineChart from '../../components/Charts/LineChart.vue'
 
 export default {
-	components: {
-		renderChart,
-	},
+	components: {LineChart},
 	data() {
 		return {
-			title: 'Verdieping 1',
+			title: 'Verdieping 0',
 		};
 	},
 };

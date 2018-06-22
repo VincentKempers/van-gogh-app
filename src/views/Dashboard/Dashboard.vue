@@ -2,214 +2,123 @@
 	<div class="dashboard--content">
 		<nav>
 			<h1>MMT Dashboard</h1>
-			<input id="search" type="text" name="search">
 		</nav>
 		<main>
-			<section>
-				<h2 id="verd0">Verdieping 0
-					<router-link to="/dashboard/verdieping-1"><button class="button-floor">Show floor</button></router-link>
-				</h2>
-
-				<table>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Schilderij</th>
-						<th scope="col">Bezoekers</th>
-						<th scope="col">druk</th>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-				</table>
-				<h2 id="verd1">Verdieping 1
-					<router-link to="/dashboard/verdieping-1"><button class="button-floor">Show floor</button></router-link>
-				</h2>
-				<table>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Schilderij</th>
-						<th scope="col">Bezoekers</th>
-						<th scope="col">druk</th>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-				</table>
-				<h2 id="verd2">Verdieping 2
-					<router-link to="/dashboard/verdieping-1"><button class="button-floor">Show floor</button></router-link>
-				</h2>
-				<table>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Schilderij</th>
-						<th scope="col">Bezoekers</th>
-						<th scope="col">druk</th>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-				</table>
-				<h2 id="verd3">Verdieping 3
-					<router-link to="/dashboard/verdieping-1"><button class="button-floor">Show floor</button></router-link>
-				</h2>
-				<table>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Schilderij</th>
-						<th scope="col">Bezoekers</th>
-						<th scope="col">druk</th>
-					</tr>
-					<!-- components maken. -->
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/verdieping-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-					<tr class='clickable-row'>
-						<td id="painting-number"><router-link to="/dashboard/verdieping-1">--</router-link></td>
-						<td id="painting-name"><router-link to="/dashboard/dashboard/floor-1">schilderij</router-link></td>
-						<td id="painting-visitors"><router-link to="/dashboard/verdieping-1">99</router-link></td>
-						<td><router-link to="/dashboard/verdieping-1" id="painting-busyness">rustig</router-link></td>
-					</tr>
-				</table>
-			</section>
 			<div class="navigation">
-			<ul>
-				<li>
-					<a class="verd0" href="/dashboard/verdieping-0">
-						<div>
-							<h3>Floor 0</h3>
-							<render-chart   :width="400" :height="200">
-
-							</render-chart>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a class="verd1" href="/dashboard/verdieping-1">
-						<div>
-							<h3>Floor 1</h3>
-							<render-chart   :width="400" :height="200">
-
-							</render-chart>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a class="verd2" href="/dashboard/verdieping-2">
-						<div>
-							<h3>Floor 2</h3>
-							<render-chart   :width="400" :height="200">
-							</render-chart>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a class="verd3" href="/dashboard/verdieping-3">
-						<div>
-							<h3>Floor 3</h3>
-							<render-chart   :width="400" :height="200"></render-chart>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
+				<ul>
+					<li>
+						<a class="verd0" href="/dashboard/verdieping-0">
+							<div>
+								<h3>Floor 0</h3>
+								<line-chart :chartData="floorZeroChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+					<li>
+						<a class="verd1" href="/dashboard/verdieping-1">
+							<div>
+								<h3>Floor 1</h3>
+								<line-chart :chartData="floorOneChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+					<li>
+						<a class="verd2" href="/dashboard/verdieping-2">
+							<div>
+								<h3>Floor 2</h3>
+								<line-chart :chartData="floorTwoChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+					<li>
+						<a class="verd3" href="/dashboard/verdieping-3">
+							<div>
+								<h3>Floor 3</h3>
+								<line-chart :chartData="floorThreeChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</main>
 	</div>
 </template>
 
 <script>
-import renderChart from './Renderchart.vue';
+import LineChart from '../../components/Charts/LineChart.vue';
 
 export default {
-	components: {
-		renderChart,
-	},
-	data() {
-		return {
-			title: 'Dashboard',
+    name: 'Dashboard',
+    components: {LineChart},
+    data () {
+      return {
+		floorZeroData: [0,1],
+		floorOneData: [1, 12],
+		floorTwoData: [2, 5],
+		floorThreeData: [2, 5],
+		floorZeroChart: null,
+		floorOneChart: null,
+		floorTwoChart: null,
+		floorThreeChart: null,
 
-		};
-	},
-	methods: {
-		addClass() {},
-	},
-	mounted() {
-		this.addClass();
-		const socket = io();
+      }
+    },
+    created () {
+	  this.fillData()
+    },
+    mounted () {
+    //   this.fillData()
+    },
+    methods: {
+      fillData () {
+		  this.floorZeroChart = {
+			labels:['10:00', '12:00'],
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorZeroData
+					},
+				]
+			},
+		  this.floorOneChart = {
+			labels:['10:00', '12:00'],
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorOneData
+					},
+				]
+			},
+			this.floorTwoChart = {
+				labels: ['10:00', '12:00'],
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorTwoData
+					},
+				]
+			}
+			this.floorThreeChart = {
+				labels: ['10:00', '12:00'],
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorThreeData
+					},
+				]
+			}
+      },
+      fetchData () {
 
-		socket.emit('room')
-		socket.on('exitAudio', function(d) {
-			console.log(d);
-		})
-	},
-};
-</script>
-
+      }
+    }
+  };
+  </script>
+  
 <style lang="scss">
 body::before {
 	background: none;
