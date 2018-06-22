@@ -1,11 +1,14 @@
 <template>
-  <img :src="srcImage" />
+ 	 <img
+		:src="srcImage"
+		:alt="alt"
+	/>
 </template>
 
 <script>
 // Source: https://alligator.io/vuejs/lazy-image/
 	export default {
-		props: ['src'],
+		props: ['src', 'alt'],
 		data: () => ({ observer: null, intersected: false }),
 		computed: {
 			srcImage() {
