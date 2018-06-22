@@ -29,7 +29,7 @@ function createRouter() {
 				},
 			},
 			{
-				path: '/tourmap',
+				path: '/tour-map',
 				name: 'Tourmap',
 				component: Tourmap,
 				meta: {
