@@ -1,12 +1,16 @@
 <template>
-		<img :src="'/assets/images/' + theme.imageUrl" :alt="theme.title">
+	<LazyImage :src="'/assets/images/' + theme.imageUrl" />
 </template>
 
 <script>
+	import LazyImage from '../../../components/LazyImage.vue';
+
 	export default {
+		components: {
+			LazyImage
+		},
 		props: ['theme']
-	}
-	;
+	};
 </script>
 
 <style lang="scss" scoped>

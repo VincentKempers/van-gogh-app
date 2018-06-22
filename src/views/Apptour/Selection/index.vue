@@ -63,7 +63,7 @@
 						'imageUrl': 'stoelVGauguin-min.jpg'
 					},
 					{
-						'title': 'Japanse influences',
+						'title': 'Japanese influences',
 						'imageUrl': 'courtisane-min.jpg'
 					},
 					{
