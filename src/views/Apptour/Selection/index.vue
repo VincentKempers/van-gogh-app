@@ -135,7 +135,7 @@
 					}
 				],
 				selectedThemes: [],
-				isDisabled: true,
+				isDisabled: false,
 			};
 		},
 		methods: {
@@ -164,6 +164,9 @@
 					this.isDisabled = true;
 				}
 			}
+		},
+		beforeMount() {
+			this.isDisabled = true;
 		},
 		watch: {
 			// Watch the $route propertie and run method change

@@ -71,7 +71,9 @@
 			}
 
 			&:checked {
-
+				& + label {
+					opacity: .7;
+				}
 			}
 		}
 
