@@ -32,7 +32,7 @@
 				this.returnPath = this.$route.meta.returnPath;
 				const isCompleted = this.$store.state.tour.completed;
 
-				if (from.path === '/tourmap' && to.path === '/' && isCompleted === false) {
+				if (from.path === '/tour-map' && to.path === '/' && isCompleted === false) {
 					this.$store.dispatch('disconnectSocket');
 					this.$store.state.socket.emit('cancelTour', this.$store.state.tour_id);
 				}
@@ -44,7 +44,7 @@
 <style lang="scss" scoped>
 	header {
 		padding: .4rem 5%;
-		color: #4A4A4A;
+		color: #4a4a4a;
 	}
 
 	h1 {
