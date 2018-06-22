@@ -166,6 +166,7 @@
 			}
 		},
 		beforeMount() {
+			// If there is javascript we can set the button to disabled
 			this.isDisabled = true;
 		},
 		watch: {
