@@ -52,8 +52,8 @@ export default {
     components: {LineChart},
     data () {
       return {
-		  labels:["10:00", "11:00"],
-		floorZeroData: [0,1],
+		labels:["10:00", "11:00"],
+		floorZeroData: [4, 1],
 		floorOneData: [1, 12],
 		floorTwoData: [2, 5],
 		floorThreeData: [2, 5],
@@ -147,6 +147,10 @@ header {
 </style>
 
 <style lang="scss" scoped>
+html {
+	width: 100vw;
+	height: 100vh;
+}
 .dashboard--content {
 	nav {
 		display: flex;
@@ -165,67 +169,29 @@ header {
 			color: white;
 		}
 	}
-	main {
-		display: flex;
-		flex-direction: column;
-		h2 {
-			margin-bottom: 3rem;
-		}
-		section {
-			width: 100%;
-			margin: 3rem 0 4rem 2rem;
-			table {
-				border-collapse: collapse;
-				width: 50%;
-				tr:not(:first-child) {
-					border-bottom: 0.1rem solid black;
-				}
-				tr {
-					th {
-						color: rgba(224, 90, 50, 1);
-						font-size: 0.8em;
-					}
-					td {
-						padding: 1rem 0rem;
-						text-align: center;
-						.busy {
-							color: red;
-						}
-						.fair {
-							color: orange;
-						}
-						.calm {
-							color: green;
-						}
-					}
-				}
-			}
-		}
-		.button-floor {
-			background-color: black;
-			color: white;
-			border-radius: 0.8rem;
-			padding: 0.5rem 1rem;
-			border: none;
-			margin-left: 2rem;
-		}
+	main { 
+		background-color:black;
 	}
 	.navigation {
-		position: absolute;
-		right: 0;
 		ul {
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content:center;
+			align-items:center;
 			margin: 0;
+			padding: 0;
 			list-style: none;
 			li {
+				margin: 2em 2em;
 				a {
 					text-decoration: none;
-					color: black;
 					padding: 1rem 0rem;
 					div {
 						padding: 0.5em;
-						background-color: black;
+						background-color: #454545;
+						border-radius: 1rem;
+						max-width:86vw;
 						h3 {
 							color: white;
 						}

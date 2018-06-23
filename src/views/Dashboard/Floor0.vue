@@ -2,10 +2,9 @@
 	<main>
 		<nav>
 			<h1>MMT Dashboard</h1>
-			<input id="search" type="text" name="search">
 		</nav>
-		<h1> verdieping 1</h1>
-		<section>
+		<section class="linechart">
+			<h1> Floor 0</h1>
 			<line-chart></line-chart>
 		</section>
 		<svg width="463px" height="465px" viewBox="0 0 475 536" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -140,7 +139,7 @@
 import LineChart from '../../components/Charts/LineChart.vue'
 
 export default {
-	components: {LineChart},
+	components: { LineChart },
 	data() {
 		return {
 			title: 'Verdieping 0',
@@ -174,6 +173,16 @@ nav {
 	}
 	h1 {
 		color: white;
+	}
+}
+main { 
+	background-color: black;
+	.linechart {
+		background-color: #464646;
+		margin:2em;
+		h1 {
+			color: white;
+		}
 	}
 }
 </style>
