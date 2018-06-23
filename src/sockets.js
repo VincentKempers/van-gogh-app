@@ -10,7 +10,7 @@ function sockets(io) {
 		socket.on('exitAudio', exitAudio);
 		socket.on('cancelTour', cancelTour);
 		socket.on('completeTour', completeTour);
-		socket.on('room', test);
+		socket.on('Dashboard', sendDashboard);
 
 		// ==========================
 		// === Socket (helper)function
@@ -21,7 +21,7 @@ function sockets(io) {
 			socket.emit('startTour', tourData);
 		}
 
-		function test(newTest) {
+		function sendDashboard(newTest) {
 			console.log('Join Dashboard');
 			
 			socket.join('Dashboard');

@@ -69,7 +69,7 @@ export default {
 	},
     mounted () {
 		this.socket = io();
-		this.socket.emit('room');
+		this.socket.emit('Dashboard');
 		//   this.socket.on('exitAudio', function(d) {
 		// 	  console.log(d);
 		//   });]
@@ -83,7 +83,7 @@ export default {
 				var one = 1;
 				floorOne.push(one);
 				theLabels.push('12:00');
-				updateData();
+				updateData();	
 			}
 		});
     },
