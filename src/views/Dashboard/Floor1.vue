@@ -9,28 +9,28 @@
 			<line-chart :chartData="floorOneChart"></line-chart>
 			<h2>Paintings</h2>
 			<ul>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
-				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="floor-1/50">50</router-link></li>
+				<li><router-link to="floor-1/28">28</router-link></li>
+				<li><router-link to="floor-1/16">16</router-link></li>
+				<li><router-link to="floor-1/13">13</router-link></li>
+				<li><router-link to="floor-1/41">41</router-link></li>
+				<li><router-link to="floor-1/55">55</router-link></li>
+				<li><router-link to="floor-1/38">38</router-link></li>
+				<li><router-link to="floor-1/18">18</router-link></li>
+				<li><router-link to="floor-1/14">14</router-link></li>
+				<li><router-link to="floor-1/30">30</router-link></li>
+				<li><router-link to="floor-1/2">2</router-link></li>
+				<li><router-link to="floor-1/29">29</router-link></li>
+				<li><router-link to="floor-1/53">53</router-link></li>
+				<li><router-link to="floor-1/37">37</router-link></li>
+				<li><router-link to="floor-1/4">4</router-link></li>
+				<li><router-link to="floor-1/76">76</router-link></li>
 			</ul>
 		</section>
 		<section class="overview-navigation">
 				<ul>
 					<li class="verd0">
-						<a  href="/dashboard/verdieping-0">
+						<a  href="/dashboard/floor-0">
 							<div>
 								<h3>Floor 0</h3>
 								<line-chart :chartData="floorZeroChart" :width="400" :height="200" />
@@ -38,7 +38,7 @@
 						</a>
 					</li>
 					<li class="verd2">
-						<a href="/dashboard/verdieping-2">
+						<a href="/dashboard/floor-2">
 							<div>
 								<h3>Floor 2</h3>
 								<line-chart :chartData="floorTwoChart" :width="400" :height="200" />
@@ -46,7 +46,7 @@
 						</a>
 					</li>
 					<li class="verd3">
-						<a  href="/dashboard/verdieping-3">
+						<a  href="/dashboard/floor-3">
 							<div>
 								<h3>Floor 3</h3>
 								<line-chart :chartData="floorThreeChart" :width="400" :height="200" />
