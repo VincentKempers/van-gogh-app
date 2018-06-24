@@ -47,45 +47,41 @@
 <script>
 import LineChart from '../../components/Charts/LineChart.vue';
 
+import { generateFakeTime, createInterval } from '../../../services/helpers.js';
+
 export default {
     name: 'Dashboard',
-    components: {LineChart},
+    components: { LineChart },
     data () {
       return {
-		labels:["10:00", "11:00"],
-		floorZeroData: [4, 1],
-		floorOneData: [1, 12],
-		floorTwoData: [2, 5],
-		floorThreeData: [2, 5],
-		floorZeroChart: null,
-		floorOneChart: null,
-		floorTwoChart: null,
-		floorThreeChart: null,
-		socket: null
+		  	labels:['09:00', '09:15'],
+			floorZeroData: [0, 1],
+			floorOneData: [1, 12],
+			floorTwoData: [2, 5],
+			floorThreeData: [2, 5],
+			floorZeroChart: null,
+			floorOneChart: null,
+			floorTwoChart: null,
+			floorThreeChart: null,
+			socket: null
       }
     },
     created () {
 		this.fillData();
 	},
     mounted () {
+		 // Create an socket instance for dashboard
 		this.socket = io();
 		this.socket.emit('Dashboard');
-		//   this.socket.on('exitAudio', function(d) {
-		// 	  console.log(d);
-		//   });]
-		const floorOne = this.floorOneData;
-		const theLabels = this.labels;
-		const updateData = this.fillData;
-		
-		
-		this.socket.on('exitAudio', function(d) {
-			if(d._id) {
-				var one = 1;
-				floorOne.push(one);
-				theLabels.push('12:00');
-				updateData();	
-			}
-		});
+
+		this.socket.on('startTour', this.startTour);
+		this.socket.on('cancelTour', this.cancelTour);
+		this.socket.on('completeTour', this.completeTour);
+		this.socket.on('sendPosition', this.sendPosition);
+		this.socket.on('exitAudio', this.exitAudio);
+
+		// Create a set interval
+		this.dataInterval = createInterval(1000, this.tourInterval);
     },
     methods: {
       fillData () {
@@ -130,9 +126,42 @@ export default {
 				]
 			}
       },
-      fetchData () {
+      fetchData () {},
+		startTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		cancelTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		completeTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		sendPosition(tourData, counter) {
+		},
+		exitAudio(tourData, counter) {
+		},
+		updateTourData(tourData, counter) {
+				this.floorOneData.push(counter.activeTour);
+		},
+		generateNewLabel() {
+				const lastLabel = this.labels[this.labels.length - 1];
+				const newLabel = generateFakeTime(lastLabel);
+				this.labels.push(newLabel);
+		},
+		tourInterval() {
+			this.generateNewLabel();
+			const floorOneLength = this.floorOneData.length;
+			const labelsLength = this.labels.length;
+			if (labelsLength !== floorOneLength) {
+				this.floorOneData.push(this.floorOneData[floorOneLength - 1]);
+			}
 
-      }
+			if (labelsLength === 8) {
+				this.floorOneData.splice(0, 1);
+				this.labels.splice(0, 1);
+			}
+			this.fillData();
+		}
     }
   };
   </script>
