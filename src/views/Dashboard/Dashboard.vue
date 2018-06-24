@@ -147,10 +147,6 @@ header {
 </style>
 
 <style lang="scss" scoped>
-html {
-	width: 100vw;
-	height: 100vh;
-}
 .dashboard--content {
 	nav {
 		display: flex;
@@ -159,12 +155,6 @@ html {
 		align-items: center;
 		padding: 0 2rem;
 		background-color: rgba(0, 0, 0, 1);
-
-		#search {
-			height: 2rem;
-			border-radius: 0.8rem;
-			border: none;
-		}
 		h1 {
 			color: white;
 		}
