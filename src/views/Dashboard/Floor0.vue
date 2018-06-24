@@ -6,7 +6,7 @@
 	<main>	
 		<section class="linechart">
 			<h1> Floor 0</h1>
-			<line-chart></line-chart>
+			<line-chart :chartData="floorZeroChart"></line-chart>
 		</section>
 		<section class="overview-navigation">
 				<ul>
@@ -176,16 +176,132 @@
 
 
 <script>
-import LineChart from '../../components/Charts/LineChart.vue'
+import LineChart from '../../components/Charts/LineChart.vue';
+
+import { generateFakeTime, createInterval } from '../../../services/helpers.js';
 
 export default {
-	components: { LineChart },
-	data() {
-		return {
-			title: 'Verdieping 0',
-		};
+    name: 'Dashboard',
+    components: { LineChart },
+    data () {
+      return {
+		  	labels:['09:00', '09:15'],
+			floorZeroData: [0, 1],
+			floorOneData: [1, 12],
+			floorTwoData: [2, 5],
+			floorThreeData: [2, 5],
+			floorZeroChart: null,
+			floorOneChart: null,
+			floorTwoChart: null,
+			floorThreeChart: null,
+			socket: null
+      }
+    },
+    created () {
+		this.fillData();
 	},
-};
+    mounted () {
+		 // Create an socket instance for dashboard
+		this.socket = io();
+		this.socket.emit('Dashboard');
+
+		this.socket.on('startTour', this.startTour);
+		this.socket.on('cancelTour', this.cancelTour);
+		this.socket.on('completeTour', this.completeTour);
+		this.socket.on('sendPosition', this.sendPosition);
+		this.socket.on('exitAudio', this.exitAudio);
+
+		// Create a set interval
+		this.dataInterval = createInterval(1000, this.tourInterval);
+    },
+    methods: {
+      fillData () {
+		  this.floorZeroChart = {
+			labels: this.labels,
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorZeroData
+					},
+				]
+			},
+		  this.floorOneChart = {
+			labels: this.labels,
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorOneData
+					},
+				]
+			},
+			this.floorTwoChart = {
+				labels: this.labels,
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorTwoData
+					},
+				]
+			}
+			this.floorThreeChart = {
+				labels: this.labels,
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorThreeData
+					},
+				]
+			}
+      },
+      fetchData () {},
+		startTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		cancelTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		completeTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		sendPosition(tourData, counter) {
+		},
+		exitAudio(tourData, counter) {
+		},
+		updateTourData(tourData, counter) {
+				this.floorOneData.push(counter.activeTour);
+				this.floorZeroData.push(counter.activeTour);
+		},
+		generateNewLabel() {
+				const lastLabel = this.labels[this.labels.length - 1];
+				const newLabel = generateFakeTime(lastLabel);
+				this.labels.push(newLabel);
+		},
+		tourInterval() {
+			this.generateNewLabel();
+			const floorOneLength = this.floorOneData.length;
+			const floorZeroLength = this.floorZeroData.length;
+			const labelsLength = this.labels.length;
+			if (labelsLength !== floorOneLength) {
+				this.floorOneData.push(this.floorOneData[floorOneLength - 1]);
+			}
+
+			if (labelsLength !== floorZeroLength) {
+				this.floorZeroData.push(this.floorZeroData[floorZeroLength - 1]);
+			}
+
+			if (labelsLength === 8) {
+				this.floorOneData.splice(0, 1);
+				this.floorZeroData.splice(0, 1);
+				this.labels.splice(0, 1);
+			}
+			this.fillData();
+		}
+    }
+  };
 </script>
 
 <style lang="scss">
@@ -224,8 +340,12 @@ header {
 		.linechart {
 			background-color: #464646;
 			border-radius: 1rem;
+			margin-bottom: 2em;
+			margin-right: 2em;
 			padding: 1em;
-			width: 100%;
+				@media screen and (min-width: 40em){
+					width: 100%;
+				}
 			h1 {
 				color: white;
 				text-align: center;
@@ -242,8 +362,10 @@ header {
 			padding: 0;
 			list-style: none;
 			li {
-				margin-right: 2em;
 				margin-bottom: 2em;
+				@media screen and (min-width: 40em){
+					margin-right: 2em;
+				}
 				a {
 					text-decoration: none;
 					padding: 1rem 0rem;

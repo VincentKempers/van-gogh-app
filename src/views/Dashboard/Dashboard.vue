@@ -177,6 +177,7 @@ header {
 
 <style lang="scss" scoped>
 .dashboard--content {
+	background-color:black;
 	nav {
 		display: flex;
 		flex-direction: row;
