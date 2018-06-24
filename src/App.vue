@@ -27,6 +27,13 @@ export default {
 		z-index: -1;
 	}
 
+	@media all and (min-width: 60rem) {
+		html, body {
+			max-width: 50rem;
+			margin: 0 auto;
+		}
+	}
+
 	body {
 		&::before {
 			content: "";

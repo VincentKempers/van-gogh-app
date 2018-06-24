@@ -253,7 +253,8 @@ main {
 	.map {
 		width: 100%;
 		svg {
-			width: 22rem;
+			width: 100%;
+    		height: 100%;
 		}
 	}
 	button {
