@@ -101,6 +101,9 @@ function sockets(io) {
 		}
 
 		function decrementTourCount() {
+			if (tourCounter.activeTour === 0) {
+				return tourCounter.activeTour;
+			}
 			tourCounter.activeTour -= 1;
 			return tourCounter.activeTour;
 		}

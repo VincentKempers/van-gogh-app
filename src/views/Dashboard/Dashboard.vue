@@ -47,12 +47,14 @@
 <script>
 import LineChart from '../../components/Charts/LineChart.vue';
 
+import { generateFakeTime } from '../../../services/helpers.js';
+
 export default {
     name: 'Dashboard',
     components: { LineChart },
     data () {
       return {
-		  	labels:['10:00', '11:00'],
+		  	labels:['09:00', '09:15'],
 			floorZeroData: [0, 1],
 			floorOneData: [1, 12],
 			floorTwoData: [2, 5],
@@ -142,7 +144,10 @@ export default {
 		updateTourData(tourData, counter) {
 			if(tourData._id) {
 				this.floorOneData.push(counter.activeTour);
-				this.labels.push('12:00');
+				const lastLabel = this.labels[this.labels.length - 1];
+				const newLabel = generateFakeTime(lastLabel);
+				
+				this.labels.push(newLabel);
 				this.fillData();
 			}
 		}
