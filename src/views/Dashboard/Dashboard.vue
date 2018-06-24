@@ -23,7 +23,7 @@
 						</a>
 					</li>
 					<li class="verd2">
-						<a  href="/dashboard/verdieping-2">
+						<a href="/dashboard/verdieping-2">
 							<div>
 								<h3>Floor 2</h3>
 								<line-chart :chartData="floorTwoChart" :width="400" :height="200" />

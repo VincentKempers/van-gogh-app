@@ -8,7 +8,44 @@
 			<h1> Floor 0</h1>
 			<line-chart></line-chart>
 		</section>
-		<section class="floorplan">
+		<section class="overview-navigation">
+				<ul>
+					<li class="verd0">
+						<a  href="/dashboard/verdieping-0">
+							<div>
+								<h3>Floor 0</h3>
+								<line-chart :chartData="floorZeroChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+					<li class="verd1">
+						<a  href="/dashboard/verdieping-1">
+							<div>
+								<h3>Floor 1</h3>
+								<line-chart :chartData="floorOneChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+					<li class="verd2">
+						<a href="/dashboard/verdieping-2">
+							<div>
+								<h3>Floor 2</h3>
+								<line-chart :chartData="floorTwoChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+					<li class="verd3">
+						<a  href="/dashboard/verdieping-3">
+							<div>
+								<h3>Floor 3</h3>
+								<line-chart :chartData="floorThreeChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+				</ul>
+		</section>
+	</main>
+	<section class="floorplan">
 			<svg width="463px" height="465px" viewBox="0 0 475 536" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 				<title>Floor1</title>
 				<defs>
@@ -133,7 +170,6 @@
 				</g>
 			</svg>
 		</section>
-	</main>
 </div>
 </template>
 
@@ -164,7 +200,9 @@ header {
 <style lang="scss" scoped>
 
 .dashboard-floor {
-
+	background-color: black;
+	height: 100%;
+	padding: 0 1em;
 	nav {
 		display: flex;
 		flex-direction: row;
@@ -177,33 +215,62 @@ header {
 		}
 	}
 	main { 
-		background-color: black;
-		height: 100%;
-		padding: 2em;
 		@media screen and (min-width: 40em) {
 			display:flex;
 			flex-direction: row;
+			justify-content: space-between;
 		}
 		
 		.linechart {
 			background-color: #464646;
 			border-radius: 1rem;
 			padding: 1em;
+			width: 100%;
 			h1 {
 				color: white;
 				text-align: center;
 			}
+
 		}
-		.floorplan {
+		.overview-navigation {
+			ul {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			li {
+				margin-right: 2em;
+				margin-bottom: 2em;
+				a {
+					text-decoration: none;
+					padding: 1rem 0rem;
+					div {
+						padding: 0.5em;
+						background-color: #454545;
+						border-radius: 1rem;
+						max-width:86vw;
+						h3 {
+							color: white;
+						}
+					}
+				}
+			}
+		}
+		
+	}
+}
+.floorplan {
 			background-color: #464646;
 			border-radius: 1rem;
-			margin-left: 2em;
-			padding: 1em;
+			margin-bottom: 2em;
+			padding:1em;
 			svg {
 				width: 100%;
 				padding-top:2.5em;
 			}
 		}
-	}
 }
 </style>
