@@ -205,6 +205,7 @@
 					// Call the 'setTour' action
 					this.$store.dispatch('addTour', res);
 					this.$store.dispatch('connectSocket', io());
+					
 					this.$store.state.socket.emit('startTour', res);
 				}).then(() => {
 					this.$router.push('/tour-map');

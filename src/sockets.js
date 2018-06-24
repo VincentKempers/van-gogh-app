@@ -10,6 +10,7 @@ function sockets(io) {
 		socket.on('exitAudio', exitAudio);
 		socket.on('cancelTour', cancelTour);
 		socket.on('completeTour', completeTour);
+
 		socket.on('Dashboard', sendDashboard);
 
 		// ==========================
@@ -18,12 +19,13 @@ function sockets(io) {
 
 		// TO initialize the data to the dashboard only
 		function startTour(tourData) {
-			socket.emit('startTour', tourData);
+			io.to('Dashboard').emit('startTour', tourData);
+			socket.join('Dashboard');
 		}
 
 		function sendDashboard(newTest) {
 			console.log('Join Dashboard');
-			
+
 			socket.join('Dashboard');
 		}
 
@@ -42,7 +44,7 @@ function sockets(io) {
 					},
 				}
 			).then(tour => {
-				socket.emit('sendPosition', tour);
+				io.to('Dashboard').emit('sendPosition', tour);
 			});
 		}
 
@@ -66,7 +68,7 @@ function sockets(io) {
 					end_tour_time: getCurrentDate(),
 				}
 			).then(tour => {
-				socket.emit('cancelTour', tour);
+				io.to('Dashboard').emit('cancelTour', tour);
 			});
 		}
 
@@ -78,7 +80,7 @@ function sockets(io) {
 					end_tour_time: getCurrentDate(),
 				}
 			).then(tour => {
-				socket.emit('completeTour', tour);
+				io.to('Dashboard').emit('completeTour', tour);
 			});
 		}
 	});

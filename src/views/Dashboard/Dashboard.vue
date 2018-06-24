@@ -68,24 +68,15 @@ export default {
 		this.fillData();
 	},
     mounted () {
+		 // Create an socket instance for dashboard
 		this.socket = io();
 		this.socket.emit('Dashboard');
-		//   this.socket.on('exitAudio', function(d) {
-		// 	  console.log(d);
-		//   });]
-		const floorOne = this.floorOneData;
-		const theLabels = this.labels;
-		const updateData = this.fillData;
-		
-		
-		this.socket.on('exitAudio', function(d) {
-			if(d._id) {
-				var one = 1;
-				floorOne.push(one);
-				theLabels.push('12:00');
-				updateData();	
-			}
-		});
+
+		this.socket.on('startTour', this.startTour);
+		this.socket.on('cancelTour', this.cancelTour);
+		this.socket.on('completeTour', this.completeTour);
+		this.socket.on('sendPosition', this.sendPosition);
+		this.socket.on('exitAudio', this.exitAudio);
     },
     methods: {
       fillData () {
@@ -130,9 +121,26 @@ export default {
 				]
 			}
       },
-      fetchData () {
-
-      }
+      fetchData () {},
+		startTour() {
+			console.log('startTour');
+		},
+		cancelTour() {
+			console.log('canceltour');
+		},
+		completeTour() {
+			console.log('completetour');
+		},
+		sendPosition() {
+			console.log('sendposition');
+		},
+		exitAudio(d) {
+			if(d._id) {
+				this.floorOneData.push(1);
+				this.labels.push('12:00');
+				this.fillData();
+			}
+		}
     }
   };
   </script>
