@@ -141,9 +141,7 @@ export default {
 		exitAudio(tourData, counter) {
 		},
 		updateTourData(tourData, counter) {
-			// if(tourData._id) {
 				this.floorOneData.push(counter.activeTour);
-			// }
 		},
 		generateNewLabel() {
 				const lastLabel = this.labels[this.labels.length - 1];
@@ -162,7 +160,6 @@ export default {
 				this.floorOneData.splice(0, 1);
 				this.labels.splice(0, 1);
 			}
-			
 			this.fillData();
 		}
     }
