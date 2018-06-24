@@ -3,8 +3,13 @@ const Tour = require('./models/Tour');
 const { getCurrentDate } = require('../services/helpers');
 
 function sockets(io) {
+	const dataCounter = {
+		activeTour: 1,
+	};
 	// Sockets start
 	io.on('connection', socket => {
+		// Data counter for the prototype. Will watch the counter ect for the dashboard
+
 		socket.on('startTour', startTour);
 		socket.on('sendPosition', sendPosition);
 		socket.on('exitAudio', exitAudio);
@@ -19,7 +24,8 @@ function sockets(io) {
 
 		// TO initialize the data to the dashboard only
 		function startTour(tourData) {
-			io.to('Dashboard').emit('startTour', tourData);
+			incrementTourCount();
+			io.to('Dashboard').emit('startTour', tourData, dataCounter);
 			socket.join('Dashboard');
 		}
 
@@ -44,7 +50,7 @@ function sockets(io) {
 					},
 				}
 			).then(tour => {
-				io.to('Dashboard').emit('sendPosition', tour);
+				io.to('Dashboard').emit('sendPosition', tour, dataCounter);
 			});
 		}
 
@@ -56,7 +62,7 @@ function sockets(io) {
 					$set: { 'tour.$.end_time': getCurrentDate() },
 				}
 			).then(tour => {
-				io.to('Dashboard').emit('exitAudio', tour);
+				io.to('Dashboard').emit('exitAudio', tour, dataCounter);
 			});
 		}
 
@@ -68,7 +74,8 @@ function sockets(io) {
 					end_tour_time: getCurrentDate(),
 				}
 			).then(tour => {
-				io.to('Dashboard').emit('cancelTour', tour);
+				decrementTourCount();
+				io.to('Dashboard').emit('cancelTour', tour, dataCounter);
 			});
 		}
 
@@ -80,8 +87,25 @@ function sockets(io) {
 					end_tour_time: getCurrentDate(),
 				}
 			).then(tour => {
-				io.to('Dashboard').emit('completeTour', tour);
+				decrementTourCount();
+				io.to('Dashboard').emit('completeTour', tour, dataCounter);
 			});
+		}
+
+		// ==========================
+		// === Helper functions
+		// ===========================
+
+		function incrementTourCount() {
+			dataCounter.activeTour += 1;
+			console.log(dataCounter);
+
+			return dataCounter.activeTour;
+		}
+
+		function decrementTourCount() {
+			dataCounter.activeTour -= 1;
+			return dataCounter.activeTour;
 		}
 	});
 }

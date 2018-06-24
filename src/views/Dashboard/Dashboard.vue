@@ -122,20 +122,20 @@ export default {
 			}
       },
       fetchData () {},
-		startTour() {
-			console.log('startTour');
+		startTour(tourData, counter) {
+			console.log('startTour', counter);
 		},
-		cancelTour() {
-			console.log('canceltour');
+		cancelTour(tourData, counter) {
+			console.log('canceltour', counter);
 		},
-		completeTour() {
-			console.log('completetour');
+		completeTour(tourData, counter) {
+			console.log('completetour', counter);
 		},
-		sendPosition() {
-			console.log('sendposition');
+		sendPosition(tourData, counter) {
+			console.log('sendposition', counter);
 		},
-		exitAudio(d) {
-			if(d._id) {
+		exitAudio(tourData, counter) {
+			if(tourData._id) {
 				this.floorOneData.push(1);
 				this.labels.push('12:00');
 				this.fillData();
