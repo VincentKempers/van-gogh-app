@@ -7,23 +7,24 @@
 		<section class="linechart">
 			<h1> Floor 0</h1>
 			<line-chart :chartData="floorZeroChart"></line-chart>
+			<h1>Paintings</h1>
 			<ul>
-				<li><router-link to="50">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
-				<li><router-link to="dashboard/verdieping-0/">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
+				<li><router-link to="verdieping-0/50">50</router-link></li>
 			</ul>
 		</section>
 		<section class="overview-navigation">
@@ -242,7 +243,6 @@ header {
 				}
 			h1 {
 				color: white;
-				text-align: center;
 			}
 			ul {
 				display:flex;
