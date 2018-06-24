@@ -53,7 +53,7 @@ export default {
     data () {
       return {
 		  	labels:['10:00', '11:00'],
-			floorZeroData: [0,1],
+			floorZeroData: [0, 1],
 			floorOneData: [1, 12],
 			floorTwoData: [2, 5],
 			floorThreeData: [2, 5],
@@ -124,19 +124,24 @@ export default {
       fetchData () {},
 		startTour(tourData, counter) {
 			console.log('startTour', counter);
+			this.updateTourData(tourData, counter);
 		},
 		cancelTour(tourData, counter) {
-			console.log('canceltour', counter);
+			console.log('canceltour', tourData, counter);
+			this.updateTourData(tourData, counter);
 		},
 		completeTour(tourData, counter) {
 			console.log('completetour', counter);
+			this.updateTourData(tourData, counter);
 		},
 		sendPosition(tourData, counter) {
 			console.log('sendposition', counter);
 		},
 		exitAudio(tourData, counter) {
+		},
+		updateTourData(tourData, counter) {
 			if(tourData._id) {
-				this.floorOneData.push(1);
+				this.floorOneData.push(counter.activeTour);
 				this.labels.push('12:00');
 				this.fillData();
 			}
