@@ -286,6 +286,12 @@
 		}
 	}
 
+	@media all and (min-width: 60rem) {
+		footer {
+			max-width: 50rem;
+		}
+	}
+
 	.selected-item-enter-active, .selected-item-leave-active {
 		transition: all .3s;
 	}
