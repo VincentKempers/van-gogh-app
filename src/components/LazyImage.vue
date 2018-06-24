@@ -20,11 +20,11 @@
 		data: () => ({
 			observer: null,
 			intersected: false,
-			noJavascript: false
+			noJavascript: false,
 		}),
 		computed: {
 			srcImage() {
-				return this.intersected? this.src : '';
+				return this.intersected ? this.src : '';
 			}
 		},
 		created() {
@@ -35,19 +35,26 @@
 			// this.noJavascript = false;
 		},
 		mounted() {
-			this.observer = new IntersectionObserver(entries => {
-				const image = entries[0];
+			this.noJavascript = false;
+			if (window.IntersectionObserver) {
+				this.observer = new IntersectionObserver(entries => {
+					const image = entries[0];
 				
-				if (image.isIntersecting) {
-					this.intersected = true;
-					this.observer.disconnect();
-				}
-			});
+					if (image.isIntersecting) {
+						this.intersected = true;
+						this.observer.disconnect();
+					}
+				});
 
-			this.observer.observe(this.$el);
+				this.observer.observe(this.$el);
+			} else {
+				this.intersected = true;
+			}
 		},
 		destroyed() {
-			this.observer.disconnect();
+			if (window.IntersectionObserver) {
+				this.observer.disconnect();
+			}
 		}
 	}
 </script>
