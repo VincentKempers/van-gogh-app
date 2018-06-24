@@ -3,14 +3,13 @@ const Tour = require('./models/Tour');
 const { getCurrentDate } = require('../services/helpers');
 
 function sockets(io) {
+	// Data counter for the prototype. Will watch the counter ect for the dashboard
 	const tourCounter = {
 		activeTour: 1,
 	};
 
 	// Sockets start
 	io.on('connection', socket => {
-		// Data counter for the prototype. Will watch the counter ect for the dashboard
-
 		socket.on('startTour', startTour);
 		socket.on('sendPosition', sendPosition);
 		socket.on('exitAudio', exitAudio);
@@ -32,7 +31,6 @@ function sockets(io) {
 
 		function sendDashboard(newTest) {
 			console.log('Join Dashboard');
-
 			socket.join('Dashboard');
 		}
 
@@ -99,8 +97,6 @@ function sockets(io) {
 
 		function incrementTourCount() {
 			tourCounter.activeTour += 1;
-			console.log(tourCounter);
-
 			return tourCounter.activeTour;
 		}
 
