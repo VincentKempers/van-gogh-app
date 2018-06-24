@@ -81,7 +81,7 @@ export default {
 		this.socket.on('exitAudio', this.exitAudio);
 
 		// Create a set interval
-		this.dataInterval = createInterval(5000, this.tourInterval);
+		this.dataInterval = createInterval(1000, this.tourInterval);
     },
     methods: {
       fillData () {
@@ -156,6 +156,11 @@ export default {
 			const labelsLength = this.labels.length;
 			if (labelsLength !== floorOneLength) {
 				this.floorOneData.push(this.floorOneData[floorOneLength - 1]);
+			}
+
+			if (labelsLength === 8) {
+				this.floorOneData.splice(0, 1);
+				this.labels.splice(0, 1);
 			}
 			
 			this.fillData();

@@ -8,7 +8,6 @@ exports.generateFakeTime = function(currentTime) {
 	const parts = currentTime.split(':');
 	let hours = parseInt(parts[0]);
 	let minutes = parseInt(parts[1]);
-	console.log(hours, minutes);
 
 	if (minutes === 45) {
 		minutes = '00';
