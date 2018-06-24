@@ -23,3 +23,7 @@ exports.generateFakeTime = function(currentTime) {
 
 	return `${hours}:${minutes}`;
 };
+
+exports.createInterval = function(intervalTime, callback) {
+	return setInterval(callback, intervalTime);
+};

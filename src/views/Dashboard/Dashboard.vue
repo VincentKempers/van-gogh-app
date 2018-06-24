@@ -47,7 +47,7 @@
 <script>
 import LineChart from '../../components/Charts/LineChart.vue';
 
-import { generateFakeTime } from '../../../services/helpers.js';
+import { generateFakeTime, createInterval } from '../../../services/helpers.js';
 
 export default {
     name: 'Dashboard',
@@ -79,6 +79,9 @@ export default {
 		this.socket.on('completeTour', this.completeTour);
 		this.socket.on('sendPosition', this.sendPosition);
 		this.socket.on('exitAudio', this.exitAudio);
+
+		// Create a set interval
+		this.dataInterval = createInterval(5000, this.tourInterval);
     },
     methods: {
       fillData () {
@@ -125,31 +128,37 @@ export default {
       },
       fetchData () {},
 		startTour(tourData, counter) {
-			console.log('startTour', counter);
 			this.updateTourData(tourData, counter);
 		},
 		cancelTour(tourData, counter) {
-			console.log('canceltour', tourData, counter);
 			this.updateTourData(tourData, counter);
 		},
 		completeTour(tourData, counter) {
-			console.log('completetour', counter);
 			this.updateTourData(tourData, counter);
 		},
 		sendPosition(tourData, counter) {
-			console.log('sendposition', counter);
 		},
 		exitAudio(tourData, counter) {
 		},
 		updateTourData(tourData, counter) {
-			if(tourData._id) {
+			// if(tourData._id) {
 				this.floorOneData.push(counter.activeTour);
+			// }
+		},
+		generateNewLabel() {
 				const lastLabel = this.labels[this.labels.length - 1];
 				const newLabel = generateFakeTime(lastLabel);
-				
 				this.labels.push(newLabel);
-				this.fillData();
+		},
+		tourInterval() {
+			this.generateNewLabel();
+			const floorOneLength = this.floorOneData.length;
+			const labelsLength = this.labels.length;
+			if (labelsLength !== floorOneLength) {
+				this.floorOneData.push(this.floorOneData[floorOneLength - 1]);
 			}
+			
+			this.fillData();
 		}
     }
   };
