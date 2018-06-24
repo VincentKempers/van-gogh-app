@@ -22,8 +22,6 @@ function sockets(io) {
 		}
 
 		function sendDashboard(newTest) {
-			console.log('Join Dashboard');
-			
 			socket.join('Dashboard');
 		}
 
