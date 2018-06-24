@@ -69,8 +69,8 @@ function createRouter() {
 				},
 			},
 			{
-				path: '/dashboard/verdieping-0',
-				name: 'verdieping-0',
+				path: '/dashboard/floor-0',
+				name: 'floor-0',
 				component: Floor0,
 				meta: {
 					title: 'MMT Dashboard',
@@ -79,8 +79,8 @@ function createRouter() {
 				},
 			},
 			{
-				path: '/dashboard/verdieping-1',
-				name: 'verdieping-1',
+				path: '/dashboard/floor-1',
+				name: 'floor-1',
 				component: Floor1,
 				meta: {
 					title: 'MMT Dashboard',

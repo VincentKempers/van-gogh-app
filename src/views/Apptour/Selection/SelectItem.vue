@@ -93,4 +93,10 @@
 			text-shadow: 2px 2px 2px #3a3a3a;
 		}
 	}
+
+	@media all and (min-width: 60rem) {
+		div {
+			min-width: 35vw;
+		}
+	}
 </style>

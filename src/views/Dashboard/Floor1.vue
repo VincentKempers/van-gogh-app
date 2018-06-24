@@ -1,83 +1,207 @@
 <template>
-	<main>
+<div class="dashboard-floor">
 		<nav>
 			<h1>MMT Dashboard</h1>
-			<input id="search" type="text" name="search">
 		</nav>
-		<h1> verdieping 1</h1>
-		<section class="chart">
-			<render-chart></render-chart>
-		</section>
-		<section>
+	<main>	
+		<section class="linechart">
+			<h2>Floor 1</h2>
+			<line-chart :chartData="floorOneChart"></line-chart>
+			<h2>Paintings</h2>
 			<ul>
-				<li>
-					<div>
-					<router-link to="/dashboard/verdieping-1/50">
-						<span>50</span>
-					</router-link>
-					</div>
-				</li>
+				<li><router-link to="floor-1/50">50</router-link></li>
+				<li><router-link to="floor-1/28">28</router-link></li>
+				<li><router-link to="floor-1/16">16</router-link></li>
+				<li><router-link to="floor-1/13">13</router-link></li>
+				<li><router-link to="floor-1/41">41</router-link></li>
+				<li><router-link to="floor-1/55">55</router-link></li>
+				<li><router-link to="floor-1/38">38</router-link></li>
+				<li><router-link to="floor-1/18">18</router-link></li>
+				<li><router-link to="floor-1/14">14</router-link></li>
+				<li><router-link to="floor-1/30">30</router-link></li>
+				<li><router-link to="floor-1/2">2</router-link></li>
+				<li><router-link to="floor-1/29">29</router-link></li>
+				<li><router-link to="floor-1/53">53</router-link></li>
+				<li><router-link to="floor-1/37">37</router-link></li>
+				<li><router-link to="floor-1/4">4</router-link></li>
+				<li><router-link to="floor-1/76">76</router-link></li>
 			</ul>
 		</section>
-		<div class="navigation">
-			<ul>
-				<li>
-					<a class="verd0" href="/dashboard/verdieping-0">
-						<div>
-							<h3>Floor 0</h3>
-							<render-chart   :width="400" :height="200">
-
-							</render-chart>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a class="verd1" href="/dashboard/verdieping-1">
-						<div>
-							<h3>Floor 1</h3>
-							<render-chart   :width="400" :height="200">
-
-							</render-chart>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a class="verd2" href="/dashboard/verdieping-2">
-						<div>
-							<h3>Floor 2</h3>
-							<render-chart   :width="400" :height="200">
-							</render-chart>
-						</div>
-					</a>
-				</li>
-				<li>
-					<a class="verd3" href="/dashboard/verdieping-3">
-						<div>
-							<h3>Floor 3</h3>
-							<render-chart   :width="400" :height="200"></render-chart>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
+		<section class="overview-navigation">
+				<ul>
+					<li class="verd0">
+						<a  href="/dashboard/floor-0">
+							<div>
+								<h3>Floor 0</h3>
+								<line-chart :chartData="floorZeroChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+					<li class="verd2">
+						<a href="/dashboard/floor-2">
+							<div>
+								<h3>Floor 2</h3>
+								<line-chart :chartData="floorTwoChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+					<li class="verd3">
+						<a  href="/dashboard/floor-3">
+							<div>
+								<h3>Floor 3</h3>
+								<line-chart :chartData="floorThreeChart" :width="400" :height="200" />
+							</div>
+						</a>
+					</li>
+				</ul>
+		</section>
 	</main>
+</div>
 </template>
 
 
 
 <script>
-import renderChart from './Bigchart.vue';
+import LineChart from '../../components/Charts/LineChart.vue';
+
+import { generateFakeTime, createInterval } from '../../../services/helpers.js';
 
 export default {
-	components: {
-		renderChart,
+    name: 'Dashboard',
+    components: { LineChart },
+    data () {
+      return {
+		  	labels:['09:00', '09:15'],
+			floorZeroData: [0, 1],
+			floorOneData: [1, 12],
+			floorTwoData: [2, 5],
+			floorThreeData: [2, 5],
+			floorZeroChart: null,
+			floorOneChart: null,
+			floorTwoChart: null,
+			floorThreeChart: null,
+			socket: null
+      }
+    },
+    created () {
+		this.fillData();
 	},
-	data() {
-		return {
-			title: 'Verdieping 1',
-		};
-	},
-};
+    mounted () {
+		 // Create an socket instance for dashboard
+		this.socket = io();
+		this.socket.emit('Dashboard');
+
+		this.socket.on('startTour', this.startTour);
+		this.socket.on('cancelTour', this.cancelTour);
+		this.socket.on('completeTour', this.completeTour);
+		this.socket.on('sendPosition', this.sendPosition);
+		this.socket.on('exitAudio', this.exitAudio);
+
+		// Create a set interval
+		this.dataInterval = createInterval(1000, this.tourInterval);
+    },
+    methods: {
+      fillData () {
+		  this.floorZeroChart = {
+			labels: this.labels,
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorZeroData
+					},
+				]
+			},
+		  this.floorOneChart = {
+			labels: this.labels,
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorOneData
+					},
+				]
+			},
+			this.floorTwoChart = {
+				labels: this.labels,
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorTwoData
+					},
+				]
+			}
+			this.floorThreeChart = {
+				labels: this.labels,
+				datasets: [
+					{
+						label: 'people',
+						backgroundColor: '#f87979',
+						data: this.floorThreeData
+					},
+				]
+			}
+      },
+      fetchData () {},
+		startTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		cancelTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		completeTour(tourData, counter) {
+			this.updateTourData(tourData, counter);
+		},
+		sendPosition(tourData, counter) {
+		},
+		exitAudio(tourData, counter) {
+		},
+		updateTourData(tourData, counter) {
+			this.floorZeroData.push(counter.activeTour);
+			this.floorOneData.push(counter.activeTour);
+			this.floorTwoData.push(counter.activeTour);
+			this.floorThreeData.push(counter.activeTour);
+		},
+		generateNewLabel() {
+				const lastLabel = this.labels[this.labels.length - 1];
+				const newLabel = generateFakeTime(lastLabel);
+				this.labels.push(newLabel);
+		},
+		tourInterval() {
+			this.generateNewLabel();
+			const floorZeroLength = this.floorZeroData.length;
+			const floorOneLength = this.floorOneData.length;
+			const floorTwoLength = this.floorTwoData.length;
+			const floorThreeLength = this.floorThreeData.length;
+
+			const labelsLength = this.labels.length;
+
+			if (labelsLength !== floorOneLength) {
+				this.floorOneData.push(this.floorOneData[floorOneLength - 1]);
+			}
+
+			if (labelsLength !== floorZeroLength) {
+				this.floorZeroData.push(this.floorZeroData[floorZeroLength - 1]);
+			}
+			if (labelsLength !== floorTwoLength) {
+				this.floorTwoData.push(this.floorTwoData[floorTwoLength - 1]);
+			}
+			if (labelsLength !== floorThreeLength) {
+				this.floorThreeData.push(this.floorThreeData[floorThreeLength - 1]);
+			}
+
+			if (labelsLength === 8) {
+				this.floorZeroData.splice(0, 1);
+				this.floorOneData.splice(0, 1);
+				this.floorTwoData.splice(0, 1);
+				this.floorThreeData.splice(0, 1);
+				this.labels.splice(0, 1);
+			}
+			this.fillData();
+		}
+    }
+  };
 </script>
 
 <style lang="scss">
@@ -90,64 +214,89 @@ header {
 </style>
 
 <style lang="scss" scoped>
-nav {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 2rem;
-	background-color: rgba(0, 0, 0, 1);
-	#search {
-		height: 2rem;
-		border-radius: 0.8rem;
-		border: none;
-	}
-	h1 {
-		color: white;
-	}
-}
 
-.chart {
-	div {
-		width: 60%;
-	}
-}
-section {
-	margin: 3rem 0 0 2rem;
-	ul {
-		list-style-type: none;
-		li {
-			div {
-				a {
-					text-align: center;
-					background-color: red;
-					padding: 1rem 3rem;
-					border-radius: 0.6rem;
-					background-image: url('/assets/images/aardappeleters-min.jpg');
-					color: white;
-					text-decoration: none;
-				}
-			}
+.dashboard-floor {
+	background-color: black;
+	height: 100%;
+	padding: 0 1em;
+	nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 2rem;
+		background-color: rgba(0, 0, 0, 1);
+		h1 {
+			color: white;
 		}
 	}
-}
-main {
-	.navigation {
-		position: absolute;
-		right: 0;
-		ul {
+	main { 
+		@media screen and (min-width: 40em) {
+			display:flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+		
+		.linechart {
+			background-color: #464646;
+			border-radius: 1rem;
+			margin-bottom: 2em;
+			
+			padding: 1em;
+				@media screen and (min-width: 40em){
+					width: 100%;
+					margin-right: 2em;
+				}
+			h1,h2 {
+				color: white;
+			}
+			ul {
+				display:flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				margin-right: 2em;
+				list-style: none;
+				li {
+					background-color: black;
+					border-radius: 1rem;
+					margin-right: .3em;
+					margin-bottom: .5em;
+					// justify-content: space-around;
+					@media screen and (min-width: 40em){
+						margin-right: 1em;
+						margin-bottom: 1em;
+					}
+					a {
+						display: block;
+						padding: 1em 3em;
+						color:white;
+					}
+				}
+			}
+
+		}
+		.overview-navigation {
+			ul {
 			display: flex;
 			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
 			margin: 0;
+			padding: 0;
 			list-style: none;
 			li {
+				margin-bottom: 2em;
+				@media screen and (min-width: 40em){
+					margin-right: 2em;
+				}
 				a {
 					text-decoration: none;
-					color: black;
 					padding: 1rem 0rem;
 					div {
 						padding: 0.5em;
-						background-color: black;
+						background-color: #454545;
+						border-radius: 1rem;
+						max-width:86vw;
 						h3 {
 							color: white;
 						}
@@ -155,6 +304,18 @@ main {
 				}
 			}
 		}
+		
 	}
+}
+.floorplan {
+			background-color: #464646;
+			border-radius: 1rem;
+			margin-bottom: 2em;
+			padding:1em;
+			svg {
+				width: 100%;
+				padding-top:2.5em;
+			}
+		}
 }
 </style>

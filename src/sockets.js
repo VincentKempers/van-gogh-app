@@ -3,6 +3,11 @@ const Tour = require('./models/Tour');
 const { getCurrentDate } = require('../services/helpers');
 
 function sockets(io) {
+	// Data counter for the prototype. Will watch the counter ect for the dashboard
+	const tourCounter = {
+		activeTour: 1,
+	};
+
 	// Sockets start
 	io.on('connection', socket => {
 		socket.on('startTour', startTour);
@@ -10,6 +15,7 @@ function sockets(io) {
 		socket.on('exitAudio', exitAudio);
 		socket.on('cancelTour', cancelTour);
 		socket.on('completeTour', completeTour);
+
 		socket.on('Dashboard', sendDashboard);
 
 		// ==========================
@@ -18,12 +24,13 @@ function sockets(io) {
 
 		// TO initialize the data to the dashboard only
 		function startTour(tourData) {
-			socket.emit('startTour', tourData);
+			incrementTourCount();
+			io.to('Dashboard').emit('startTour', tourData, tourCounter);
+			socket.join('Dashboard');
 		}
 
 		function sendDashboard(newTest) {
 			console.log('Join Dashboard');
-			
 			socket.join('Dashboard');
 		}
 
@@ -42,7 +49,7 @@ function sockets(io) {
 					},
 				}
 			).then(tour => {
-				socket.emit('sendPosition', tour);
+				io.to('Dashboard').emit('sendPosition', tour, tourCounter);
 			});
 		}
 
@@ -54,7 +61,7 @@ function sockets(io) {
 					$set: { 'tour.$.end_time': getCurrentDate() },
 				}
 			).then(tour => {
-				io.to('Dashboard').emit('exitAudio', tour);
+				io.to('Dashboard').emit('exitAudio', tour, tourCounter);
 			});
 		}
 
@@ -66,7 +73,8 @@ function sockets(io) {
 					end_tour_time: getCurrentDate(),
 				}
 			).then(tour => {
-				socket.emit('cancelTour', tour);
+				decrementTourCount();
+				io.to('Dashboard').emit('cancelTour', tour, tourCounter);
 			});
 		}
 
@@ -78,8 +86,26 @@ function sockets(io) {
 					end_tour_time: getCurrentDate(),
 				}
 			).then(tour => {
-				socket.emit('completeTour', tour);
+				decrementTourCount();
+				io.to('Dashboard').emit('completeTour', tour, tourCounter);
 			});
+		}
+
+		// ==========================
+		// === Helper functions
+		// ===========================
+
+		function incrementTourCount() {
+			tourCounter.activeTour += 1;
+			return tourCounter.activeTour;
+		}
+
+		function decrementTourCount() {
+			if (tourCounter.activeTour === 0) {
+				return tourCounter.activeTour;
+			}
+			tourCounter.activeTour -= 1;
+			return tourCounter.activeTour;
 		}
 	});
 }

@@ -34,7 +34,7 @@
 
 				if (from.path === '/tour-map' && to.path === '/' && isCompleted === false) {
 					this.$store.dispatch('disconnectSocket');
-					this.$store.state.socket.emit('cancelTour', this.$store.state.tour_id);
+					this.$store.state.socket.emit('cancelTour', this.$store.state.tour._id);
 				}
 			}
 		},

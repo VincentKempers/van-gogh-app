@@ -205,6 +205,7 @@
 					// Call the 'setTour' action
 					this.$store.dispatch('addTour', res);
 					this.$store.dispatch('connectSocket', io());
+					
 					this.$store.state.socket.emit('startTour', res);
 				}).then(() => {
 					this.$router.push('/tour-map');
@@ -282,6 +283,12 @@
 			&:first-of-type {
 				margin-left: 8%;
 			}
+		}
+	}
+
+	@media all and (min-width: 60rem) {
+		footer {
+			max-width: 50rem;
 		}
 	}
 
