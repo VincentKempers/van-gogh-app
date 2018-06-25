@@ -60,7 +60,7 @@ main {
 	}
 }
 
-.sections--title {
+.section--title {
 	color: #4a4a4a;
 	width: 60%;
 	font-size: 2rem;

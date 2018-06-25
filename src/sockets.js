@@ -6,6 +6,7 @@ function sockets(io) {
 	// Data counter for the prototype. Will watch the counter ect for the dashboard
 	const tourCounter = {
 		activeTour: 1,
+		paintings: {},
 	};
 
 	// Sockets start
@@ -24,8 +25,8 @@ function sockets(io) {
 
 		// TO initialize the data to the dashboard only
 		function startTour(tourData) {
-			incrementTourCount();
-			io.to('Dashboard').emit('startTour', tourData, tourCounter);
+			const count = incrementCount(tourCounter.activeTour);
+			io.to('Dashboard').emit('startTour', tourData, count);
 			socket.join('Dashboard');
 		}
 
@@ -45,11 +46,19 @@ function sockets(io) {
 					current_floor: locatedFloor,
 					$set: {
 						'tour.$.start_time': getCurrentDate(),
-						'tour.$visited': true,
+						'tour.$.visited': true,
 					},
 				}
 			).then(tour => {
-				io.to('Dashboard').emit('sendPosition', tour, tourCounter);
+				if (tourCounter.paintings[paintingId] === undefined) {
+					tourCounter.paintings[paintingId] = 0;
+				}
+
+				const count = incrementCount(tourCounter.paintings[paintingId]);
+
+				const piece = tour.tour.filter(painting => painting.painting_no === paintingId);
+
+				io.to('Dashboard').emit('sendPosition', piece[0], count, paintingId);
 			});
 		}
 
@@ -61,7 +70,9 @@ function sockets(io) {
 					$set: { 'tour.$.end_time': getCurrentDate() },
 				}
 			).then(tour => {
-				io.to('Dashboard').emit('exitAudio', tour, tourCounter);
+				const count = decrementCount(tourCounter.paintings[paintingId]);
+				const piece = tour.tour.filter(painting => painting.painting_no === paintingId);
+				io.to('Dashboard').emit('exitAudio', piece[0], count, paintingId);
 			});
 		}
 
@@ -73,8 +84,8 @@ function sockets(io) {
 					end_tour_time: getCurrentDate(),
 				}
 			).then(tour => {
-				decrementTourCount();
-				io.to('Dashboard').emit('cancelTour', tour, tourCounter);
+				const count = decrementCount(tourCounter.activeTour);
+				io.to('Dashboard').emit('cancelTour', tour, count);
 			});
 		}
 
@@ -86,8 +97,8 @@ function sockets(io) {
 					end_tour_time: getCurrentDate(),
 				}
 			).then(tour => {
-				decrementTourCount();
-				io.to('Dashboard').emit('completeTour', tour, tourCounter);
+				const count = decrementCount(tourCounter.activeTour);
+				io.to('Dashboard').emit('completeTour', tour, count);
 			});
 		}
 
@@ -95,17 +106,17 @@ function sockets(io) {
 		// === Helper functions
 		// ===========================
 
-		function incrementTourCount() {
-			tourCounter.activeTour += 1;
-			return tourCounter.activeTour;
+		function incrementCount(item) {
+			item += 1;
+			return item;
 		}
 
-		function decrementTourCount() {
-			if (tourCounter.activeTour === 0) {
-				return tourCounter.activeTour;
+		function decrementCount(item) {
+			if (item === 0) {
+				return item;
 			}
-			tourCounter.activeTour -= 1;
-			return tourCounter.activeTour;
+			item -= 1;
+			return item;
 		}
 	});
 }
