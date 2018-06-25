@@ -228,7 +228,7 @@ header {
 						max-width:86vw;
 						h3 {
 							color: white;
-							padding-left:.7em;
+							padding-left: .7em;
 						}
 					}
 				}
