@@ -97,7 +97,6 @@ export default {
 		this.socket.on('sendPosition', this.sendPosition);
 		this.socket.on('exitAudio', this.exitAudio);
 
-		this.socket.on('exitAudio', this.exitAudio);
 		// Create a set interval
 		this.dataInterval = createInterval(1000, this.tourInterval);
     },
