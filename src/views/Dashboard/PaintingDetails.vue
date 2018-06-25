@@ -11,7 +11,10 @@
 		<section class="overview-navigation">
 				<div>
                     <h3>Meta</h3>
-                    <img src="/src/assets/images/aardappeleters-min.jpg" alt="">
+                    <LazyImage
+                        :src="'/assets/images/' + theme.imageUrl"
+                        :alt="theme.description"
+                    />
                 </div>
 		</section>
 	</main>
@@ -25,7 +28,8 @@
 	export default {
 		components: {
 			LineChart
-		},
+        },
+        props: ["src", "alt"],
 		data() {
 			return {
 				paintingNum: this.$route.params.id,
