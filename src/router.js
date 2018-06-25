@@ -88,6 +88,16 @@ function createRouter() {
 					returnLabel: '',
 				},
 			},
+			{
+				path: '/dashboard/floor-1/:id',
+				name: 'floor-1',
+				component: Floor1,
+				meta: {
+					title: 'MMT Dashboard',
+					returnPath: '',
+					returnLabel: '',
+				},
+			},
 			// {
 			// 	path: '/selection-overview',
 			// 	name: 'selection overview',
