@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const uuidv4 = require('uuid/v4');
 
 const Tour = require('../models/Tour');
 
@@ -169,7 +170,7 @@ const exampleTourComplete = [
 
 router.post('/tour-select', async (req, res) => {
 	const tour = new Tour({
-		device_id: 'sha12u3812',
+		device_id: uuidv4(),
 		start_tour_time: getCurrentDate(),
 		tour: exampleTourComplete,
 	});
