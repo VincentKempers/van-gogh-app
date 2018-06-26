@@ -44,7 +44,7 @@
 				<vue-button
 					:onClick="confirmTour"
 					:isDisabled="isDisabled"
-					:btnText="'Complete'"
+					:btnText="'Confirm'"
 					:btnType="'submit'"
 				/>
 			</footer>
