@@ -4,10 +4,41 @@ exports.getCurrentDate = function() {
 	return date.toUTCString();
 };
 
+exports.getTime = function(data) {
+	if (!data) {
+		return '-';
+	}
+
+	const date = new Date(data);
+	const getH = date.getHours();
+	const getM = date.getMinutes();
+
+	const hours = getH < 10 ? `0${getH}` : getH;
+	const minutes = getM < 10 ? `0${getM}` : getM;
+
+	return `${hours}h ${minutes}m`;
+};
+
+exports.getTimeDiff = function(dataOne, dataTwo) {
+	if (!dataOne || !dataTwo) {
+		return '-';
+	}
+
+	const date = new Date(dataOne);
+	const date2 = new Date(dataTwo);
+
+	const diffS = (date2.getTime() - date.getTime()) / 1000;
+
+	const minutes = Math.floor(diffS / 60);
+	const seconds = diffS % 60;
+
+	return `${minutes}m ${seconds}s`;
+};
+
 exports.generateFakeTime = function(currentTime) {
 	const parts = currentTime.split(':');
-	let hours = parseInt(parts[0]);
-	let minutes = parseInt(parts[1]);
+	let hours = parseInt(parts[0], 10);
+	let minutes = parseInt(parts[1], 10);
 
 	if (minutes === 45) {
 		minutes = '00';
