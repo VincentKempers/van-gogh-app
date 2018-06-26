@@ -37,12 +37,11 @@
 
 	.btn-close {
 		position: absolute;
-		top: 0rem;
-		right: -.5rem;
+		top: 0;
+		right: 0;
 		width: 1rem;
 		height: 1rem;
 		background-color: #f3f3f3;
-		border-radius: 1rem;
 		text-align: center;
 	}
 

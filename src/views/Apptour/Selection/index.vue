@@ -6,8 +6,10 @@
 			action="/api/tour-select"
 		>
 			<transition-group
+				class="item-container"
 				tag="section"
 				name="selected-item"
+				mode="out-in"
 				appear
 			>
 				<select-item
@@ -16,6 +18,7 @@
 					:key="theme + i"
 					:theme="theme"
 					:itemStyle="{
+						overflow: 'hidden',
 						backgroundImage: `url(/assets/images/${theme.imageUrl}')`
 					}"
 					:onSelect="addTheme"
@@ -26,6 +29,7 @@
 				<transition-group
 					tag="ul"
 					name="selected-item"
+					mode="out-in"
 					appear
 				>
 					<li
@@ -147,10 +151,12 @@
 
 <style lang='scss' scoped>
 	section {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		list-style:  none;
-		overflow: scroll;
+		overflow-x: scroll;
+		overflow-y: hidden;
 		padding: 0;
 		height: 45vh;
 	}
@@ -181,15 +187,15 @@
 			display: flex;
 			overflow: scroll;
 			flex-wrap: nowrap;
-			height: 2.8rem;
+			height: 3.8rem;
 			width: 100%;
 			margin-right: 5%;
 			padding: 0;
 		}
 
 		li {
-			min-width: 2.8rem;
-			max-width: 2.8rem;
+			min-width: 3.8rem;
+			max-width: 3.8rem;
 			margin-right: 5%;
 
 			&:first-of-type {
@@ -204,13 +210,32 @@
 		}
 	}
 
-	.selected-item-enter-active, .selected-item-leave-active {
+	.selected-item {
+		display: inline-block;
+		transition: all 1s;
+		margin-right: 10px;
+	}
+
+	.selected-item-enter-active {
+	}
+
+	.selected-item-leave-active {
+		position: absolute;
+		transition: transform .3s;
+	}
+
+	// .selected-item-enter,
+	.selected-item-leave-to {
+		opacity: 0;
 		transition: all .3s;
 	}
 
-	.selected-item-enter, .selected-item-leave-to {
-		opacity: 0;
-		transform: translateY(30px);
+	.selected-item-move {
+		transition: transform 1s;
+		// transform: translateY(-100%);
+	}
+
+	.item-container {
 	}
 
 

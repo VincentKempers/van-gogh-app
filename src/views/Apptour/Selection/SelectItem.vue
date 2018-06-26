@@ -42,6 +42,7 @@
 
 		height: 100%;
 		min-width: 85vw;
+		max-width: 85vw;
 		margin-right: 5%;
 		background: #a4a4a4;
 
