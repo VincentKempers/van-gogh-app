@@ -9,8 +9,8 @@
 			<line-chart :chartData="floorZeroChart"></line-chart>
 			<h1>Paintings</h1>
 			<ul>
-				<li><router-link to="floor-0/2">2</router-link></li>
-				<li><router-link to="floor-0/10">10</router-link></li>
+				<li><router-link to="floor-0/84">84</router-link></li>
+				<li><router-link to="floor-0/60">60</router-link></li>
 			</ul>
 		</section>
 		<section class="overview-navigation">

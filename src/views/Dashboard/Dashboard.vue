@@ -183,7 +183,7 @@ header {
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0 2rem;
+		padding: 0 1em;
 		background-color: rgba(0, 0, 0, 1);
 		h1 {
 			color: white;
@@ -213,7 +213,6 @@ header {
 			padding: 0;
 			list-style: none;
 			@media screen and (min-width: 70em) {
-				width: 75%;
 				margin: 2em;
 				align-self: center;
 			}
@@ -229,6 +228,7 @@ header {
 						max-width:86vw;
 						h3 {
 							color: white;
+							padding-left: .7em;
 						}
 					}
 				}
