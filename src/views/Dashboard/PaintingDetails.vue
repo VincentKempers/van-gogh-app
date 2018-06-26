@@ -40,7 +40,7 @@
 			return {
 				paintingNum: this.$route.params.id,
                 socket: this.$store.state.socket,
-                images: [
+                			images: [
 					{
                         'number': '50',
                         'description': 'the famous potatoeaters piece of van Gogh',
@@ -48,43 +48,43 @@
 					},
 					{
                         'number': '28',
-                        'description': 'Art itself',
-						'imageUrl': 'courtisane-min.jpg'
+                        'description': 'The cottage',
+						'imageUrl': 'thecottage-min.jpg'
 					},
 					{
 						'number': '16',
 						'description': 'The theme. An image of a woman in a blue dress to depict the theme Legacy of Van Gogh',
-						'imageUrl': 'deBlauweJapon-min.png'
+						'imageUrl': 'peasantheads-min.jpg'
 					},
 					{
 						'number': '13',
 						'description': 'The theme. An image of a portrait of Vincent\'s brother Theo to depict the theme Family Van Gogh',
-						'imageUrl': 'portretTheo-min.jpg'
+						'imageUrl': 'stillbiblelife-min.jpg'
 					},
 					{
 						'number': '41',
 						'description': 'The theme. An image of red cabbages and onions to depict the theme Learning by doing',
-						'imageUrl': 'rodeKolenUi-min.jpg'
+						'imageUrl': 'skeletSigaret-min.jpg'
 					},
 					{
 						'number': '55',
 						'description': 'The theme. An image of a self portrait of Vincent with a grey felt hat to depict the theme The modern portrait',
-						'imageUrl': 'grijzeVilthoed-min.jpg'
+						'imageUrl': 'headofprostitute-min.jpg'
 					},
 					{
 						'number': '38',
 						'description': 'The theme. An image of people eating potatoes to depict the theme Changing techniques',
-						'imageUrl': 'aardappeleters-min.jpg'
+						'imageUrl': 'treesandundergrowth-min.jpg'
 					},
 					{
 						'number': '18',
 						'description': 'The theme. An image of Sunflowers to depict the theme Simplicity',
-						'imageUrl': 'zonnebloemen-min.jpg'
+						'imageUrl': 'gardenwithcourtingcouple-min.jpg'
 					},
 					{
 						'number': '14',
 						'description': 'The theme. An image of a wheatfield to depict the theme The wealth of nature',
-						'imageUrl': 'korenveld-min.jpg'
+						'imageUrl': 'grijzeVilthoed-min.jpg'
 					},
 					{
 						'number': '30',
@@ -94,17 +94,17 @@
 					{
 						'number': '2',
 						'description': 'The theme. An image of the seascape new les saintes-maties-de-la-mer to depict the theme Color effects',
-						'imageUrl': 'zeegezichtSaintLeMer-min.jpg'
+						'imageUrl': 'pinkOrchard-min.jpg'
 					},
 					{
 						'number': '29',
 						'description': 'The theme. An image of the hospital garden to depict the theme Work as a medicine',
-						'imageUrl': 'tuinVanZiekenhuis-min.jpg'
+						'imageUrl': 'anoldwomanofarles-min.jpg'
 					},
 					{
 						'number': '53',
 						'description': 'The theme. An image of almond blossoms to depict the theme In search of perfect light',
-						'imageUrl': 'amandelbloesem-min.jpg'
+						'imageUrl': 'stoelVGauguin-min.jpg'
 					},
 					{
 						'number': '37',
@@ -114,12 +114,12 @@
 					{
 						'number': '4',
 						'description': 'The theme. An image of a skeleton who is smoking to depict the theme A different mind',
-						'imageUrl': 'skeletSigaret-min.jpg'
+						'imageUrl': 'yellowhouse-min.jpg'
 					},
 					{
 						'number': '76',
 						'description': 'The theme. An image of a skeleton who is smoking to depict the theme A different mind',
-						'imageUrl': 'skeletSigaret-min.jpg'
+						'imageUrl': 'zonnebloemen-min.jpg'
 					}
 				]
 			};

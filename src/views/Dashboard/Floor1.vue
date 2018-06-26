@@ -9,12 +9,9 @@
 			<line-chart :chartData="floorOneChart"></line-chart>
 			<h2>Paintings</h2>
 			<ul>
-		
 				<li v-for="(item,index) in images" :key="index" :style="{backgroundImage:`url(/assets/images/${item.imageUrl})`}">
-					<router-link to="floor-1/">
-						<span>
+					<router-link :to="'floor-1/' + item.number">
 							{{item.number}}
-						</span>
 					</router-link>
 				</li>
 			</ul>
@@ -346,9 +343,7 @@ header {
 						padding: 4em 3em;
 						color: white;
 						text-decoration: none;
-						span {
-							box-shadow: 2px 2px 5px black;
-						}
+						text-shadow: 2px 2px 5px black;
 					}
 				}
 			}
