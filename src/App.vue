@@ -64,4 +64,8 @@ export default {
 		margin: 1rem 0;
 	}
 
+	ul {
+		list-style: none;
+	}
+
 </style>

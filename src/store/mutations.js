@@ -11,6 +11,9 @@ const mutations = {
 	[types.DISCONNECT_SOCKET](state) {
 		state.socketConnected = false;
 	},
+	[types.ADD_THEME_SELECTION](state, themes_payload) {
+		state.selectedThemes = themes_payload;
+	},
 };
 
 export { mutations };

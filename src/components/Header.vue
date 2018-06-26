@@ -5,8 +5,10 @@
 			v-if="returnPath"
 			role="link"
 			aria-label="returnPage"
+			class="back-link"
 		>
 			<icon-back></icon-back>
+			<p>{{ this.$route.meta.returnLabel }}</p>
 		</router-link>
 		<div class="spacing" v-if="!returnPath"></div>
 		<h1>{{ this.$route.meta.title }}</h1>
@@ -55,6 +57,21 @@
 		margin-left: auto;
 		margin-right: .5rem;
 		margin-bottom: 0;
+	}
+
+	.back-link {
+		display: flex;
+		text-decoration: none;
+		margin-bottom: 1.2rem;
+
+		p {
+			display: inline-block;
+			font-family: "monteserrat", "arial", sans-serif;
+			font-weight: 700;
+			color: #4a4a4a;
+			text-transform: uppercase;
+			margin-left: 1rem;
+		}
 	}
 
 	.spacing {
