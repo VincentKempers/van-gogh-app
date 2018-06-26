@@ -80,7 +80,7 @@ export default {
 			floorOneChart: null,
 			floorTwoChart: null,
 			floorThreeChart: null,
-			socket: null
+			socket: null,
       }
     },
     created () {
