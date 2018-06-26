@@ -65,15 +65,11 @@
 		},
 		beforeCreate() {},
 		beforeMount() {
-
 			getUserTour(this.$route.params.id)
 				.then(res => res.json())
 				.then(json => {
-					console.log(json);
-					
 					this.userTour = json;
 				});
-
 		},
 		methods: {
 			normalizeTime(date) {

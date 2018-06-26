@@ -103,7 +103,7 @@ function createRouter() {
 			},
 			{
 				path: '/dashboard/floor-1/:id',
-				name: 'floor-1',
+				name: 'floor-1 detail',
 				component: PaintingDetails,
 				meta: {
 					title: 'MMT Dashboard',

@@ -62,9 +62,11 @@ const HttpService = {
 	},
 
 	getUserTour(deviceId) {
-		console.log(deviceId);
-
 		return fetch(`/api/device-detail/${deviceId}`);
+	},
+
+	getAllDevicesAt(paintingId) {
+		return fetch(`/api/painting-devices/${paintingId}`);
 	},
 };
 

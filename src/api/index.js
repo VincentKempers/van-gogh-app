@@ -244,9 +244,16 @@ router.put('/complete-tour', async (req, res) => {
 
 router.get('/device-detail/:deviceId', async (req, res) => {
 	const { deviceId } = req.params;
-	console.log(req.params);
 
 	Tour.findOne({ device_id: deviceId }).then(tour => {
+		res.send(tour);
+	});
+});
+
+router.get('/painting-devices/:paintingId', async (req, res) => {
+	const { paintingId } = req.params;
+
+	Tour.find({ 'tour.painting_no': paintingId }).then(tour => {
 		res.send(tour);
 	});
 });

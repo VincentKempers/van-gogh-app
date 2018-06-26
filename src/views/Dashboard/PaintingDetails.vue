@@ -9,38 +9,47 @@
 			<line-chart></line-chart>
 			<h2>Devices</h2>
 			<ul>
-				
+				<li
+					v-for="(device, index) in allDevices"
+					:key="index"
+				>
+					<router-link :to="`/dashboard/user/${device.device_id}`">
+						<p>{{ device.device_id.substr(0, 4) }}</p>
+					</router-link>
+				</li>
 			</ul>
 		</section>
 		<section class="overview-navigation">
-				<div>
-                    <h3>Meta</h3>
-                    <LazyImage
-                        :src="'/assets/images/' + images.imageUrl"
-                        :alt="images.description"
-                    />
-                </div>
+			<div>
+				<h3>Meta</h3>
+				<LazyImage
+					:src="'/assets/images/' + images.imageUrl"
+					:alt="images.description"
+				/>
+			</div>
 		</section>
 	</main>
 </div>
 </template>
 
 <script>
-    import LineChart from '../../components/Charts/LineChart.vue';
-	import { generateFakeTime, createInterval } from '../../../services/helpers.js';
+	import { getAllDevicesAt } from '../../../services/http-service.js';
+	import LineChart from '../../components/Charts/LineChart.vue';
 	import LazyImage from '../../components/LazyImage.vue';
+	import { generateFakeTime, createInterval } from '../../../services/helpers.js';
 
 	export default {
 		components: {
 			LineChart,
 			LazyImage
         },
-        props: ["src", "alt"],
+        props: ['src', 'alt'],
 		data() {
 			return {
 				paintingNum: this.$route.params.id,
-                socket: this.$store.state.socket,
-                			images: [
+				allDevices: [],
+				socket: this.$store.state.socket,
+				images: [
 					{
                         'number': '50',
                         'description': 'the famous potatoeaters piece of van Gogh',
@@ -124,8 +133,14 @@
 				]
 			};
 		},
-		mounted() {
+		beforeMount() {
 			console.log(this.paintingNum);
+			
+			getAllDevicesAt(this.paintingNum)
+				.then(res => res.json())
+				.then(json => {
+					this.allDevices = json;
+				});
 		}
 	};
 </script>
