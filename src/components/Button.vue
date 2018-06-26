@@ -27,7 +27,7 @@
 		background: #F8E71C;
 		height: 2.8rem;
 		border: none;
-		margin: auto 5% auto 0;
+		margin: auto 5% 5% 0;
 		padding: 0 1.4rem;
 	}
 

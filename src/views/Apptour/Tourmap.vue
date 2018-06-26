@@ -166,27 +166,28 @@
 					</g>
 				</svg>
         </div>
-        <button
-		  		v-if="tourStarted"
-				@click="finishTour"
-			>
-				<a
-					class="btn-skip"
-					href="#">
-					Finish tour
-				</a>
-			</button>
+
+			<vue-button
+				class="btn-confirm"
+				v-if="tourStarted"
+				:onClick="finishTour"
+				:btnText="'Finish Tour'"
+			/>
     </main>
 </template>
 
 <script>
+import VueButton from '../../components/Button';
 import { completeTour } from '../../../services/http-service';
 
 export default {
+	components: {
+		VueButton,
+	},
 	data() {
 		return {
 			title: 'Floor 1',
-			tourStarted: Number,
+			tourStarted: !!this.$store.state.tour.current_way_point,
 			tourId: this.$store.state.tour._id,
 			socket: this.$store.state.socket,
 		};
@@ -223,11 +224,7 @@ export default {
 		},
 	},
 	mounted() {
-		this.tourStarted = !!this.$store.state.tour.current_way_point; // default is 0 meaning false
 		// Display all the tour items when the view is mounted
-		this.$store.state.socket.on('test',function(d) {
-			console.log(d)
-		}); // default is 0 meaning false
 		this.displayTour();
 	}
 };
@@ -261,24 +258,12 @@ main {
 			margin: 0 auto;
 		}
 	}
-	button {
-		position: fixed;
-		right: 0;
-		margin: 0 1rem 0rem 0;
-		bottom: 1rem;
-		background-color: black;
-		color: #f4f4f4;
-		padding: 1rem 1.7rem;
-		border: none;
-		border-radius: 0.5rem;
-		width: 10rem;
 
-		.btn-skip {
-			width: 50%;
-			padding-bottom: 1rem;
-			text-decoration: none;
-			color: white;
-		}
+	.btn-confirm {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		margin: 5%;
 	}
 
 	.painting-point {

@@ -4,11 +4,12 @@ import Router from 'vue-router';
 import Home from './views/Apptour/Home.vue';
 import Tourmap from './views/Apptour/Tourmap.vue';
 import Selection from './views/Apptour/Selection/index.vue';
+import SelectionOverview from './views/Apptour/SelectionOverview/index.vue';
 import AudioScreen from './views/Apptour/AudioScreen/index.vue';
+
 import Dashboard from './views/Dashboard/Dashboard.vue';
 import Floor1 from './views/Dashboard/Floor1.vue';
 import Floor0 from './views/Dashboard/Floor0.vue';
-// import SelectionOverview from './views/SelectionOverview/index.vue';
 
 Vue.use(Router);
 
@@ -35,7 +36,7 @@ function createRouter() {
 				meta: {
 					title: 'My Tour',
 					returnPath: '/',
-					returnLabel: '',
+					returnLabel: 'Cancel',
 				},
 			},
 			{
@@ -45,7 +46,17 @@ function createRouter() {
 				meta: {
 					title: 'Create your Tour',
 					returnPath: '/',
-					returnLabel: '',
+					returnLabel: 'Overview',
+				},
+			},
+			{
+				path: '/tour-overview',
+				name: 'Tour overview',
+				component: SelectionOverview,
+				meta: {
+					title: 'Your Themes',
+					returnPath: '/tour-select',
+					returnLabel: 'Select',
 				},
 			},
 			{
@@ -55,7 +66,7 @@ function createRouter() {
 				meta: {
 					title: 'More about the painting',
 					returnPath: '/tour-map',
-					returnLabel: '',
+					returnLabel: 'Map',
 				},
 			},
 			{
@@ -88,12 +99,6 @@ function createRouter() {
 					returnLabel: '',
 				},
 			},
-			// {
-			// 	path: '/selection-overview',
-			// 	name: 'selection overview',
-			// 	component: SelectionOverview,
-			// 	meta: { title: 'This is your Tour' },
-			// },
 		],
 	});
 }

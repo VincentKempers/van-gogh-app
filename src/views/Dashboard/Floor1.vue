@@ -153,15 +153,16 @@ export default {
 		completeTour(tourData, counter) {
 			this.updateTourData(tourData, counter);
 		},
-		sendPosition(tourData, counter) {
+		sendPosition(tourData, counter, paintingId) {
+			console.log(tourData, counter, paintingId);
 		},
 		exitAudio(tourData, counter) {
 		},
 		updateTourData(tourData, counter) {
-			this.floorZeroData.push(counter.activeTour);
-			this.floorOneData.push(counter.activeTour);
-			this.floorTwoData.push(counter.activeTour);
-			this.floorThreeData.push(counter.activeTour);
+			this.floorZeroData.push(counter);
+			this.floorOneData.push(counter);
+			this.floorTwoData.push(counter);
+			this.floorThreeData.push(counter);
 		},
 		generateNewLabel() {
 				const lastLabel = this.labels[this.labels.length - 1];
@@ -199,7 +200,7 @@ export default {
 				this.labels.splice(0, 1);
 			}
 			this.fillData();
-		}
+		},
     }
   };
 </script>

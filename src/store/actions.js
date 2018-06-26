@@ -11,3 +11,7 @@ export function connectSocket({ commit }, socketIo) {
 export function disconnectSocket({ commit }) {
 	commit(types.DISCONNECT_SOCKET);
 }
+
+export function selectThemes({ commit }, themes_payload) {
+	commit(types.ADD_THEME_SELECTION, themes_payload);
+}

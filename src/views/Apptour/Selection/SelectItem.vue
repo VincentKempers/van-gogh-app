@@ -66,13 +66,13 @@
 			&:focus {
 				outline: none;
 				& + label {
-					opacity: .7;
+					opacity: .6;
 				}
 			}
 
 			&:checked {
 				& + label {
-					opacity: .7;
+					opacity: .6;
 				}
 			}
 		}
