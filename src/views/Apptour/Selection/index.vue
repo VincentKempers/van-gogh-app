@@ -39,6 +39,7 @@
 					>
 						<selected-item :theme="theme" />
 					</li>
+
 				</transition-group>
 
 				<vue-button
@@ -69,6 +70,9 @@
 			</transition-group>
 
 			<footer>
+				<p v-if="selectedThemes.length === 1">
+					Add one more theme
+				</p>
 				<transition-group
 					tag="ul"
 					name="selected-item"
@@ -86,7 +90,7 @@
 				<vue-button
 					:onClick="confirmTour"
 					:isDisabled="isDisabled"
-					:btnText="'Complete'"
+					:btnText="'Confirm'"
 					:btnType="'submit'"
 				/>
 			</footer>
@@ -236,6 +240,10 @@
 	}
 
 	.item-container {
+	}
+
+	p {
+		margin-left: 5%;
 	}
 
 

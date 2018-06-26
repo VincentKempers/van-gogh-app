@@ -273,4 +273,20 @@ main {
 		}
 	}
 }
+
+circle {
+	// animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+//   0% {
+//     filter: drop-shadow(0 0 0 0 rgba(204,169,44, 0.4));
+//   }
+//   70% {
+//       filter: drop-shadow(0 0 0 10px rgba(204,169,44, 0));
+//   }
+//   100% {
+//       filter: drop-shadow((204 169 44 0);
+//   }
+}
 </style>
