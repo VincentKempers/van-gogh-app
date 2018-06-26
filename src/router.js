@@ -10,6 +10,7 @@ import AudioScreen from './views/Apptour/AudioScreen/index.vue';
 import Dashboard from './views/Dashboard/Dashboard.vue';
 import Floor1 from './views/Dashboard/Floor1.vue';
 import Floor0 from './views/Dashboard/Floor0.vue';
+import UserTour from './views/Dashboard/UserTour.vue';
 
 Vue.use(Router);
 
@@ -93,6 +94,16 @@ function createRouter() {
 				path: '/dashboard/floor-1',
 				name: 'floor-1',
 				component: Floor1,
+				meta: {
+					title: 'MMT Dashboard',
+					returnPath: '',
+					returnLabel: '',
+				},
+			},
+			{
+				path: '/dashboard/user/:id',
+				name: 'User tour detail',
+				component: UserTour,
 				meta: {
 					title: 'MMT Dashboard',
 					returnPath: '',

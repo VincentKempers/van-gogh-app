@@ -60,6 +60,12 @@ const HttpService = {
 			body: data,
 		});
 	},
+
+	getUserTour(deviceId) {
+		console.log(deviceId);
+
+		return fetch(`/api/device-detail/${deviceId}`);
+	},
 };
 
 module.exports = HttpService;

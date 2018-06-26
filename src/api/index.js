@@ -242,4 +242,13 @@ router.put('/complete-tour', async (req, res) => {
 	});
 });
 
+router.get('/device-detail/:deviceId', async (req, res) => {
+	const { deviceId } = req.params;
+	console.log(req.params);
+
+	Tour.findOne({ device_id: deviceId }).then(tour => {
+		res.send(tour);
+	});
+});
+
 module.exports = router;
