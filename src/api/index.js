@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const uuidv4 = require('uuid/v4');
 
 const Tour = require('../models/Tour');
 
@@ -19,11 +20,11 @@ const exampleTourComplete = [
 		theme: 'changing techniques',
 		audio: [
 			{
-				title: '',
+				title: 'In their home',
 				audio_url: '50a_DUT.wav',
 			},
 			{
-				title: '',
+				title: 'A shocking response',
 				audio_url: '50b_DUT.wav',
 			},
 		],
@@ -41,11 +42,11 @@ const exampleTourComplete = [
 		theme: 'a different mind',
 		audio: [
 			{
-				title: '',
+				title: 'Smoking a lot',
 				audio_url: '41a_DUT.wav',
 			},
 			{
-				title: '',
+				title: "A look into Van Gogh's classroom",
 				audio_url: '41b_0_DUT.wav',
 			},
 		],
@@ -63,7 +64,7 @@ const exampleTourComplete = [
 		theme: 'the modern portrait',
 		audio: [
 			{
-				title: '',
+				title: 'Scientific theories',
 				audio_url: '14a_DUT.wav',
 			},
 		],
@@ -80,7 +81,7 @@ const exampleTourComplete = [
 		theme: 'color effects',
 		audio: [
 			{
-				title: '',
+				title: 'Love is in the air',
 				audio_url: '18a_DUT.wav',
 			},
 		],
@@ -97,7 +98,7 @@ const exampleTourComplete = [
 		theme: 'the wealth of nature',
 		audio: [
 			{
-				title: '',
+				title: 'A trio',
 				audio_url: '2a_DUT.wav',
 			},
 		],
@@ -114,7 +115,7 @@ const exampleTourComplete = [
 		theme: 'in search of perfect light',
 		audio: [
 			{
-				title: '',
+				title: 'Full of light',
 				audio_url: '76a_DUT.wav',
 			},
 		],
@@ -131,15 +132,15 @@ const exampleTourComplete = [
 		theme: 'color effects',
 		audio: [
 			{
-				title: '',
+				title: 'A house with a plan',
 				audio_url: '4a_DUT.wav',
 			},
 			{
-				title: '',
+				title: 'Big things in a little house',
 				audio_url: '4b_1a_DUT.wav',
 			},
 			{
-				title: '',
+				title: 'A guest',
 				audio_url: '4b_1b_DUT.wav',
 			},
 		],
@@ -156,11 +157,11 @@ const exampleTourComplete = [
 		theme: 'painter friend',
 		audio: [
 			{
-				title: '',
+				title: "Gaugiun's Chair",
 				audio_url: '53a_DUT.wav',
 			},
 			{
-				title: '',
+				title: 'Compare the chairs',
 				audio_url: '53b_0_DUT.wav',
 			},
 		],
@@ -169,7 +170,7 @@ const exampleTourComplete = [
 
 router.post('/tour-select', async (req, res) => {
 	const tour = new Tour({
-		device_id: 'sha12u3812',
+		device_id: uuidv4(),
 		start_tour_time: getCurrentDate(),
 		tour: exampleTourComplete,
 	});

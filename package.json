@@ -39,6 +39,7 @@
 		"dotenv": "^6.0.0",
 		"mongoose": "^5.1.4",
 		"socket.io": "^2.1.1",
+		"uuid": "^3.2.1",
 		"vue": "^2.4.4",
 		"vue-chartjs": "^3.3.1",
 		"vue-router": "^2.7.0",

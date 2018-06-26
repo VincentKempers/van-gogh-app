@@ -46,7 +46,7 @@ function createRouter() {
 				name: 'Tour select',
 				component: Selection,
 				meta: {
-					title: 'Create your Tour',
+					title: 'Choose your themes',
 					returnPath: '/',
 					returnLabel: 'Overview',
 				},
