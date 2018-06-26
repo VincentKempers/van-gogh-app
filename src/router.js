@@ -10,7 +10,7 @@ import AudioScreen from './views/Apptour/AudioScreen/index.vue';
 import Dashboard from './views/Dashboard/Dashboard.vue';
 import Floor1 from './views/Dashboard/Floor1.vue';
 import Floor0 from './views/Dashboard/Floor0.vue';
-import UserTour from './views/Dashboard/UserTour.vue';
+import UserTour from './views/Dashboard/UserTour/index.vue';
 import PaintingDetails from './views/Dashboard/PaintingDetails.vue';
 
 Vue.use(Router);
