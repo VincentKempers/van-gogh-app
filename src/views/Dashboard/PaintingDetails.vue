@@ -7,13 +7,17 @@
 		<section class="linechart">
 			<h2>Floor 1</h2>
 			<line-chart></line-chart>
+			<h2>Devices</h2>
+			<ul>
+				
+			</ul>
 		</section>
 		<section class="overview-navigation">
 				<div>
                     <h3>Meta</h3>
                     <LazyImage
-                        :src="'/assets/images/' + theme.imageUrl"
-                        :alt="theme.description"
+                        :src="'/assets/images/' + images.imageUrl"
+                        :alt="images.description"
                     />
                 </div>
 		</section>
@@ -23,21 +27,105 @@
 
 <script>
     import LineChart from '../../components/Charts/LineChart.vue';
-    import { generateFakeTime, createInterval } from '../../../services/helpers.js';
+	import { generateFakeTime, createInterval } from '../../../services/helpers.js';
+	import LazyImage from '../../components/LazyImage.vue';
 
 	export default {
 		components: {
-			LineChart
+			LineChart,
+			LazyImage
         },
         props: ["src", "alt"],
 		data() {
 			return {
 				paintingNum: this.$route.params.id,
-				socket: this.$store.state.socket
+                socket: this.$store.state.socket,
+                images: [
+					{
+                        'number': '50',
+                        'description': 'the famous potatoeaters piece of van Gogh',
+						'imageUrl': 'aardappeleters-min.jpg'
+					},
+					{
+                        'number': '28',
+                        'description': 'Art itself',
+						'imageUrl': 'courtisane-min.jpg'
+					},
+					{
+						'number': '16',
+						'description': 'The theme. An image of a woman in a blue dress to depict the theme Legacy of Van Gogh',
+						'imageUrl': 'deBlauweJapon-min.png'
+					},
+					{
+						'number': '13',
+						'description': 'The theme. An image of a portrait of Vincent\'s brother Theo to depict the theme Family Van Gogh',
+						'imageUrl': 'portretTheo-min.jpg'
+					},
+					{
+						'number': '41',
+						'description': 'The theme. An image of red cabbages and onions to depict the theme Learning by doing',
+						'imageUrl': 'rodeKolenUi-min.jpg'
+					},
+					{
+						'number': '55',
+						'description': 'The theme. An image of a self portrait of Vincent with a grey felt hat to depict the theme The modern portrait',
+						'imageUrl': 'grijzeVilthoed-min.jpg'
+					},
+					{
+						'number': '38',
+						'description': 'The theme. An image of people eating potatoes to depict the theme Changing techniques',
+						'imageUrl': 'aardappeleters-min.jpg'
+					},
+					{
+						'number': '18',
+						'description': 'The theme. An image of Sunflowers to depict the theme Simplicity',
+						'imageUrl': 'zonnebloemen-min.jpg'
+					},
+					{
+						'number': '14',
+						'description': 'The theme. An image of a wheatfield to depict the theme The wealth of nature',
+						'imageUrl': 'korenveld-min.jpg'
+					},
+					{
+						'number': '30',
+						'description': 'The theme. An image of self portrait as painter to depict the theme Driven and goal oriented',
+						'imageUrl': 'portretAlsSchilder-min.jpg'
+					},
+					{
+						'number': '2',
+						'description': 'The theme. An image of the seascape new les saintes-maties-de-la-mer to depict the theme Color effects',
+						'imageUrl': 'zeegezichtSaintLeMer-min.jpg'
+					},
+					{
+						'number': '29',
+						'description': 'The theme. An image of the hospital garden to depict the theme Work as a medicine',
+						'imageUrl': 'tuinVanZiekenhuis-min.jpg'
+					},
+					{
+						'number': '53',
+						'description': 'The theme. An image of almond blossoms to depict the theme In search of perfect light',
+						'imageUrl': 'amandelbloesem-min.jpg'
+					},
+					{
+						'number': '37',
+						'description': 'The theme. An image of a sower to depict the theme Conserving Van Gogh',
+						'imageUrl': 'zaaier-min.jpg'
+					},
+					{
+						'number': '4',
+						'description': 'The theme. An image of a skeleton who is smoking to depict the theme A different mind',
+						'imageUrl': 'skeletSigaret-min.jpg'
+					},
+					{
+						'number': '76',
+						'description': 'The theme. An image of a skeleton who is smoking to depict the theme A different mind',
+						'imageUrl': 'skeletSigaret-min.jpg'
+					}
+				]
 			};
 		},
-		methods: {
-			
+		mounted() {
+			console.log(this.paintingNum);
 		}
 	};
 </script>
@@ -110,7 +198,16 @@ header {
 
 		}
 		.overview-navigation {
+			border-left: 3px solid;
+			-webkit-border-image: 
+      		-webkit-gradient(linear, 0 0, 0 100%, from(white), to(rgba(0, 0, 0, 0))) 1 100%;
+    		-webkit-border-image: -webkit-linear-gradient(white, rgba(0, 0, 0, 0)) 1 100%;
+    		-moz-border-image: -moz-linear-gradient(white, rgba(0, 0, 0, 0)) 1 100%;    
+    		-o-border-image: -o-linear-gradient(white, rgba(0, 0, 0, 0)) 1 100%;
+    		border-image:linear-gradient(to bottom, white, rgba(0, 0, 0, 0)) 1 100%;
+            padding: .7em;
             div {
+                
 			    h3 {
                     color:white;
                 }
