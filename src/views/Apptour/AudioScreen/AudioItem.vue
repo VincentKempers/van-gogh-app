@@ -5,6 +5,7 @@
 			backgroundPosition: '0 ' + index * -8 + 'rem'
 		}"
 	>
+		<h2>{{ audio.title }}</h2>
 		<button
 			@click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))"
 			aria-label="playPause"
@@ -86,17 +87,24 @@
 <style lang="scss" scoped>
 	article {
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
-		background: #3a3a3a;
-		width: calc(100% - 1.6rem);
+		// width: ;
 		height: 8rem;
-		margin: 0 auto;
+		margin: 0 5%;
 		margin-bottom: 1rem;
+		padding: 0 5%;
 		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
 		background-repeat: no-repeat;
 		background-size: cover;
+	}
+
+	h2 {
+		max-width: 70%;
+    	// word-break: break-all;
+		color: #f4f4f4;
+		text-shadow: 2px 2px 2px #3a3a3a;
 	}
 
 	button {
