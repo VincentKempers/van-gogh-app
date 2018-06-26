@@ -1,13 +1,18 @@
 <template>
-	<LazyImage :src="'/assets/images/' + theme.imageUrl" />
+	<div>
+		<span class="btn-close">&times;</span>
+		<LazyImage :src="'/assets/images/' + theme.imageUrl" />
+	</div>
 </template>
 
 <script>
 	import LazyImage from '../../../components/LazyImage.vue';
+	import IconClose from '../../../components/icons/IconClose.vue';
 
 	export default {
 		components: {
-			LazyImage
+			LazyImage,
+			IconClose,
 		},
 		props: ['theme']
 	};
@@ -28,6 +33,17 @@
 
 	p {
 		position: absolute;
+	}
+
+	.btn-close {
+		position: absolute;
+		top: 0rem;
+		right: -.5rem;
+		width: 1rem;
+		height: 1rem;
+		background-color: #f3f3f3;
+		border-radius: 1rem;
+		text-align: center;
 	}
 
 </style>
