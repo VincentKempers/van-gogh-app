@@ -5,18 +5,24 @@
 			backgroundPosition: '0 ' + index * -8 + 'rem'
 		}"
 	>
+		<h2>{{ audio.title }}</h2>
+
+		<audio
+			controls
+			v-if="noJavascript"
+		>
+			<source :src="`/assets/audio/${audio.audio_url}`" type="audio/wav">
+			Your browser does not support the audio element and has javascript turned of
+		</audio>
+
 		<button
+			v-else
 			@click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))"
 			aria-label="playPause"
 		>
-
 			<icon-play v-if="!isPlaying"/>
 			<icon-pause v-if="isPlaying" />
-
 		</button>
-		<!-- <no-script>
-			Add audio tag here
-		</no-script> -->
 	</article>
 </template>
 
@@ -43,6 +49,7 @@
 				audioFile: Object,
 				isPlaying: false,
 				socket: this.$store.state.socket,
+				noJavascript: true,
 			};
 		},
 		methods: {
@@ -75,6 +82,9 @@
 				this.socket.emit('sendPosition', this.tourId, paintingId, this.locatedFloor);
 			}
 		},
+		mounted() {
+			this.noJavascript = false;
+		},
 		beforeDestroy() {
 			// Stop the audio when leaving the audioscreen
 			// Does not stop automatically
@@ -86,17 +96,22 @@
 <style lang="scss" scoped>
 	article {
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
-		background: #3a3a3a;
-		width: calc(100% - 1.6rem);
 		height: 8rem;
-		margin: 0 auto;
+		margin: 0 5%;
 		margin-bottom: 1rem;
+		padding: 0 5%;
 		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
 		background-repeat: no-repeat;
 		background-size: cover;
+	}
+
+	h2 {
+		max-width: 70%;
+		color: #f4f4f4;
+		text-shadow: 2px 2px 2px #3a3a3a;
 	}
 
 	button {

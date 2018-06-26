@@ -141,7 +141,7 @@ export default {
 		exitAudio(tourData, counter) {
 		},
 		updateTourData(tourData, counter) {
-				this.floorOneData.push(counter.activeTour);
+				this.floorOneData.push(counter);
 		},
 		generateNewLabel() {
 				const lastLabel = this.labels[this.labels.length - 1];
