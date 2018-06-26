@@ -228,7 +228,6 @@
 		transition: transform .3s;
 	}
 
-	// .selected-item-enter,
 	.selected-item-leave-to {
 		opacity: 0;
 		transition: all .3s;
@@ -236,7 +235,6 @@
 
 	.selected-item-move {
 		transition: transform 1s;
-		// transform: translateY(-100%);
 	}
 
 	.item-container {

@@ -98,7 +98,6 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		// width: ;
 		height: 8rem;
 		margin: 0 5%;
 		margin-bottom: 1rem;
@@ -111,7 +110,6 @@
 
 	h2 {
 		max-width: 70%;
-    	// word-break: break-all;
 		color: #f4f4f4;
 		text-shadow: 2px 2px 2px #3a3a3a;
 	}
