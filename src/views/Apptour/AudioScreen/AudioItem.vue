@@ -6,18 +6,23 @@
 		}"
 	>
 		<h2>{{ audio.title }}</h2>
+
+		<audio
+			controls
+			v-if="noJavascript"
+		>
+			<source :src="`/assets/audio/${audio.audio_url}`" type="audio/wav">
+			Your browser does not support the audio element and has javascript turned of
+		</audio>
+
 		<button
+			v-else
 			@click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))"
 			aria-label="playPause"
 		>
-
 			<icon-play v-if="!isPlaying"/>
 			<icon-pause v-if="isPlaying" />
-
 		</button>
-		<!-- <no-script>
-			Add audio tag here
-		</no-script> -->
 	</article>
 </template>
 
@@ -44,6 +49,7 @@
 				audioFile: Object,
 				isPlaying: false,
 				socket: this.$store.state.socket,
+				noJavascript: true,
 			};
 		},
 		methods: {
@@ -75,6 +81,9 @@
 
 				this.socket.emit('sendPosition', this.tourId, paintingId, this.locatedFloor);
 			}
+		},
+		mounted() {
+			this.noJavascript = false;
 		},
 		beforeDestroy() {
 			// Stop the audio when leaving the audioscreen

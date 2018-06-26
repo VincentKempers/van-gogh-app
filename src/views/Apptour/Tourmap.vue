@@ -34,6 +34,7 @@
 									<path d="M2.14386792,166.428571 L2.14386792,236.428571" id="Line" stroke="#656565" stroke-width="3" stroke-linecap="square"></path>
 									<polygon id="Path-3" stroke="#4a4a4a" stroke-width="3" fill="#D4D4D4" points="51.7354199 39.1753961 51.7354199 164.480408 152.448473 164.480408 152.448473 39.1753961 109.327289 39.1753961 109.327289 81.8658065 63.5669045 81.8658065 63.5669045 39.1753961"></polygon>
 								</g>
+								
 								<g class="painting-point painting-point--50" transform="translate(347.000000, 149.000000)">
 									<router-link tabindex="-1" to="/audio-screen/50">
 										<circle @click="paintingClick($event)" 	id="painting--50" fill="#4a4a4a" cx="15" cy="15" 	r="15"></circle>
@@ -162,10 +163,10 @@
 										</text>
 									</router-link>
 								</g>
+							</g>
 						</g>
-					</g>
-				</svg>
-        </div>
+					</svg>
+			</div>
 
 			<vue-button
 				class="btn-confirm"
@@ -191,6 +192,8 @@ export default {
 			tourId: this.$store.state.tour._id,
 			socket: this.$store.state.socket,
 		};
+	},
+	created() {
 	},
 	methods: {
 		finishTour() {
