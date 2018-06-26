@@ -134,7 +134,7 @@
 body::before {
 	background: none !important;
 }
-header {
+.app--header {
 	display: none !important;
 }
 </style>

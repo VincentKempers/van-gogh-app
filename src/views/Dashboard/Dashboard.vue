@@ -170,7 +170,7 @@ export default {
 body::before {
 	background: none;
 }
-header {
+.app--header {
 	display: none;
 }
 </style>
