@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -9,12 +10,14 @@ module.exports = {
 
 	output: {
 		path: path.resolve(__dirname, '../dist'),
-		publicPath: '/dist/',
+		publicPath: '/assets/',
 		filename: '[name].[hash].js',
 	},
 
 	resolve: {
-		extensions: ['.js', '.vue', '.json'],
+		extensions: ['.js',
+'.vue',
+'.json'],
 		alias: {
 			vue$: 'vue/dist/vue.esm.js',
 			'@': path.resolve('src'),
@@ -48,7 +51,9 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+				use: ['vue-style-loader',
+'css-loader',
+'sass-loader'],
 			},
 		],
 	},
@@ -56,10 +61,10 @@ module.exports = {
 	plugins: isProd
 		? [
 				new webpack.optimize.ModuleConcatenationPlugin(),
-
 				new ExtractTextPlugin({
 					filename: 'common.[hash].css',
 				}),
+				new UglifyJsPlugin(),
 		  ]
 		: [],
 	devServer: {
