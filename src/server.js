@@ -36,8 +36,12 @@ function createAppRenderer(serverBundle, options) {
 
 const appRenderer = (function() {
 	if (isProduction) {
-		const serverBundle = require('../dist/vue-ssr-server-bundle.json');
-		const clientManifest = require('../dist/vue-ssr-client-manifest.json');
+		// const serverBundle = require('../dist/vue-ssr-server-bundle.json');
+		// const clientManifest = require('../dist/vue-ssr-client-manifest.json');
+		// const serverBundle = require(`${__dirname}/dist/vue-ssr-server-bundle.json`);
+		// const clientManifest = require(`${__dirname}/dist/vue-ssr-client-manifest.json`);
+		const serverBundle = require(`${__dirname}/assets/vue-ssr-server-bundle.json`);
+		const clientManifest = require(`${__dirname}/assets/vue-ssr-client-manifest.json`);
 
 		return createAppRenderer(serverBundle, { clientManifest });
 	} else {
