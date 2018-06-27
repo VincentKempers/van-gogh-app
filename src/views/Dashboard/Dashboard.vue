@@ -47,7 +47,7 @@
 <script>
 import LineChart from '../../components/Charts/LineChart.vue';
 
-import { generateFakeTime, createInterval } from '../../../services/helpers.js';
+import { generateFakeTime, createInterval, generateNumber } from '../../../services/helpers.js';
 
 export default {
     name: 'Dashboard',
@@ -55,7 +55,7 @@ export default {
     data () {
       return {
 		  	labels:['09:00', '09:15'],
-			floorZeroData: [0, 1],
+			floorZeroData: [2, 1],
 			floorOneData: [1, 12],
 			floorTwoData: [2, 5],
 			floorThreeData: [2, 5],
@@ -81,12 +81,12 @@ export default {
 		this.socket.on('exitAudio', this.exitAudio);
 
 		// Create a set interval
-		this.dataInterval = createInterval(1000, this.tourInterval);
+		this.dataInterval = createInterval(5000, this.tourInterval);
     },
     methods: {
       fillData () {
 		  this.floorZeroChart = {
-			labels: ['10:00', '12:00'],
+			labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
@@ -106,7 +106,7 @@ export default {
 				]
 			},
 			this.floorTwoChart = {
-				labels: ['10:00', '12:00'],
+				labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
@@ -116,7 +116,7 @@ export default {
 				]
 			}
 			this.floorThreeChart = {
-				labels: ['10:00', '12:00'],
+				labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
@@ -141,25 +141,45 @@ export default {
 		exitAudio(tourData, counter) {
 		},
 		updateTourData(tourData, counter) {
-				this.floorOneData.push(counter);
+			this.floorOneData.push(counter);
+		},
+		generateVisitors() {
+			const labelsLength = this.labels.length;
+			const floorZeroLength = this.floorZeroData.length;
+
+			if (labelsLength !== floorZeroLength) {
+				this.floorZeroData.push(generateNumber(this.floorZeroData[this.floorZeroData.length - 1]));
+				this.floorTwoData.push(generateNumber(this.floorTwoData[this.floorTwoData.length - 1]));
+				this.floorThreeData.push(generateNumber(this.floorThreeData[this.floorThreeData.length - 1]));
+			}
+
+			if (labelsLength === 8) {
+				this.floorZeroData.splice(0, 1);
+				this.floorTwoData.splice(0, 1);
+				this.floorThreeData.splice(0, 1);
+			}
 		},
 		generateNewLabel() {
-				const lastLabel = this.labels[this.labels.length - 1];
-				const newLabel = generateFakeTime(lastLabel);
-				this.labels.push(newLabel);
+			const lastLabel = this.labels[this.labels.length - 1];
+			const newLabel = generateFakeTime(lastLabel);
+			this.labels.push(newLabel);
 		},
 		tourInterval() {
 			this.generateNewLabel();
 			const floorOneLength = this.floorOneData.length;
 			const labelsLength = this.labels.length;
+
 			if (labelsLength !== floorOneLength) {
 				this.floorOneData.push(this.floorOneData[floorOneLength - 1]);
 			}
+
+			this.generateVisitors();
 
 			if (labelsLength === 8) {
 				this.floorOneData.splice(0, 1);
 				this.labels.splice(0, 1);
 			}
+
 			this.fillData();
 		}
     }
