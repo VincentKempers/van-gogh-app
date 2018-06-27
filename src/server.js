@@ -75,6 +75,8 @@ server.use('/api', api);
 
 server.get('*', (req, res) => {
 	if (isProduction) {
+		console.log(req.originalUrl);
+
 		response(appRenderer, req, res);
 	} else {
 		appRenderer.then(result => {
