@@ -55,15 +55,15 @@ export default {
     data () {
       return {
 		  	labels:['09:00', '09:15'],
-			floorZeroData: [2, 1],
+			floorZeroData: [2, 4],
 			floorOneData: [1, 12],
-			floorTwoData: [2, 5],
-			floorThreeData: [2, 5],
+			floorTwoData: [9, 5],
+			floorThreeData: [2, 7],
 			floorZeroChart: null,
 			floorOneChart: null,
 			floorTwoChart: null,
 			floorThreeChart: null,
-			socket: null
+			socket: null,
       }
     },
     created () {
@@ -85,15 +85,15 @@ export default {
     },
     methods: {
       fillData () {
-		  this.floorZeroChart = {
-			labels: this.labels,
+		  	this.floorZeroChart = {
+				labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
 						backgroundColor: '#f87979',
 						data: this.floorZeroData
 					},
-				]
+				],
 			},
 		  this.floorOneChart = {
 			labels: this.labels,
@@ -103,7 +103,7 @@ export default {
 						backgroundColor: '#f87979',
 						data: this.floorOneData
 					},
-				]
+				],
 			},
 			this.floorTwoChart = {
 				labels: this.labels,
@@ -113,7 +113,7 @@ export default {
 						backgroundColor: '#f87979',
 						data: this.floorTwoData
 					},
-				]
+				],
 			}
 			this.floorThreeChart = {
 				labels: this.labels,
@@ -123,7 +123,7 @@ export default {
 						backgroundColor: '#f87979',
 						data: this.floorThreeData
 					},
-				]
+				],
 			}
       },
       fetchData () {},
