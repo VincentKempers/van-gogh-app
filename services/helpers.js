@@ -4,6 +4,15 @@ exports.getCurrentDate = function() {
 	return date.toUTCString();
 };
 
+exports.formatDate = function(data) {
+	const date = new Date(data);
+	const year = date.getFullYear();
+	const month = date.getMonth();
+	const day = date.getDay();
+
+	return `${day}-${month}-${year}`;
+};
+
 exports.getTime = function(data) {
 	if (!data) {
 		return '-';

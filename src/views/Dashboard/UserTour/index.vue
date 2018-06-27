@@ -4,6 +4,10 @@
 			<h1>MMT Dashboard</h1>
 		</nav>
 		<main>
+			<header>
+				<p>Device-ID: {{ userTour.device_id }}</p>
+				<p>Date: {{ getDate(userTour.start_tour_time) }}</p>
+			</header>
 			<table>
 				<thead>
 					<tr>
@@ -51,7 +55,7 @@
 
 <script>
 	import { getUserTour } from '../../../../services/http-service.js';
-	import { getTime, getTimeDiff } from '../../../../services/helpers.js';
+	import { getTime, getTimeDiff, formatDate } from '../../../../services/helpers.js';
 	import LazyImage from '../../../components/LazyImage.vue';
 
 	export default {
@@ -68,6 +72,8 @@
 			getUserTour(this.$route.params.id)
 				.then(res => res.json())
 				.then(json => {
+					json.tour = this.sortTime(json);
+
 					this.userTour = json;
 				});
 		},
@@ -77,7 +83,23 @@
 			},
 			diffTime(dateOne, dateTwo) {
 				return getTimeDiff(dateOne, dateTwo);
-			}
+			},
+			getDate(date) {
+				return formatDate(date);
+			},
+			sortTime(data) {
+				// get nan https://stackoverflow.com/questions/17557807/javascript-how-do-you-sort-an-array-that-includes-nans
+				const sorted = data.tour.sort(function (a, b) {
+					  const diff = new Date(a.start_time) - new Date(b.start_time);
+					  if(!isFinite(diff)) {
+						  return !isFinite(a.start_time) ? 1 : -1;
+					  } else {
+						  return diff;
+					  }
+				});
+
+				return sorted;
+			},
 		}
 	}
 </script>
@@ -106,6 +128,9 @@
 
 	main {
 		display: flex;
+		flex-direction: column;
+		max-width: 80vw;
+		margin: auto;
 	}
 
 	ul {
