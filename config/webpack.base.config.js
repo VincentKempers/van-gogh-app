@@ -9,8 +9,8 @@ module.exports = {
 	devtool: isProd ? false : '#cheap-module-source-map',
 
 	output: {
-		path: path.resolve(__dirname, '../dist'),
-		publicPath: '/assets/',
+		path: path.resolve(__dirname, '../src/assets/dist'),
+		publicPath: '/assets/dist',
 		filename: '[name].[hash].js',
 	},
 
