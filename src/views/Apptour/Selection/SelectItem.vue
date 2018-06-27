@@ -7,7 +7,6 @@
 			:id="theme.title"
 		>
 		<label :for="theme.title">
-			<!-- :style="itemStyle" -->
 			<LazyImage
 				:src="'/assets/images/' + theme.imageUrl"
 				:alt="theme.description"

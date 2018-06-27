@@ -16,6 +16,10 @@ export default {
 						{
 							ticks: {
 								beginAtZero: true,
+								stepSize: 2,
+								suggestedMin: 0,
+								suggestedMax: 16,
+								maxTicksLimit: 6
 							},
 							gridLines: {
 								display: true,

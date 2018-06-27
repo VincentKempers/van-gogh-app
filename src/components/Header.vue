@@ -1,5 +1,5 @@
 <template>
-	<header>
+	<header class="app--header">
 		<router-link
 			:to="returnPath"
 			v-if="returnPath"

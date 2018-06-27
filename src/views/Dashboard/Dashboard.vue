@@ -47,7 +47,7 @@
 <script>
 import LineChart from '../../components/Charts/LineChart.vue';
 
-import { generateFakeTime, createInterval } from '../../../services/helpers.js';
+import { generateFakeTime, createInterval, generateNumber } from '../../../services/helpers.js';
 
 export default {
     name: 'Dashboard',
@@ -55,15 +55,15 @@ export default {
     data () {
       return {
 		  	labels:['09:00', '09:15'],
-			floorZeroData: [0, 1],
+			floorZeroData: [2, 4],
 			floorOneData: [1, 12],
-			floorTwoData: [2, 5],
-			floorThreeData: [2, 5],
+			floorTwoData: [9, 5],
+			floorThreeData: [2, 7],
 			floorZeroChart: null,
 			floorOneChart: null,
 			floorTwoChart: null,
 			floorThreeChart: null,
-			socket: null
+			socket: null,
       }
     },
     created () {
@@ -81,19 +81,19 @@ export default {
 		this.socket.on('exitAudio', this.exitAudio);
 
 		// Create a set interval
-		this.dataInterval = createInterval(1000, this.tourInterval);
+		this.dataInterval = createInterval(5000, this.tourInterval);
     },
     methods: {
       fillData () {
-		  this.floorZeroChart = {
-			labels: ['10:00', '12:00'],
+		  	this.floorZeroChart = {
+				labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
 						backgroundColor: '#f87979',
 						data: this.floorZeroData
 					},
-				]
+				],
 			},
 		  this.floorOneChart = {
 			labels: this.labels,
@@ -103,27 +103,27 @@ export default {
 						backgroundColor: '#f87979',
 						data: this.floorOneData
 					},
-				]
+				],
 			},
 			this.floorTwoChart = {
-				labels: ['10:00', '12:00'],
+				labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
 						backgroundColor: '#f87979',
 						data: this.floorTwoData
 					},
-				]
+				],
 			}
 			this.floorThreeChart = {
-				labels: ['10:00', '12:00'],
+				labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
 						backgroundColor: '#f87979',
 						data: this.floorThreeData
 					},
-				]
+				],
 			}
       },
       fetchData () {},
@@ -141,25 +141,45 @@ export default {
 		exitAudio(tourData, counter) {
 		},
 		updateTourData(tourData, counter) {
-				this.floorOneData.push(counter);
+			this.floorOneData.push(counter);
+		},
+		generateVisitors() {
+			const labelsLength = this.labels.length;
+			const floorZeroLength = this.floorZeroData.length;
+
+			if (labelsLength !== floorZeroLength) {
+				this.floorZeroData.push(generateNumber(this.floorZeroData[this.floorZeroData.length - 1]));
+				this.floorTwoData.push(generateNumber(this.floorTwoData[this.floorTwoData.length - 1]));
+				this.floorThreeData.push(generateNumber(this.floorThreeData[this.floorThreeData.length - 1]));
+			}
+
+			if (labelsLength === 8) {
+				this.floorZeroData.splice(0, 1);
+				this.floorTwoData.splice(0, 1);
+				this.floorThreeData.splice(0, 1);
+			}
 		},
 		generateNewLabel() {
-				const lastLabel = this.labels[this.labels.length - 1];
-				const newLabel = generateFakeTime(lastLabel);
-				this.labels.push(newLabel);
+			const lastLabel = this.labels[this.labels.length - 1];
+			const newLabel = generateFakeTime(lastLabel);
+			this.labels.push(newLabel);
 		},
 		tourInterval() {
 			this.generateNewLabel();
 			const floorOneLength = this.floorOneData.length;
 			const labelsLength = this.labels.length;
+
 			if (labelsLength !== floorOneLength) {
 				this.floorOneData.push(this.floorOneData[floorOneLength - 1]);
 			}
+
+			this.generateVisitors();
 
 			if (labelsLength === 8) {
 				this.floorOneData.splice(0, 1);
 				this.labels.splice(0, 1);
 			}
+
 			this.fillData();
 		}
     }
@@ -170,7 +190,7 @@ export default {
 body::before {
 	background: none;
 }
-header {
+.app--header {
 	display: none;
 }
 </style>
@@ -183,7 +203,7 @@ header {
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0 2rem;
+		padding: 0 1em;
 		background-color: rgba(0, 0, 0, 1);
 		h1 {
 			color: white;
@@ -213,7 +233,6 @@ header {
 			padding: 0;
 			list-style: none;
 			@media screen and (min-width: 70em) {
-				width: 75%;
 				margin: 2em;
 				align-self: center;
 			}
@@ -229,6 +248,7 @@ header {
 						max-width:86vw;
 						h3 {
 							color: white;
+							padding-left: .7em;
 						}
 					}
 				}
