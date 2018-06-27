@@ -185,15 +185,6 @@ export default {
     }
   };
   </script>
-  
-<style lang="scss">
-body::before {
-	background: none;
-}
-.app--header {
-	display: none;
-}
-</style>
 
 <style lang="scss" scoped>
 .dashboard--content {

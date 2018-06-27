@@ -145,15 +145,6 @@
 	};
 </script>
 
-<style lang="scss">
-body::before {
-	background: none !important;
-}
-.app--header {
-	display: none !important;
-}
-</style>
-
 <style lang="scss" scoped>
     .dashboard-painting {
         background-color: black;
