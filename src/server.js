@@ -68,8 +68,8 @@ function response(app, req, res) {
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
-server.use('/', express.static(path.resolve('../dist/')));
-server.use('/assets', express.static(path.resolve('./src/assets/')));
+server.use('/', express.static(`${__dirname}/dist`));
+server.use('/assets', express.static(`${__dirname}/assets`));
 
 server.use('/api', api);
 
