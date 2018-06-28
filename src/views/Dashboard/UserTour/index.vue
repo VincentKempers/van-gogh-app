@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<nav>
-			<h1>MMT Dashboard</h1>
-		</nav>
+		<nav-dash></nav-dash>
 		<main>
 			<header>
 				<p>Device-ID: {{ userTour.device_id }}</p>
@@ -56,11 +54,12 @@
 <script>
 	import { getUserTour } from '../../../../services/http-service.js';
 	import { getTime, getTimeDiff, formatDate } from '../../../../services/helpers.js';
+	import NavDash from '../../../components/Navdash.vue';
 	import LazyImage from '../../../components/LazyImage.vue';
 
 	export default {
 		components: {
-			LazyImage
+			LazyImage, NavDash
 		},
 		data() {
 			return {

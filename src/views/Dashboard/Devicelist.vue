@@ -2,16 +2,28 @@
     <div class="dashboard-devicelist">
         <nav-dash></nav-dash>
         <main id="back-to-top">
+			<section class="devicelist">
+				<h2>Floor 0 <span>all devices on this floor right now</span></h2>
+				<p>This section shows you all active roaming user devices on this floor right now</p>
+            </section>
             <section class="devicelist">
 				<h2>Floor 1 <span>all devices on this floor right now</span></h2>
-				<p>This page shows you all active roaming user devices on this floor right now</p>
+				<p>This section shows you all active roaming user devices on this floor right now</p>
                 <ul>
-                    <li v-for="item in devicelist">
+                    <li v-for="(item, index) in devicelist" :key="index">
 						<router-link :to="`/dashboard/user/${item.device_id}`">
 							{{ item.device_id.substr(0, 4) }}
 						</router-link>
                     </li>
                 </ul>
+            </section>
+			<section class="devicelist">
+				<h2>Floor 2 <span>all devices on this floor right now</span></h2>
+				<p>This section shows you all active roaming user devices on this floor right now</p>
+            </section>
+			<section class="devicelist">
+				<h2>Floor 3 <span>all devices on this floor right now</span></h2>
+				<p>This section shows you all active roaming user devices on this floor right now</p>
             </section>
         </main>
     </div>
@@ -56,7 +68,7 @@ export default {
 		background-color: black;
 		@media screen and (min-width: 40em) {
 			display: flex;
-			flex-direction: row;
+			flex-direction: column;
 			justify-content: space-between;
 		}
 		.devicelist {
