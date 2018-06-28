@@ -266,10 +266,13 @@ export default {
 					}
 					&:focus {
 						background-color: #7c7c7c;
+						transition: all .3s ease;
 						div {
 							background-color: #7c7c7c;
+							transition: all .3s ease;
 							div {
 								background-color: #7c7c7c;
+								transition: all .3s ease;
 							}
 						}
 					}
