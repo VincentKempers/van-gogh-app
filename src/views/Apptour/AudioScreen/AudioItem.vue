@@ -16,7 +16,6 @@
 		</audio>
 
 		<button
-			v-else
 			@click="((isAudioPlaying === false) || isPlaying) && (isPlaying ? pauseAudio() : playAudio(audio.audio_url))"
 			aria-label="playPause"
 		>
@@ -27,94 +26,98 @@
 </template>
 
 <script>
-	import iconPlay from '../../../components/icons/iconPlay.vue';
-	import iconPause from '../../../components/icons/iconPause.vue';
+import iconPlay from '../../../components/icons/iconPlay.vue';
+import iconPause from '../../../components/icons/iconPause.vue';
 
-	export default {
-		props: [
-			'audio',
-			'tourId',
-			'togglePlayState',
-			'isAudioPlaying',
-			'imageUrl',
-			'index',
-			'locatedFloor',
-		],
-		components: {
-			iconPlay,
-			iconPause,
-		},
-		data() {
-			return {
-				audioFile: Object,
-				isPlaying: false,
-				socket: this.$store.state.socket,
-				noJavascript: true,
-			};
-		},
-		methods: {
-			playAudio(sound) {
-				if (sound) {
-					const audioUrl = `/assets/audio/${sound}`;
-					this.audioFile = new Audio(audioUrl);
-					this.audioFile.play();
+export default {
+	props: [
+		'audio',
+		'tourId',
+		'togglePlayState',
+		'isAudioPlaying',
+		'imageUrl',
+		'index',
+		'locatedFloor',
+	],
+	components: {
+		iconPlay,
+		iconPause,
+	},
+	data() {
+		return {
+			audioFile: Object,
+			isPlaying: false,
+			socket: this.$store.state.socket,
+			noJavascript: true,
+		};
+	},
+	methods: {
+		playAudio(sound) {
+			console.log('t sound');
 
-					this.isPlaying = true;
-					// Send to parent
-					this.togglePlayState(true);
-					this.getPosition();
-				}
-			},
-			pauseAudio() {
-				if (this.audioFile && this.isPlaying === true) {
-					this.audioFile.pause();
+			if (sound) {
+				console.log(111);
 
-					this.isPlaying = false;
-					// Send to parent
-					this.togglePlayState(false);
-				}
-			},
-			getPosition() {
-				const paintingId = this.$route.params.id;
-				this.$store.state.tour.current_way_point = paintingId;
-				this.$store.state.tour.current_floor = paintingId;
+				const audioUrl = `/assets/audio/${sound}`;
+				this.audioFile = new Audio(audioUrl);
+				this.audioFile.play();
 
-				this.socket.emit('sendPosition', this.tourId, paintingId, this.locatedFloor);
+				this.isPlaying = true;
+				// Send to parent
+				this.togglePlayState(true);
+				this.getPosition();
 			}
 		},
-		mounted() {
-			this.noJavascript = false;
+		pauseAudio() {
+			if (this.audioFile && this.isPlaying === true) {
+				this.audioFile.pause();
+
+				this.isPlaying = false;
+				// Send to parent
+				this.togglePlayState(false);
+			}
 		},
-		beforeDestroy() {
-			// Stop the audio when leaving the audioscreen
-			// Does not stop automatically
-			this.pauseAudio();
-		}
-	};
+		getPosition() {
+			const paintingId = this.$route.params.id;
+			this.$store.state.tour.current_way_point = paintingId;
+			this.$store.state.tour.current_floor = paintingId;
+
+			this.socket.emit('sendPosition', this.tourId, paintingId, this.locatedFloor);
+		},
+	},
+	mounted() {
+		this.noJavascript = false;
+	},
+	beforeDestroy() {
+		// Stop the audio when leaving the audioscreen
+		// Does not stop automatically
+		this.pauseAudio();
+	},
+};
 </script>
 
 <style lang="scss" scoped>
-	article {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		height: 8rem;
-		margin: 0 5%;
-		margin-bottom: 1rem;
-		padding: 0 5%;
-		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+article {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 8rem;
+	margin: 0 5%;
+	margin-bottom: 1rem;
+	padding: 0 5%;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
-		background-repeat: no-repeat;
-	}
+	background-repeat: no-repeat;
+}
 
-	h2 {
-		max-width: 70%;
-		color: #f4f4f4;
-		text-shadow: 2px 2px 2px #3a3a3a;
-	}
+h2 {
+	max-width: 70%;
+	color: #f4f4f4;
+	text-shadow: 2px 2px 2px #3a3a3a;
+}
 
-	button {
-		border: none;
-    	background: none;
-	}
+button {
+	border: none;
+	background: none;
+}
 </style>

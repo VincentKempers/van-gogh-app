@@ -67,3 +67,5 @@ vars.*.env
 
 dist
 src/assets/audio
+
+.vs

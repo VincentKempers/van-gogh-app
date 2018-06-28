@@ -13,7 +13,7 @@ exports.formatDate = function(data) {
 	return `${day}-${month}-${year}`;
 };
 
-exports.getTime = function(data) {
+exports.getTime = function(data, showS) {
 	if (!data) {
 		return '-';
 	}
@@ -21,9 +21,17 @@ exports.getTime = function(data) {
 	const date = new Date(data);
 	const getH = date.getHours();
 	const getM = date.getMinutes();
+	const getS = date.getSeconds();
 
 	const hours = getH < 10 ? `0${getH}` : getH;
 	const minutes = getM < 10 ? `0${getM}` : getM;
+
+	if (showS) {
+		const seconds = getS < 10 ? `0${getS}` : getS;
+		console.log(seconds);
+
+		return `${hours}h ${minutes}m ${seconds}s`;
+	}
 
 	return `${hours}h ${minutes}m`;
 };

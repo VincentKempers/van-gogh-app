@@ -90,7 +90,7 @@ const exampleTourComplete = [
 		id: 9238901,
 		type_tour: 'related',
 		painting: 'The pink orchard',
-		painting_no: '2',
+		painting_no: '02',
 		imageUrl: 'pinkOrchard-min.jpg',
 		floor: 1,
 		origins: 'De roze boomgaard 1888',
@@ -124,7 +124,7 @@ const exampleTourComplete = [
 		id: 9238901,
 		type_tour: 'main tour',
 		painting: 'The yellow house',
-		painting_no: '4',
+		painting_no: '04',
 		imageUrl: 'geleHuis-min.jpg',
 		floor: 1,
 		origins: 'The street 1888',
@@ -247,14 +247,22 @@ router.get('/device-detail/:deviceId', async (req, res) => {
 
 	Tour.findOne({ device_id: deviceId }).then(tour => {
 		res.send(tour);
+		
 	});
 });
 
 router.get('/painting-devices/:paintingId', async (req, res) => {
 	const { paintingId } = req.params;
-
+	
 	Tour.find({ 'tour.painting_no': paintingId }).then(tour => {
+		
 		res.send(tour);
+	});
+});
+
+router.get('/devices', (req, res) => {
+	Tour.find({}).then(tours => {
+		res.send(tours);
 	});
 });
 
