@@ -14,14 +14,6 @@
 		</section>
 		<section class="overview-navigation">
 				<ul>
-					<li class="floor0">
-						<a  href="/dashboard/floor-0">
-							<div>
-								<h3>Floor 0</h3>
-								<line-chart :chartData="floorZeroChart" :width="400" :height="200" />
-							</div>
-						</a>
-					</li>
 					<li class="floor">
 						<a  href="/dashboard/floor-1">
 							<div>
@@ -92,16 +84,31 @@ export default {
 		this.socket.on('exitAudio', this.exitAudio);
 
 		// Create a set interval
-		this.dataInterval = createInterval(1000, this.tourInterval);
+		this.dataInterval = createInterval(3000, this.tourInterval);
+				// gradient color 1
+		this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+		this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)');
+		this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
+		this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+		// gradient color 2
+		this.gradient2 = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+		this.gradient2.addColorStop(0, 'rgb(65, 184, 131, 0.1)');
+		this.gradient2.addColorStop(0.5, 'rgb(65, 184, 131, 0.5)');
+		this.gradient2.addColorStop(1, 'rgb(65, 184, 131, 0.25)');
 	},
 	methods: {
-		fillData() {
+					fillData() {
 			(this.floorZeroChart = {
 				labels: this.labels,
 				datasets: [
 					{
-						label: 'people',
-						backgroundColor: '#f87979',
+						label: 'visitors',
+						pointBorderColor: 'white',
+						borderColor: '#f89842',
+						backgroundColor: this.gradient,
 						data: this.floorZeroData,
 					},
 				],
@@ -110,8 +117,10 @@ export default {
 					labels: this.labels,
 					datasets: [
 						{
-							label: 'people',
-							backgroundColor: '#f87979',
+							label: 'visitors',
+							pointBorderColor: 'white',
+							borderColor: '#f87979',
+							backgroundColor: this.gradient2,
 							data: this.floorOneData,
 						},
 					],
@@ -120,8 +129,10 @@ export default {
 					labels: this.labels,
 					datasets: [
 						{
-							label: 'people',
-							backgroundColor: '#f87979',
+							label: 'visitors',
+							pointBorderColor: 'white',
+							borderColor: '#acd696',
+							backgroundColor: this.gradient3,
 							data: this.floorTwoData,
 						},
 					],
@@ -130,8 +141,10 @@ export default {
 				labels: this.labels,
 				datasets: [
 					{
-						label: 'people',
-						backgroundColor: '#f87979',
+						label: 'visitors',
+						pointBorderColor: 'white',
+						borderColor: '#00abdf',
+						backgroundColor: this.gradient4,
 						data: this.floorThreeData,
 					},
 				],

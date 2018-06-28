@@ -168,7 +168,13 @@ export default {
 		this.socket.emit('Dashboard');
 		this.socket.on('sendPosition', this.sendPosition);
 
-		this.dataInterval = createInterval(5000, this.tourInterval);
+		this.dataInterval = createInterval(3000, this.tourInterval);
+		// gradient color
+		this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+		this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)');
+		this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
+		this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
 	},
 	methods: {
 		fillData() {
@@ -177,7 +183,8 @@ export default {
 				datasets: [
 					{
 						label: 'visitors',
-						backgroundColor: '#f87979',
+						borderColor: '#f87979',
+						backgroundColor: this.gradient,
 						data: this.paintingData,
 					},
 				],

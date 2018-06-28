@@ -8,7 +8,7 @@
 			<line-chart :chartData="floorOneChart"></line-chart>
 			<h2>Paintings</h2>
 			<ul>
-				<li v-for="(item,index) in images" :key="index" :style="{backgroundImage:`url(/assets/images/${item.imageUrl})`}">
+				<li v-for="(item, index) in images" :key="index" :style="{backgroundImage:`url(/assets/images/${item.imageUrl})`}">
 					<router-link :to="'/dashboard/floor-1/' + item.number">
 							{{item.number}}
 					</router-link>
@@ -181,16 +181,32 @@ export default {
 		this.socket.on('exitAudio', this.exitAudio);
 
 		// Create a set interval
-		this.dataInterval = createInterval(5000, this.tourInterval);
+		this.dataInterval = createInterval(3000, this.tourInterval);
+
+				// gradient color 1
+		this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+		this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)');
+		this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
+		this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
+
+		// gradient color 2
+		this.gradient2 = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
+
+		this.gradient2.addColorStop(0, 'rgb(65, 184, 131, 0.1)');
+		this.gradient2.addColorStop(0.5, 'rgb(65, 184, 131, 0.5)');
+		this.gradient2.addColorStop(1, 'rgb(65, 184, 131, 0.25)');
 	},
 	methods: {
-		fillData() {
+			fillData() {
 			(this.floorZeroChart = {
 				labels: this.labels,
 				datasets: [
 					{
 						label: 'visitors',
-						backgroundColor: '#f87979',
+						pointBorderColor: 'white',
+						borderColor: '#f89842',
+						backgroundColor: this.gradient,
 						data: this.floorZeroData,
 					},
 				],
@@ -200,7 +216,9 @@ export default {
 					datasets: [
 						{
 							label: 'visitors',
-							backgroundColor: '#f87979',
+							pointBorderColor: 'white',
+							borderColor: '#f87979',
+							backgroundColor: this.gradient2,
 							data: this.floorOneData,
 						},
 					],
@@ -210,7 +228,9 @@ export default {
 					datasets: [
 						{
 							label: 'visitors',
-							backgroundColor: '#f87979',
+							pointBorderColor: 'white',
+							borderColor: '#acd696',
+							backgroundColor: this.gradient3,
 							data: this.floorTwoData,
 						},
 					],
@@ -220,7 +240,9 @@ export default {
 				datasets: [
 					{
 						label: 'visitors',
-						backgroundColor: '#f87979',
+						pointBorderColor: 'white',
+						borderColor: '#00abdf',
+						backgroundColor: this.gradient4,
 						data: this.floorThreeData,
 					},
 				],

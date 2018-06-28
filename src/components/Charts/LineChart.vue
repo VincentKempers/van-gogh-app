@@ -15,6 +15,7 @@ export default {
 					yAxes: [
 						{
 							ticks: {
+								fontColor: 'white',
 								beginAtZero: true,
 								stepSize: 2,
 								suggestedMin: 0,
@@ -23,6 +24,7 @@ export default {
 							},
 							gridLines: {
 								display: true,
+								color: 'rgba(174,174,175,.2)'
 							},
 						},
 					],
@@ -30,6 +32,7 @@ export default {
 						{
 							gridLines: {
 								display: false,
+								
 							},
 							ticks:{
 								fontColor: "white",

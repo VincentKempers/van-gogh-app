@@ -84,7 +84,7 @@ export default {
 		this.socket.on('exitAudio', this.exitAudio);
 
 		// Create a set interval
-		this.dataInterval = createInterval(1000, this.tourInterval);
+		this.dataInterval = createInterval(3000, this.tourInterval);
 
 		// gradient color 1
 		this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450);
