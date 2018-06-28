@@ -259,7 +259,7 @@ export default {
 			this.updateTourData(tourData, counter);
 		},
 		sendPosition(tourData, counter, paintingId) {
-			console.log(tourData, counter, paintingId);
+			// console.log(tourData, counter, paintingId);
 		},
 		exitAudio(tourData, counter) {},
 		updateTourData(tourData, counter) {

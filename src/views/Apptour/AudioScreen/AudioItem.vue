@@ -53,11 +53,7 @@ export default {
 	},
 	methods: {
 		playAudio(sound) {
-			console.log('t sound');
-
 			if (sound) {
-				console.log(111);
-
 				const audioUrl = `/assets/audio/${sound}`;
 				this.audioFile = new Audio(audioUrl);
 				this.audioFile.play();

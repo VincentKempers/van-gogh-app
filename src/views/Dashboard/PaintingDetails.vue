@@ -167,6 +167,7 @@ export default {
 
 		this.socket.emit('Dashboard');
 		this.socket.on('sendPosition', this.sendPosition);
+		this.socket.on('exitAudio', this.exitAudio);
 
 		this.dataInterval = createInterval(3000, this.tourInterval);
 		// gradient color
@@ -191,7 +192,9 @@ export default {
 			};
 		},
 		sendPosition(paintingData, count, paintingId) {
-			console.log('got position', count, paintingData, paintingId);
+			this.updateTourData(paintingData, count, paintingId);
+		},
+		exitAudio(paintingData, count, paintingId) {
 			this.updateTourData(paintingData, count, paintingId);
 		},
 		updateTourData(paintingData, count, paintingId) {

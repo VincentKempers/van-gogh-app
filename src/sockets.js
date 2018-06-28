@@ -55,7 +55,8 @@ function sockets(io) {
 				}
 
 				const count = incrementCount(tourCounter.paintings[paintingId]);
-
+				tourCounter.paintings[paintingId] = count;
+				console.log('enter', count);
 				const piece = tour.tour.filter(painting => painting.painting_no === paintingId);
 
 				io.to('Dashboard').emit('sendPosition', piece[0], count, paintingId);
@@ -71,6 +72,9 @@ function sockets(io) {
 				}
 			).then(tour => {
 				const count = decrementCount(tourCounter.paintings[paintingId]);
+				tourCounter.paintings[paintingId] = count;
+				console.log('exit', count);
+
 				const piece = tour.tour.filter(painting => painting.painting_no === paintingId);
 				io.to('Dashboard').emit('exitAudio', piece[0], count, paintingId);
 			});

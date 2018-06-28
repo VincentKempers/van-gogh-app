@@ -28,7 +28,6 @@ exports.getTime = function(data, showS) {
 
 	if (showS) {
 		const seconds = getS < 10 ? `0${getS}` : getS;
-		console.log(seconds);
 
 		return `${hours}h ${minutes}m ${seconds}s`;
 	}
@@ -77,7 +76,6 @@ exports.generateFakeTime = function(currentTime) {
 
 exports.generateNumber = function(number) {
 	const random = Math.random();
-	// console.log(random);
 
 	if (random < 0.5) {
 		if (number <= 1) {

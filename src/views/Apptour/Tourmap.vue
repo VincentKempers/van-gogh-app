@@ -201,6 +201,7 @@ export default {
 			this.socket.emit('completeTour', this.tourId);
 			this.$router.push('/');
 		},
+		paintingClick() {},
 		displayTour() {
 			const points = document.querySelectorAll('.painting-point');
 
