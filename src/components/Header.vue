@@ -1,5 +1,5 @@
 <template>
-	<header class="app--header">
+	<header class="app--header" v-if="!isDashboard">
 		<router-link
 			:to="returnPath"
 			v-if="returnPath"
@@ -26,9 +26,12 @@
 		data() {
 			return {
 				returnPath: this.$route.meta.returnPath,
+				isDashboard: this.$route.meta.dashboard
 			};
 		},
 		methods: {},
+		beforeMount() {
+		},
 		watch: {
 			$route (to, from) {
 				this.returnPath = this.$route.meta.returnPath;

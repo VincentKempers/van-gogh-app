@@ -99,150 +99,144 @@
 </template>
 
 <script>
-	import SelectItem from './SelectItem.vue';
-	import SelectedItem from './SelectedItem.vue';
-	import VueButton from '../../../components/Button.vue';
+import SelectItem from './SelectItem.vue';
+import SelectedItem from './SelectedItem.vue';
+import VueButton from '../../../components/Button.vue';
 
-	export default {
-		components: {
-			SelectItem,
-			SelectedItem,
-			VueButton,
+export default {
+	components: {
+		SelectItem,
+		SelectedItem,
+		VueButton,
+	},
+	props: [],
+	data() {
+		return {
+			themes: this.$store.state.themes,
+			selectedThemes: [],
+			isDisabled: false,
+			noJavascript: true,
+		};
+	},
+	methods: {
+		addTheme(theme) {
+			if (this.selectedThemes.includes(theme)) return;
+			this.selectedThemes.push(theme);
 		},
-		props: [],
-		data() {
-			return {
-				themes: this.$store.state.themes,
-				selectedThemes: [],
-				isDisabled: false,
-				noJavascript: true
-			};
+		removeTheme(theme, i) {
+			this.selectedThemes.splice(i, 1);
 		},
-		methods: {
-			addTheme(theme) {
-				if (this.selectedThemes.includes(theme)) return;
-				this.selectedThemes.push(theme);
-			},
-			removeTheme(theme, i) {
-				this.selectedThemes.splice(i, 1);
-			},
-			confirmTour(evt) {
-				evt.preventDefault();
-				const selected = this.selectedThemes.map(theme => theme.title);
-				this.$store.dispatch('selectThemes', selected);
+		confirmTour(evt) {
+			evt.preventDefault();
+			const selected = this.selectedThemes.map(theme => theme.title);
+			this.$store.dispatch('selectThemes', selected);
 
-				this.$router.push('/tour-overview');
-			},
-			checkLength() {
-				if (this.selectedThemes.length > 1) {
-					this.isDisabled = false;
-				} else {
-					this.isDisabled = true;
-				}
+			this.$router.push('/tour-overview');
+		},
+		checkLength() {
+			if (this.selectedThemes.length > 1) {
+				this.isDisabled = false;
+			} else {
+				this.isDisabled = true;
 			}
 		},
-		beforeMount() {
-			// If there is javascript we can set the button to disabled
-			this.isDisabled = true;
-			this.noJavascript = false;
-		},
-		watch: {
-			// Watch the $route propertie and run method change
-			'selectedThemes': 'checkLength'
-		},
-	};
+	},
+	beforeMount() {
+		// If there is javascript we can set the button to disabled
+		this.isDisabled = true;
+		this.noJavascript = false;
+	},
+	watch: {
+		// Watch the $route propertie and run method change
+		selectedThemes: 'checkLength',
+	},
+};
 </script>
 
 <style lang='scss' scoped>
-	section {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		list-style:  none;
-		overflow-x: scroll;
-		overflow-y: hidden;
-		padding: 0;
-		height: 45vh;
-	}
+section {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	padding: 0;
+	height: 45vh;
+}
 
-	footer {
-		display: flex;
-		justify-content: space-between;
-		position: fixed;
-		bottom: 0;
-		width: 100%;
+footer {
+	display: flex;
+	justify-content: space-between;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 
-		&:before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			margin-left: auto;
-			margin-right: auto;
-			min-height: .1rem;
-			max-height: .1rem;
-			width: 35%;
-
-			background: #f4f4f4;
-		}
-
-		ul {
-			display: flex;
-			overflow: scroll;
-			flex-wrap: nowrap;
-			height: 3.8rem;
-			width: 100%;
-			margin-right: 5%;
-			padding: 0;
-		}
-
-		li {
-			min-width: 3.8rem;
-			max-width: 3.8rem;
-			margin-right: 5%;
-
-			&:first-of-type {
-				margin-left: 8%;
-			}
-		}
-	}
-
-	@media all and (min-width: 60rem) {
-		footer {
-			max-width: 50rem;
-		}
-	}
-
-	.selected-item {
-		display: inline-block;
-		transition: all 1s;
-		margin-right: 10px;
-	}
-
-	.selected-item-enter-active {
-	}
-
-	.selected-item-leave-active {
+	&:before {
+		content: '';
 		position: absolute;
-		transition: transform .3s;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		min-height: 0.1rem;
+		max-height: 0.1rem;
+		width: 35%;
+
+		background: #f4f4f4;
 	}
 
-	.selected-item-leave-to {
-		opacity: 0;
-		transition: all .3s;
+	ul {
+		display: flex;
+		overflow: scroll;
+		flex-wrap: nowrap;
+		height: 3.8rem;
+		width: 100%;
+		margin-right: 5%;
+		padding: 0;
 	}
 
-	.selected-item-move {
-		transition: transform 1s;
+	li {
+		min-width: 3.8rem;
+		max-width: 3.8rem;
+		margin-right: 5%;
+
+		&:first-of-type {
+			margin-left: 8%;
+		}
 	}
+}
 
-	.item-container {
+@media all and (min-width: 60rem) {
+	footer {
+		max-width: 50rem;
 	}
+}
 
-	p {
-		margin-left: 5%;
-	}
+.selected-item {
+	display: inline-block;
+	transition: all 1s;
+	margin-right: 10px;
+}
+
+.selected-item-leave-active {
+	position: absolute;
+	transition: transform 0.3s;
+}
+
+.selected-item-leave-to {
+	opacity: 0;
+	transition: all 0.3s;
+}
+
+.selected-item-move {
+	transition: transform 1s;
+}
 
 
+
+p {
+	margin-left: 5%;
+}
 </style>

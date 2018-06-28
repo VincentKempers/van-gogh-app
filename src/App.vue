@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div id="app" :class="{ 'app-side': !this.$route.meta.dashboard }">
 	 <Header />
     <router-view></router-view>
 </div>
@@ -34,7 +34,7 @@ export default {
 	// 	}
 	// }
 
-	body {
+	.app-side {
 		&::before {
 			content: "";
 			height: 55%;

@@ -6,9 +6,9 @@ const HttpService = {
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
 			body: JSON.stringify(data),
-		}).
-			then(res => res.json()).
-			then(json => json);
+		})
+			.then(res => res.json())
+			.then(json => json);
 	},
 
 	// Handles the position on audio playing
@@ -67,6 +67,9 @@ const HttpService = {
 
 	getAllDevicesAt(paintingId) {
 		return fetch(`/api/painting-devices/${paintingId}`);
+	},
+	getDevices() {
+		return fetch('/api/devices/');
 	},
 };
 

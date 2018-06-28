@@ -193,8 +193,7 @@ export default {
 			socket: this.$store.state.socket,
 		};
 	},
-	created() {
-	},
+	created() {},
 	methods: {
 		finishTour() {
 			this.$store.state.tour.completed = true;
@@ -227,7 +226,7 @@ export default {
 	mounted() {
 		// Display all the tour items when the view is mounted
 		this.displayTour();
-	}
+	},
 };
 </script>
 
@@ -235,11 +234,6 @@ export default {
 #Floor1 > g > text {
 	pointer-events: none;
 }
-
-svg {
-	
-}
-
 main {
 	margin: 0 0.8rem;
 
@@ -250,7 +244,7 @@ main {
 		width: 60%;
 		margin-top: 0;
 		margin-left: auto;
-		margin-right: .5rem;
+		margin-right: 0.5rem;
 		margin-bottom: 0;
 	}
 	.map {
@@ -258,7 +252,7 @@ main {
 		svg {
 			display: block;
 			width: 100%;
-    		height: 100%;
+			height: 100%;
 			max-width: 38rem;
 			max-height: 38rem;
 			margin: 0 auto;
@@ -280,6 +274,5 @@ main {
 		}
 	}
 }
-
 
 </style>

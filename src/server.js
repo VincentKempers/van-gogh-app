@@ -36,8 +36,8 @@ function createAppRenderer(serverBundle, options) {
 
 const appRenderer = (function() {
 	if (isProduction) {
-		const serverBundle = require('../dist/vue-ssr-server-bundle.json');
-		const clientManifest = require('../dist/vue-ssr-client-manifest.json');
+		const serverBundle = require(`${__dirname}/assets/dist/vue-ssr-server-bundle.json`);
+		const clientManifest = require(`${__dirname}/assets/dist/vue-ssr-client-manifest.json`);
 
 		return createAppRenderer(serverBundle, { clientManifest });
 	} else {
@@ -68,13 +68,15 @@ function response(app, req, res) {
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
-server.use('/', express.static(path.resolve('../dist/')));
-server.use('/assets', express.static(path.resolve('./src/assets/')));
+server.use('/', express.static(`${__dirname}/dist`));
+server.use('/assets', express.static(`${__dirname}/assets`));
 
 server.use('/api', api);
 
 server.get('*', (req, res) => {
 	if (isProduction) {
+		console.log(req.originalUrl);
+
 		response(appRenderer, req, res);
 	} else {
 		appRenderer.then(result => {

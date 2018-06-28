@@ -1,8 +1,7 @@
 <template>
 <div class="dashboard-floor">
-		<nav>
-			<h1>MMT Dashboard</h1>
-		</nav>
+		<nav-dash>
+		</nav-dash>
 	<main>	
 		<section class="linechart">
 			<h1> Floor 0</h1>
@@ -57,15 +56,16 @@
 
 <script>
 import LineChart from '../../components/Charts/LineChart.vue';
+import NavDash from '../../components/Navdash.vue';
 
 import { generateFakeTime, createInterval } from '../../../services/helpers.js';
 
 export default {
-    name: 'Dashboard',
-    components: { LineChart },
-    data () {
-      return {
-		  	labels:['09:00', '09:15'],
+	name: 'Dashboard',
+	components: { LineChart, NavDash },
+	data() {
+		return {
+			labels: ['09:00', '09:15'],
 			floorZeroData: [0, 1],
 			floorOneData: [1, 12],
 			floorTwoData: [2, 5],
@@ -74,14 +74,14 @@ export default {
 			floorOneChart: null,
 			floorTwoChart: null,
 			floorThreeChart: null,
-			socket: null
-      }
-    },
-    created () {
+			socket: null,
+		};
+	},
+	created() {
 		this.fillData();
 	},
-    mounted () {
-		 // Create an socket instance for dashboard
+	mounted() {
+		// Create an socket instance for dashboard
 		this.socket = io();
 		this.socket.emit('Dashboard');
 
@@ -93,51 +93,51 @@ export default {
 
 		// Create a set interval
 		this.dataInterval = createInterval(1000, this.tourInterval);
-    },
-    methods: {
-      fillData () {
-		  this.floorZeroChart = {
-			labels: this.labels,
-				datasets: [
-					{
-						label: 'people',
-						backgroundColor: '#f87979',
-						data: this.floorZeroData
-					},
-				]
-			},
-		  this.floorOneChart = {
-			labels: this.labels,
-				datasets: [
-					{
-						label: 'people',
-						backgroundColor: '#f87979',
-						data: this.floorOneData
-					},
-				]
-			},
-			this.floorTwoChart = {
+	},
+	methods: {
+		fillData() {
+			(this.floorZeroChart = {
 				labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
 						backgroundColor: '#f87979',
-						data: this.floorTwoData
+						data: this.floorZeroData,
 					},
-				]
-			}
+				],
+			}),
+				(this.floorOneChart = {
+					labels: this.labels,
+					datasets: [
+						{
+							label: 'people',
+							backgroundColor: '#f87979',
+							data: this.floorOneData,
+						},
+					],
+				}),
+				(this.floorTwoChart = {
+					labels: this.labels,
+					datasets: [
+						{
+							label: 'people',
+							backgroundColor: '#f87979',
+							data: this.floorTwoData,
+						},
+					],
+				});
 			this.floorThreeChart = {
 				labels: this.labels,
 				datasets: [
 					{
 						label: 'people',
 						backgroundColor: '#f87979',
-						data: this.floorThreeData
+						data: this.floorThreeData,
 					},
-				]
-			}
-      },
-      fetchData () {},
+				],
+			};
+		},
+		fetchData() {},
 		startTour(tourData, counter) {
 			this.updateTourData(tourData, counter);
 		},
@@ -147,18 +147,16 @@ export default {
 		completeTour(tourData, counter) {
 			this.updateTourData(tourData, counter);
 		},
-		sendPosition(tourData, counter) {
-		},
-		exitAudio(tourData, counter) {
-		},
+		sendPosition(tourData, counter) {},
+		exitAudio(tourData, counter) {},
 		updateTourData(tourData, counter) {
-				this.floorOneData.push(counter.activeTour);
-				this.floorZeroData.push(counter.activeTour);
+			this.floorOneData.push(counter.activeTour);
+			this.floorZeroData.push(counter.activeTour);
 		},
 		generateNewLabel() {
-				const lastLabel = this.labels[this.labels.length - 1];
-				const newLabel = generateFakeTime(lastLabel);
-				this.labels.push(newLabel);
+			const lastLabel = this.labels[this.labels.length - 1];
+			const newLabel = generateFakeTime(lastLabel);
+			this.labels.push(newLabel);
 		},
 		tourInterval() {
 			this.generateNewLabel();
@@ -179,22 +177,12 @@ export default {
 				this.labels.splice(0, 1);
 			}
 			this.fillData();
-		}
-    }
-  };
+		},
+	},
+};
 </script>
 
-<style lang="scss">
-body::before {
-	background: none !important;
-}
-.app--header {
-	display: none !important;
-}
-</style>
-
 <style lang="scss" scoped>
-
 .dashboard-floor {
 	background-color: black;
 	height: 100%;
@@ -210,28 +198,28 @@ body::before {
 			color: white;
 		}
 	}
-	main { 
+	main {
 		@media screen and (min-width: 40em) {
-			display:flex;
+			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
 		}
-		
+
 		.linechart {
 			background-color: #464646;
 			border-radius: 1rem;
 			margin-bottom: 2em;
-			
+
 			padding: 1em;
-				@media screen and (min-width: 40em){
-					width: 100%;
-					margin-right: 2em;
-				}
+			@media screen and (min-width: 40em) {
+				width: 100%;
+				margin-right: 2em;
+			}
 			h1 {
 				color: white;
 			}
 			ul {
-				display:flex;
+				display: flex;
 				flex-direction: row;
 				flex-wrap: wrap;
 				margin-right: 2em;
@@ -239,63 +227,61 @@ body::before {
 				li {
 					background-color: black;
 					border-radius: 1rem;
-					margin-right: .3em;
-					margin-bottom: .5em;
+					margin-right: 0.3em;
+					margin-bottom: 0.5em;
 					// justify-content: space-around;
-					@media screen and (min-width: 40em){
+					@media screen and (min-width: 40em) {
 						margin-right: 1em;
 						margin-bottom: 1em;
 					}
 					a {
 						display: block;
 						padding: 1em 3em;
-						color:white;
+						color: white;
 					}
 				}
 			}
-
 		}
 		.overview-navigation {
 			ul {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: center;
-			margin: 0;
-			padding: 0;
-			list-style: none;
-			li {
-				margin-bottom: 2em;
-				@media screen and (min-width: 40em){
-					margin-right: 2em;
-				}
-				a {
-					text-decoration: none;
-					padding: 1rem 0rem;
-					div {
-						padding: 0.5em;
-						background-color: #454545;
-						border-radius: 1rem;
-						max-width:86vw;
-						h3 {
-							color: white;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				li {
+					margin-bottom: 2em;
+					@media screen and (min-width: 40em) {
+						margin-right: 2em;
+					}
+					a {
+						text-decoration: none;
+						padding: 1rem 0rem;
+						div {
+							padding: 0.5em;
+							background-color: #454545;
+							border-radius: 1rem;
+							max-width: 86vw;
+							h3 {
+								color: white;
+							}
 						}
 					}
 				}
 			}
 		}
-		
 	}
-}
-.floorplan {
-			background-color: #464646;
-			border-radius: 1rem;
-			margin-bottom: 2em;
-			padding:1em;
-			svg {
-				width: 100%;
-				padding-top:2.5em;
-			}
+	.floorplan {
+		background-color: #464646;
+		border-radius: 1rem;
+		margin-bottom: 2em;
+		padding: 1em;
+		svg {
+			width: 100%;
+			padding-top: 2.5em;
 		}
+	}
 }
 </style>
