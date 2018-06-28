@@ -53,18 +53,18 @@
 import LineChart from '../../components/Charts/LineChart.vue';
 import LazyImage from '../../components/LazyImage.vue';
 import NavDash from '../../components/Navdash.vue';
-import { generateFakeTime, createInterval, generateNumber } from '../../../services/helpers.js';
+import { generateFakeTime, createInterval, generateNumber, getTime } from '../../../services/helpers.js';
 
 export default {
 	name: 'Dashboard',
 	components: { LineChart, LazyImage, NavDash },
 	data() {
 		return {
-			labels: ['09:00', '09:15'],
-			floorZeroData: [0, 6],
-			floorOneData: [1, 12],
-			floorTwoData: [2, 5],
-			floorThreeData: [2, 5],
+			labels: [getTime(new Date(), true)],
+			floorZeroData: [4],
+			floorOneData: [0],
+			floorTwoData: [5],
+			floorThreeData: [7],
 			floorZeroChart: null,
 			floorOneChart: null,
 			floorTwoChart: null,
@@ -199,54 +199,54 @@ export default {
 	},
 	methods: {
 			fillData() {
-			(this.floorZeroChart = {
-				labels: this.labels,
-				datasets: [
-					{
-						label: 'visitors',
-						pointBorderColor: 'white',
-						borderColor: '#f89842',
-						backgroundColor: this.gradient,
-						data: this.floorZeroData,
-					},
-				],
-			}),
-				(this.floorOneChart = {
+				(this.floorZeroChart = {
 					labels: this.labels,
 					datasets: [
 						{
 							label: 'visitors',
 							pointBorderColor: 'white',
-							borderColor: '#f87979',
-							backgroundColor: this.gradient2,
-							data: this.floorOneData,
+							borderColor: '#f89842',
+							backgroundColor: this.gradient,
+							data: this.floorZeroData,
 						},
 					],
 				}),
-				(this.floorTwoChart = {
+					(this.floorOneChart = {
+						labels: this.labels,
+						datasets: [
+							{
+								label: 'visitors',
+								pointBorderColor: 'white',
+								borderColor: '#f87979',
+								backgroundColor: this.gradient2,
+								data: this.floorOneData,
+							},
+						],
+					}),
+					(this.floorTwoChart = {
+						labels: this.labels,
+						datasets: [
+							{
+								label: 'visitors',
+								pointBorderColor: 'white',
+								borderColor: '#acd696',
+								backgroundColor: this.gradient3,
+								data: this.floorTwoData,
+							},
+						],
+					});
+				this.floorThreeChart = {
 					labels: this.labels,
 					datasets: [
 						{
 							label: 'visitors',
 							pointBorderColor: 'white',
-							borderColor: '#acd696',
-							backgroundColor: this.gradient3,
-							data: this.floorTwoData,
+							borderColor: '#00abdf',
+							backgroundColor: this.gradient4,
+							data: this.floorThreeData,
 						},
 					],
-				});
-			this.floorThreeChart = {
-				labels: this.labels,
-				datasets: [
-					{
-						label: 'visitors',
-						pointBorderColor: 'white',
-						borderColor: '#00abdf',
-						backgroundColor: this.gradient4,
-						data: this.floorThreeData,
-					},
-				],
-			};
+				};
 		},
 		fetchData() {},
 		startTour(tourData, counter) {
@@ -263,10 +263,7 @@ export default {
 		},
 		exitAudio(tourData, counter) {},
 		updateTourData(tourData, counter) {
-			this.floorZeroData.push(counter);
 			this.floorOneData.push(counter);
-			this.floorTwoData.push(counter);
-			this.floorThreeData.push(counter);
 		},
 		generateVisitors() {
 			const labelsLength = this.labels.length;
@@ -287,17 +284,12 @@ export default {
 			}
 		},
 		generateNewLabel() {
-			const lastLabel = this.labels[this.labels.length - 1];
-			const newLabel = generateFakeTime(lastLabel);
+			const newLabel = getTime(new Date(), true);
 			this.labels.push(newLabel);
 		},
 		tourInterval() {
 			this.generateNewLabel();
-			const floorZeroLength = this.floorZeroData.length;
 			const floorOneLength = this.floorOneData.length;
-			const floorTwoLength = this.floorTwoData.length;
-			const floorThreeLength = this.floorThreeData.length;
-
 			const labelsLength = this.labels.length;
 
 			if (labelsLength !== floorOneLength) {

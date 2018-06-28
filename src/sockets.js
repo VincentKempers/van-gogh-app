@@ -5,7 +5,7 @@ const { getCurrentDate } = require('../services/helpers');
 function sockets(io) {
 	// Data counter for the prototype. Will watch the counter ect for the dashboard
 	const tourCounter = {
-		activeTour: 12,
+		activeTour: 0,
 		paintings: {},
 	};
 

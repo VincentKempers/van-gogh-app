@@ -50,18 +50,18 @@
 import LineChart from '../../components/Charts/LineChart.vue';
 import NavDash from '../../components/Navdash.vue';
 
-import { generateFakeTime, createInterval } from '../../../services/helpers.js';
+import { generateFakeTime, createInterval, getTime, generateNumber } from '../../../services/helpers.js';
 
 export default {
 	name: 'Dashboard',
 	components: { LineChart, NavDash },
 	data() {
 		return {
-			labels: ['09:00', '09:15'],
-			floorZeroData: [0, 1],
-			floorOneData: [1, 12],
-			floorTwoData: [2, 5],
-			floorThreeData: [2, 5],
+			labels: [getTime(new Date(), true)],
+			floorZeroData: [4],
+			floorOneData: [0],
+			floorTwoData: [5],
+			floorThreeData: [7],
 			floorZeroChart: null,
 			floorOneChart: null,
 			floorTwoChart: null,
@@ -164,29 +164,42 @@ export default {
 		exitAudio(tourData, counter) {},
 		updateTourData(tourData, counter) {
 			this.floorOneData.push(counter.activeTour);
-			this.floorZeroData.push(counter.activeTour);
+		},
+		generateVisitors() {
+			const labelsLength = this.labels.length;
+			const floorZeroLength = this.floorZeroData.length;
+
+			if (labelsLength !== floorZeroLength) {
+				this.floorZeroData.push(generateNumber(this.floorZeroData[this.floorZeroData.length - 1]));
+				this.floorTwoData.push(generateNumber(this.floorTwoData[this.floorTwoData.length - 1]));
+				this.floorThreeData.push(
+					generateNumber(this.floorThreeData[this.floorThreeData.length - 1])
+				);
+			}
+
+			if (labelsLength === 8) {
+				this.floorZeroData.splice(0, 1);
+				this.floorTwoData.splice(0, 1);
+				this.floorThreeData.splice(0, 1);
+			}
 		},
 		generateNewLabel() {
-			const lastLabel = this.labels[this.labels.length - 1];
-			const newLabel = generateFakeTime(lastLabel);
+			const newLabel = getTime(new Date(), true);
 			this.labels.push(newLabel);
 		},
 		tourInterval() {
 			this.generateNewLabel();
 			const floorOneLength = this.floorOneData.length;
-			const floorZeroLength = this.floorZeroData.length;
 			const labelsLength = this.labels.length;
+
 			if (labelsLength !== floorOneLength) {
 				this.floorOneData.push(this.floorOneData[floorOneLength - 1]);
 			}
 
-			if (labelsLength !== floorZeroLength) {
-				this.floorZeroData.push(this.floorZeroData[floorZeroLength - 1]);
-			}
+			this.generateVisitors();
 
 			if (labelsLength === 8) {
 				this.floorOneData.splice(0, 1);
-				this.floorZeroData.splice(0, 1);
 				this.labels.splice(0, 1);
 			}
 			this.fillData();

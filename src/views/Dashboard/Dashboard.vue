@@ -46,18 +46,18 @@
 import LineChart from '../../components/Charts/LineChart.vue';
 import NavDash from '../../components/Navdash.vue';
 
-import { generateFakeTime, createInterval, generateNumber } from '../../../services/helpers.js';
+import { generateFakeTime, createInterval, generateNumber, getTime } from '../../../services/helpers.js';
 
 export default {
 	name: 'Dashboard',
 	components: { LineChart, NavDash },
 	data() {
 		return {
-			labels: ['09:00', '09:15'],
-			floorZeroData: [2, 4],
-			floorOneData: [1, 12],
-			floorTwoData: [9, 5],
-			floorThreeData: [2, 7],
+			labels: [getTime(new Date(), true)],
+			floorZeroData: [4],
+			floorOneData: [0],
+			floorTwoData: [5],
+			floorThreeData: [7],
 			floorZeroChart: null,
 			floorOneChart: null,
 			floorTwoChart: null,
@@ -106,7 +106,7 @@ export default {
 				labels: this.labels,
 				datasets: [
 					{
-						label: 'people',
+						label: 'visitors',
 						pointBorderColor: 'white',
 						borderColor: '#f89842',
 						backgroundColor: this.gradient,
@@ -118,7 +118,7 @@ export default {
 					labels: this.labels,
 					datasets: [
 						{
-							label: 'people',
+							label: 'visitors',
 							pointBorderColor: 'white',
 							borderColor: '#f87979',
 							backgroundColor: this.gradient2,
@@ -130,7 +130,7 @@ export default {
 					labels: this.labels,
 					datasets: [
 						{
-							label: 'people',
+							label: 'visitors',
 							pointBorderColor: 'white',
 							borderColor: '#acd696',
 							backgroundColor: this.gradient3,
@@ -142,7 +142,7 @@ export default {
 				labels: this.labels,
 				datasets: [
 					{
-						label: 'people',
+						label: 'visitors',
 						pointBorderColor: 'white',
 						borderColor: '#00abdf',
 						backgroundColor: this.gradient4,
@@ -185,8 +185,7 @@ export default {
 			}
 		},
 		generateNewLabel() {
-			const lastLabel = this.labels[this.labels.length - 1];
-			const newLabel = generateFakeTime(lastLabel);
+			const newLabel = getTime(new Date(), true);
 			this.labels.push(newLabel);
 		},
 		tourInterval() {
